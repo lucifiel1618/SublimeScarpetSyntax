@@ -1,0 +1,401 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "brightness",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "chunk_tickets",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "create_datapack",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "create_marker",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "current_dimension",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "day_time",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "delete_file",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "display_title",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "draw_shape",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "enable_hidden_dimensions",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "encode_nbt",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "escape_nbt",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "format",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "game_tick",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "get_mob_counts",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "in_dimension",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "item_display_name",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "last_tick_times",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "list_files",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "load_app_data",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "logger",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "nbt",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "nbt_storage",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "parse_nbt",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "particle",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "particle_box",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "particle_line",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "print",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "read_file",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "remove_all_markers",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "reset_seed",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "run",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "save",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "schedule",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "seed",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "sound",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "statistic",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "store_app_data",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "system_info",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "tag_matches",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "tick_time",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "view_distance",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "world_time",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "write_file",
+            "annotation": "auxiliary",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        }
+    ]
+}

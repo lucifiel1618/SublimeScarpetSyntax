@@ -1,0 +1,266 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "and",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "bitwise_and",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "bitwise_not",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "bitwise_or",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "bitwise_popcount",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "bitwise_roll_left",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "bitwise_roll_right",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "bitwise_shift_left",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "bitwise_shift_right",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "bitwise_xor",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "decreasing",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "delete",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "difference",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "double_to_long_bits",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "equal",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "get",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "has",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "increasing",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "long_bits_to_double",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "long_to_double_bits",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "nondecreasing",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "nonincreasing",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "not",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "or",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "product",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "put",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "quotient",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "sum",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "unique",
+            "annotation": "operator",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        }
+    ]
+}

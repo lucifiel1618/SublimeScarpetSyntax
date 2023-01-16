@@ -1,0 +1,104 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "bossbar",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "scoreboard",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "scoreboard_add",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "scoreboard_display",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "scoreboard_property",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "scoreboard_remove",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "team_add",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "team_leave",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "team_list",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "team_property",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "team_remove",
+            "annotation": "scoreboard",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        }
+    ]
+}

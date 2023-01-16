@@ -1,0 +1,89 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "_",
+            "annotation": "built-in variable",
+            "kind": [
+                "variable",
+                "v",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "_x",
+            "annotation": "built-in variable",
+            "kind": [
+                "variable",
+                "v",
+                "Minecraft"
+            ],
+            "details": "Block x-position"
+        },
+        {
+            "trigger": "_y",
+            "annotation": "built-in variable",
+            "kind": [
+                "variable",
+                "v",
+                "Minecraft"
+            ],
+            "details": "Block y-position"
+        },
+        {
+            "trigger": "_z",
+            "annotation": "built-in variable",
+            "kind": [
+                "variable",
+                "v",
+                "Minecraft"
+            ],
+            "details": "Block z-position"
+        },
+        {
+            "trigger": "euler",
+            "annotation": "built-in constant",
+            "kind": [
+                "navigation",
+                "c",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "false",
+            "annotation": "built-in constant",
+            "kind": [
+                "navigation",
+                "c",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "null",
+            "annotation": "built-in constant",
+            "kind": [
+                "navigation",
+                "c",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "pi",
+            "annotation": "built-in constant",
+            "kind": [
+                "navigation",
+                "c",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "true",
+            "annotation": "built-in constant",
+            "kind": [
+                "navigation",
+                "c",
+                "Language"
+            ]
+        }
+    ]
+}

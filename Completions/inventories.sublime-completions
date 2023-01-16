@@ -1,0 +1,149 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "close_screen",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "crafting_remaining_item",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "create_screen",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "drop_item",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "inventory_find",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "inventory_get",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "inventory_has_items",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "inventory_remove",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "inventory_set",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "inventory_size",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "item_category",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "item_list",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "item_tags",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "recipe_data",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "screen_property",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "stack_limit",
+            "annotation": "inventory",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        }
+    ]
+}

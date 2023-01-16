@@ -1,0 +1,140 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "delete",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "get",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "has",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "join",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "keys",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "l",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "m",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "pairs",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "put",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "range",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "slice",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "sort",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "sort_key",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "split",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "values",
+            "annotation": "container",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        }
+    ]
+}

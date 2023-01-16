@@ -1,0 +1,572 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "add_chunk_ticket",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "air",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "biome",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "blast_resistance",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "block",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "block_data",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "block_light",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "block_list",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "block_properties",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "block_sound",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "block_state",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "block_tags",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "block_tick",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "blocks_daylight",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "blocks_movement",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "create_explosion",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "destroy",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "effective_light",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "emitted_light",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "flammable",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "generation_status",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "hardness",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "harvest",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "in_slime_chunk",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "inhabited_time",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "is_chunk_generated",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "light",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "liquid",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "loaded",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "loaded_ep",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "loaded_status",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "map_colour",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "material",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "opacity",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "place_item",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "plop",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "poi",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "pos",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "pos_offset",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "power",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "property",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "random_tick",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "reload_chunk",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "reset_chunk",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "sample_noise",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "see_sky",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "set",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "set_biome",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "set_poi",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "set_structure",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "sky_light",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "solid",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "spawn_potential",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "structure_eligibility",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "structure_references",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "structures",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "suffocates",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "ticks_randomly",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "top",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "transparent",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "update",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "weather",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "without_updates",
+            "annotation": "blocks",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        }
+    ]
+}

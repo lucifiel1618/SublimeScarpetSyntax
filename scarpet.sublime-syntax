@@ -1,0 +1,718 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/syntax.html
+name: Scarpet
+scope: source.scarpet
+version: 2
+
+file_extensions:
+  - sc
+  - scl
+
+variables:
+  # Identifiers
+  break: (?!{{id_char}})
+  identifier: (?![^{{id_char}}]){{id}}
+  id: (?:{{id_first_char}}{{id_char}}*)
+  id_first_char: '[\p{L}_$]'
+  id_char: '[\p{L}\p{N}_$]'
+  strftime_spec: '(?:%(?:[aAwdbBGmyYHIpMSfzZjuUVWcxX%]|-[dmHIMSj]))'
+
+  digits: (?:\d+(?:_\d+)*)
+  exponent: (?:[eE][-+]?{{digits}})
+  path: '({{identifier}}[ ]*\.[ ]*)*{{identifier}}'
+  literal_variables: |-
+    \b(?x:
+      _|_a|_i|_x|_y|_z|_trace
+    )\b
+  builtin_functions: |-
+    \b(?x:
+      # operator
+      |get|put|delete|has
+      |sum|difference|product|quotient
+      |equal|unique|increasing|decreasing|nondecreasing|nonincreasing
+      |and|or
+
+      |abs|acos|acosh|acot|all|and|asin|asinh|atan|atan2|atanh
+      |bitwise_and|bitwise_or|bitwise_xor|bitwise_shift_left
+      |bitwise_shift_right|bitwise_roll_left|bitwise_roll_right
+      |bitwise_not|bitwise_popcount|bool|break|call|ceil|c_for
+      |continue|copy|cos|cosh|cot|coth|csc|csch|deg
+      |double_to_long_bits|exit|fact
+      |filter|first|floor|for|hash_code|if|import
+      |join|keys|l|length|log|log10|log1p
+      |long_bits_to_double|loop|lower|m|mandelbrot|map|max|min
+      |not|number|or|outer|pairs
+      |perlin|print|profile_expr|rad|rand
+      |range|reduce|relu|replace|replace_first|reset_seed|return
+      |round|sec|sech|simplex|sin|sinh|sleep|slice|sort|sort_key
+      |synchronize|system_variable_get|system_variable_set
+      |split|sqrt|str|tan|tanh|task|task_completed|task_count
+      |task_dock|task_join|task_thread|task_value|then|throw
+      |time|title|try|type|undef|upper|values|var|vars
+      |while|air|add_chunk_ticket|biome|blast_resistance|block
+      |block_data|block_light|block_list|block_sound|block_state
+      |block_tick|block_tags|blocks_daylight|blocks_movement
+      |bossbar|brightness|chunk_tickets|convert_date
+      |crafting_remaining_item|create_datapack|create_explosion
+      |create_marker|current_dimension|day_time|delete_file
+      |destroy|diamond|display_title|draw_shape|drop_item
+      |emitted_light|enable_hidden_dimensions|encode_nbt
+      |entity_area|entity_event|entity_id|entity_list
+      |entity_load_handler|entity_selector|entity_types
+      |escape_nbt|flammable|format|game_tick|generation_status
+      |handle_event|hardness|harvest|in_dimension|in_slime_chunk
+      |inhabited_time|inventory_find|inventory_get
+      |inventory_remove|inventory_set|inventory_size|item_category
+      |item_list|item_tags|last_tick_times|light|liquid|list_files
+      |load_app_data|loaded|loaded_status|logger|map_colour
+      |material|modify|nbt|nbt_storage|neighbours|opacity|parse_nbt
+      |particle|particle_line|particle_rect|place_item|player|plop
+      |poi|pos|pos_offset|power|query|random_tick|recipe_data|rect
+      |reload_chunk|remove_all_markers|reset_chunk|run|sample_noise
+      |save|scan|schedule|scoreboard|scoreboard_add
+      |scoreboard_remove|scoreboard_display|scoreboard_property
+      |tag_matches|team_add|team_leave|team_list|team_property
+      |team_remove|read_file|see_sky|set|set_biome|set_poi
+      |set_structure|signal_event|sky_light|solid|sound|spawn
+      |spawn_potential|stack_limit|statistic|store_app_data
+      |structures|structure_eligibility|structure_references
+      |suffocates|system_info|tick_time|ticks_randomly|top
+      |transparent|update|unix_time|view_distance|volume
+      |without_updates|world_time|write_file
+
+      |__command|__config|__on_chunk_generated|__on_chunk_loaded
+      |__on_close|__on_player_attacks_entity|__on_player_breaks_block
+      |__on_player_clicks_block|__on_player_changes_dimension
+      |__on_player_chooses_recipe|__on_player_collides_with_entity
+      |__on_player_deploys_elytra|__on_player_drops_item
+      |__on_player_drops_stack|__on_player_finishes_using_item
+      |__on_player_interacts_with_block
+      |__on_player_interacts_with_entity|__on_player_jumps
+      |__on_player_picks_up_item|__on_player_places_block
+      |__on_player_releases_item|__on_player_rides
+      |__on_player_right_clicks_block|__on_player_starts_sneaking
+      |__on_player_starts_sprinting|__on_player_stops_sneaking
+      |__on_player_stops_sprinting|__on_player_swings_hand
+      |__on_player_switches_slot|__on_player_swaps_hands
+      |__on_player_takes_damage|__on_player_trades|__on_player_uses_item
+      |__on_player_wakes_up|__on_player_escapes_sleep|__on_statistic
+      |__on_start|__on_tick|__on_tick_ender|__on_tick_nether
+      |__on_player_takes_damage|__on_player_deals_damage|__on_player_dies
+      |__on_player_respawns|__on_player_disconnects|__on_player_connects
+      |__on_explosion|__on_explosion_outcome
+    )\b
+
+contexts:
+  main:
+    - meta_include_prototype: false
+    - match: ''
+      push: [scarpet]
+
+  scarpet:
+    - include: statements
+    - include: else-expressions
+
+  statements:
+    - include: member-statements
+
+  member-statements:
+    - include: punctuation-terminator-semicolon
+    - include: import
+    - include: flow-control-functions
+    - include: loop-functions
+    - include: blocks
+
+  expressions:
+    - include: expressions-wo-variables
+    - include: variables
+
+  expressions-wo-variables:
+    - include: groups
+    - include: literals
+    - include: strings
+    - include: punctuations
+    - include: builtin-functions
+    - include: comments
+    - include: numbers
+    - include: operators
+    - include: list
+    - include: map
+
+###[ OPERATORS ]################################################################
+
+  operators:
+    # https://docs.oracle.com/javase/specs/jls/se13/html/jls-3.html#jls-3.12
+    - match: (<<|>>>?|[-+*/%|&\^])=
+      scope: keyword.operator.assignment.augmented.scarpet
+    - match: '==|!=|<=|>=|<>|<|>'
+      scope: keyword.operator.comparison.scarpet
+    - match: '='
+      scope: keyword.operator.assignment.scarpet
+    - match: '\+\+?|\-\-?|[*/%]'
+      scope: keyword.operator.arithmetic.scarpet
+    - match: '!|&&|\|\|'
+      scope: keyword.operator.logical.scarpet
+    - match: '~'
+      scope: keyword.operator.match.scarpet
+      push: variable-item-access
+    - match: ':'
+      scope: keyword.operator.get.scarpet
+      push: variable-item-access
+
+###[ PUNCTUATIONS ]############################################################
+
+  punctuations:
+    - include: punctuation-separator-comma
+
+  punctuation-separator-comma:
+    - match: ','
+      scope: punctuation.separator.comma.scarpet
+
+  punctuation-terminator-semicolon:
+    - match: ;
+      scope: punctuation.terminator.scarpet
+
+###[ STRINGS ]################################################################
+
+  strings:
+    - include: single-quoted-strings
+    - include: double-quoted-strings
+
+  double-quoted-strings:
+    # scarpet doesn't support double quoted strings
+    - match: (")[^"]+(")
+      scope: invalid.illegal.not-a-str.scarpet
+
+  single-quoted-strings:
+    - match: \'
+      scope: punctuation.definition.string.begin.scarpet
+      push: single-quoted-string-body
+
+  single-quoted-string-body:
+    - meta_include_prototype: false
+    - meta_scope: meta.string.scarpet string.quoted.single.scarpet
+    - match: \'
+      scope: punctuation.definition.string.end.scarpet
+      pop: 1
+    - include: escaped-chars
+    - include: string-placeholders
+    - include: illegal-string-end
+    - include: string-continuations
+
+  illegal-string-end:
+    - match: \n
+      scope: invalid.illegal.unclosed-string.scarpet
+      set: after-expression
+
+  string-continuations:
+    - match: \\$
+      scope: punctuation.separator.continuation.line.scarpet
+      push:
+        - meta_include_prototype: false
+        - match: ^
+          pop: 1
+
+  after-expression:
+    - match: ''
+      pop: true
+
+  string-placeholders:
+    - match: |- # printf style
+        (?x)
+        %
+          ( \( ({{identifier}}) \) )? # mapping key
+          \#?            # alternate form
+          0?             # pad with zeros
+          \-?            # left-adjust
+          \ ?            # implicit sign
+          [+-]?          # sign
+          (\d*|\*)       # width
+          (\. (\d*|\*))? # precision
+          [hlL]?         # length modifier (but ignored)
+          [acdeEfFgGiorsuxX%]
+      scope: constant.other.placeholder.scarpet
+      captures:
+        2: variable.other.placeholder.scarpet
+    - match: '{{strftime_spec}}'
+      scope: constant.other.placeholder.scarpet
+
+  escaped-chars:
+    - match: \\r
+      # carrige return character is not supported
+      scope: constant.character.escape.python invalid.illegal.character.escape.scarpet
+    - match: \\.
+      scope: constant.character.escape.python
+
+###[ TYPE CONVERSION FUNCTIONS ]##############################################
+
+###[ LITERALS ]################################################################
+
+  literals:
+    - include: literal-strings
+    - include: literal-numbers
+    - include: literal-constants
+    - include: literal-variables
+
+  literal-variables:
+    - match: '{{literal_variables}}{{break}}'
+      scope: variable.language.anonymous.scarpet
+
+  literal-constants:
+    - match: (false|true){{break}}
+      scope: constant.language.boolean.scarpet
+    - match: (euler|pi){{break}}
+      scope: constant.language.anonymous.scarpet
+    - match: (null){{break}}
+      scope: constant.language.null.scarpet
+
+  literal-numbers:
+    # hexadecimal
+    - match: \b(0[xX])(\h*)([lL])
+      scope: meta.number.integer.hexadecimal.scarpet invalid.illegal.number.scarpet
+      captures:
+        1: constant.numeric.base.scarpet
+        2: constant.numeric.value.scarpet
+        3: constant.numeric.suffix.scarpet
+    - match: \b(0[xX])((?:_?\h)+)
+      scope: meta.number.integer.hexadecimal.scarpet
+      captures:
+        1: constant.numeric.base.scarpet
+        2: constant.numeric.value.scarpet
+    # octal
+    - match: \b(0[oO]?)((?=[oO]|[0-7])[0-7]*)([lL])
+      scope: meta.number.integer.octal.scarpet invalid.illegal.number.scarpet
+      captures:
+        1: constant.numeric.base.scarpet
+        2: constant.numeric.value.scarpet
+        3: constant.numeric.suffix.scarpet
+    - match: \b(0)([0-7]+) # py2
+      scope: meta.number.integer.octal.scarpet
+      captures:
+        1: constant.numeric.base.scarpet
+        2: constant.numeric.value.scarpet
+    - match: \b(0[oO])((?:_?[0-7])+)
+      scope: meta.number.integer.octal.scarpet
+             invalid.illegal.number.scarpet
+      captures:
+        1: constant.numeric.base.scarpet
+        2: constant.numeric.value.scarpet
+    # binary
+    - match: \b(0[bB])([01]*)([lL]) # py2
+      scope: meta.number.integer.binary.scarpet
+             invalid.illegal.number.scarpet
+      captures:
+        1: constant.numeric.base.scarpet
+        2: constant.numeric.value.scarpet
+        3: constant.numeric.suffix.scarpet
+    - match: \b(0[bB])((?:_?[01])*)
+      scope: meta.number.integer.binary.scarpet
+      captures:
+        1: constant.numeric.base.scarpet
+        2: constant.numeric.value.scarpet
+    # complex
+    - match: |-
+        (?x)
+        (
+          # 1.j, 1.1j, 1.1e1j, 1.1e-1j, 1.e1j, 1.e-1 | 1e1j, 1e-1j
+          \b{{digits}} (\.)? {{digits}}? {{exponent}}?
+          # .1j, .1e1j, .1e-1j
+          | (\.) {{digits}} {{exponent}}?
+        )
+        ([jJ])
+      scope: meta.number.imaginary.decimal.scarpet invalid.illegal.number.scarpet
+      captures:
+        1: constant.numeric.value.scarpet
+        2: punctuation.separator.decimal.scarpet
+        3: punctuation.separator.decimal.scarpet
+        4: constant.numeric.suffix.scarpet
+    # floating point
+    - match: |-
+        (?x:
+          # 1., 1.1, 1.1e1, 1.1e-1, 1.e1, 1.e-1 | 1e1, 1e-1
+          \b{{digits}} (?: (\.) {{digits}}? {{exponent}}? | {{exponent}} )
+          # .1, .1e1, .1e-1
+          | (\.) {{digits}} {{exponent}}?
+        )
+      scope: meta.number.float.decimal.scarpet constant.numeric.value.scarpet
+      captures:
+        1: punctuation.separator.decimal.scarpet
+        2: punctuation.separator.decimal.scarpet
+    # integer
+    - match: \b([1-9]\d*|0)([lL])\b # py2
+      scope: meta.number.integer.decimal.scarpet invalid.illegal.number.scarpet
+      captures:
+        1: constant.numeric.value.scarpet
+        2: constant.numeric.suffix.scarpet
+    - match: \b([1-9][\d_]*|0)\b
+      scope: meta.number.integer.decimal.scarpet constant.numeric.value.scarpet
+
+
+###[ LOOP FUNCTIONS ]#########################################################
+
+  loop-functions:
+    - match: (while|loop|map|filter|first|all|c_for|for){{break}}
+      scope: keyword.control.loop.scarpet
+
+###[ IMPORT FUNCTIONS ]#######################################################
+
+  import:
+    - match: import{{break}}
+      scope: keyword.control.import.python
+
+###[ FLOW CONTROL FUNCTIONS ]#################################################
+
+  flow-control-functions:
+    - match: return{{break}}
+      scope: keyword.control.flow.return.scarpet
+    - match: exit{{break}}
+      scope: keyword.control.flow.exit.scarpet
+    - match: try{{break}}
+      scope: keyword.control.exception.try.scarpet
+    - match: throw{{break}}
+      scope: keyword.control.flow.throw.scarpet
+    - match: if{{break}}
+      scope: keyword.control.conditional.if.scarpet
+    - match: break{{break}}
+      scope: keyword.control.flow.break.scarpet
+    - match: continue{{break}}
+      scope: keyword.control.flow.continue.scarpet
+
+###[ COMMENTS ]################################################################
+
+  comments:
+    - match: '//'
+      scope: punctuation.definition.comment.scarpet
+      push: line_comment
+
+  line_comment:
+    - meta_scope: comment.line.scarpet
+    - match: $
+      pop: true
+
+###[ BLOCKS ]##################################################################
+
+  block-or-expression:
+    - include: block
+    - include: else-expression
+
+  block:
+    - include: paren-block
+
+  paren-blocks:
+    - match: \(
+      scope: punctuation.section.block.begin.scarpet
+      push: paren-block-body
+    - include: stray-block
+
+  paren-block:
+    - match: \(
+      scope: punctuation.section.block.begin.scarpet
+      set: paren-block-body
+    - include: stray-paren-block
+
+  paren-block-end:
+    - match: \)
+      scope: punctuation.section.block.end.scarpet
+      pop: 1
+
+  paren-block-body:
+    - meta_scope: meta.block.scarpet
+    - include: paren-block-end
+    - include: statements
+    - include: else-expressions
+
+  stray-paren-block:
+    - match: \)
+      scope: invalid.illegal.stray.scarpet
+
+###[ GROUPS ]##################################################################
+
+  groups:
+    - match: \(
+      scope: punctuation.section.group.begin.scarpet
+      set: expression-group
+
+  group-body:
+    - meta_scope: meta.group.scarpet
+    - include: group-end
+    - include: expressions
+    - include: expression-terminator
+
+  group-end:
+    - match: \)
+      scope: punctuation.section.group.end.scarpet
+    - match: (?=->)
+      fail: variables
+
+###[ EXPRESSIONS ]#############################################################
+
+  else-expressions:
+    - match: (?=\S)
+      push: expression
+
+  else-expression:
+    - match: (?=\S)
+      set: expression
+
+  expression:
+    - include: expression-terminator
+    - include: expressions
+
+  expression-terminator:
+    - match: |-
+        (?x)(?=
+          [;)\]{}]{{break}}
+        )
+      pop: 1
+
+###[ EXPRESSION GROUPS ]#######################################################
+
+  expression-group:
+    - meta_scope: meta.group.scarpet
+    - match: \)
+      scope: punctuation.section.group.end.scarpet
+      pop: 1
+    - include: expressions
+    - include: expression-terminator
+
+###[ VARIABLES ]###############################################################
+
+  variables:
+    # Note:
+    # 1) `variable-other` must be the first branch to scope the very last
+    #    identifier before eof or end of embedded section as ordinary variable.
+    # 2) `variable-qualifier` scopes identifiers not followed by ClassCaseIds
+    #    as ordinary variables. Found no easy enough solution by only using
+    #    `variable-other` and `variable-namespace`.
+    - match: (?={{id_first_char}})
+      branch_point: variables
+      branch:
+        - variable-other
+        - function-call-identifier
+        - function-declaration-identifier
+
+  variable-other:
+    - meta_include_prototype: false
+    - match: '{{id}}'
+      scope: meta.variable.identifier.scarpet variable.other.scarpet
+      set: variable-other-end
+    - include: immediately-pop
+
+  variable-other-end:
+    - meta_content_scope: meta.variable.identifier.scarpet
+    - match: \s*(\()
+      fail: variables
+    - include: list-end
+
+  else-pop:
+    - match: (?=\S)
+      pop: 1
+
+  immediately-pop:
+    - match: ''
+      pop: 1
+
+###[ CONTAINERS ]##############################################################
+
+  list:
+    - match: \[
+      scope: punctuation.section.sequence.begin.scarpet
+      push: list-body
+
+  list-body:
+    - meta_scope: meta.sequence.list.scarpet
+    - match: \]
+      scope: punctuation.section.sequence.end.scarpet
+      set: list-end
+    - include: expressions
+    - include: expression-terminator
+
+  list-end:
+    - meta_content_scope: meta.sequence.list.scarpet
+    - match: \s*(?=:~)
+    - match: (?=\s*\S)
+      pop: 1
+
+  map:
+    - match: \{
+      scope: punctuation.section.mapping.begin.scarpet
+      push: map-body
+
+  map-body:
+    - meta_scope: meta.mapping.scarpet
+    - match: \}
+      scope: punctuation.section.mapping.end.scarpet
+      set: map-end
+    - include: punctuation-separator-comma
+    - match: (?=\S)
+      push: map-key
+
+  map-end:
+    - meta_content_scope: meta.mapping.scarpet
+    - match: \s*(?=:~)
+    - match: (?=\s*\S)
+      pop: 1
+
+  map-value:
+    - clear_scopes: 1
+    - meta_content_scope: meta.mapping.scarpet meta.mapping.value.scarpet
+    - match: (?=,)
+      pop: 1
+    - include: expressions
+    - include: expression-terminator
+
+  map-key-value-separator:
+      - match: ->
+        scope: meta.mapping.scarpet punctuation.separator.key-value.scarpet
+        set: map-value
+
+  map-key:
+    - clear_scopes: 1
+    - meta_content_scope: meta.mapping.scarpet meta.mapping.key.scarpet
+    - match: (?=->)
+      set: map-key-value-separator
+    - include: map-key-expressions
+    - include: expression-terminator
+
+  variable-item-access:
+    - meta_scope: meta.variable.item-access.scarpet
+    - match: '{{break}}'
+      pop: 1
+    - include: expressions
+    - include: expression-terminator
+
+###[ FUNCTIONS ]#######################################################
+
+  function-declaration-identifier:
+    - meta_include_prototype: false
+    - match: '{{id}}'
+      scope: entity.name.function.scarpet meta.function.identifier.scarpet
+    - match: \(
+      scope: punctuation.section.group.begin.scarpet
+      set: function-parameter-group
+
+  function-parameter-group:
+    # https://docs.oracle.com/javase/specs/jls/se13/html/jls-15.html#jls-15.27
+    - meta_scope: meta.function.parameters.scarpet meta.group.scarpet
+    - match: \)
+      scope: punctuation.section.group.end.scarpet
+      set: define-as
+    - include: punctuation-separator-comma
+    - include: parameter
+    - include: expect-expression-terminator
+
+  define-as:
+    - match: ->
+      scope:
+        keyword.declaration.function.arrow.scarpet meta.function.scarpet
+      pop: 1
+      push:
+        - function-meta
+        - block-or-expression
+    - include: else-pop
+
+  function-meta:
+    - meta_content_scope: meta.function.scarpet
+    - include: else-pop
+
+  function-call-identifier:
+    - meta_include_prototype: false
+    - match: '{{id}}'
+      scope: meta.function-call.identifier.scarpet variable.function.scarpet
+      set: function-call-arguments
+
+  function-call-arguments:
+    - meta_content_scope: meta.function-call.identifier.scarpet
+    - match: \(
+      scope: punctuation.section.group.begin.scarpet
+      set: function-call-arguments-body
+
+  function-call-arguments-body:
+    - meta_scope: meta.function-call.arguments.scarpet meta.group.scarpet
+    - include: group-body
+
+  builtin-functions:
+      - match: '{{builtin_functions}}'
+        scope: support.function.builtin.scarpet variable.function.scarpet
+
+###[ PARAMETERS ]##############################################################
+
+  parameter:
+    - meta_include_prototype: false
+    - match: '(?=\S)'
+      branch_point: parameter-maybe-variadic
+      branch:
+        - parameter-identifier
+        - parameter-variadic
+
+  parameter-variadic:
+    - match: \.\.\.
+      scope: keyword.operator.unpacking.list.scarpet keyword.operator.unpacking.mapping.scarpet
+      set: parameter-identifier
+
+  parameter-identifier:
+    - match: (?=\.\.\.)
+      fail: parameter-maybe-variadic
+    - match: '{{identifier}}'
+      scope: variable.parameter.scarpet
+      pop: 1
+
+###[ MAP-KEY EXPRESSIONS ]######################################################
+
+  map-key-expressions:
+    - include: expressions-wo-variables
+    - include: map-key-variables
+
+  map-key-variables:
+    # Note:
+    # 1) `variable-other` must be the first branch to scope the very last
+    #    identifier before eof or end of embedded section as ordinary variable.
+    # 2) `variable-qualifier` scopes identifiers not followed by ClassCaseIds
+    #    as ordinary variables. Found no easy enough solution by only using
+    #    `variable-other` and `variable-namespace`.
+    - match: (?={{id_first_char}})
+      branch_point: map-key-variables
+      branch:
+        - map-key-variable-other
+        - map-key-function-call-identifier
+
+  map-key-variable-other:
+    - meta_include_prototype: false
+    - match: '{{id}}'
+      scope: meta.variable.identifier.scarpet variable.other.scarpet
+      set: map-key-variable-other-end
+    - include: immediately-pop
+
+  map-key-variable-other-end:
+    - meta_content_scope: meta.variable.identifier.scarpet
+    - match: \s*(\()
+      fail: map-key-variables
+    - include: list-end
+
+  map-key-function-call-identifier:
+    - meta_include_prototype: false
+    - match: '{{id}}'
+      scope: meta.function-call.identifier.scarpet variable.function.scarpet
+      set: map-key-function-call-arguments
+
+  map-key-function-call-arguments:
+    - meta_content_scope: meta.function-call.identifier.scarpet
+    - match: \(
+      scope: punctuation.section.group.begin.scarpet
+      set: map-key-function-call-arguments-body
+
+  map-key-function-call-arguments-body:
+    - meta_scope: meta.function-call.arguments.scarpet meta.group.scarpet
+    - include: map-key-group-body
+
+  map-key-group-body:
+    - meta_scope: meta.group.scarpet
+    - include: map-key-group-end
+    - include: expressions
+    - include: expression-terminator
+
+  map-key-group-end:
+    - match: \)
+      scope: punctuation.section.group.end.scarpet
+    - include: immediately-pop

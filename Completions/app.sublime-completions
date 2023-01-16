@@ -1,0 +1,14 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "__config",
+            "annotation": "application",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        }
+    ]
+}

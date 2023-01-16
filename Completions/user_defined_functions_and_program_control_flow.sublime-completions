@@ -1,0 +1,86 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "call",
+            "annotation": "controlflow",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "exit",
+            "annotation": "controlflow",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "if",
+            "annotation": "controlflow",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "import",
+            "annotation": "controlflow",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "outer",
+            "annotation": "controlflow",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "return",
+            "annotation": "controlflow",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "then",
+            "annotation": "controlflow",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "throw",
+            "annotation": "controlflow",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "try",
+            "annotation": "controlflow",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        }
+    ]
+}

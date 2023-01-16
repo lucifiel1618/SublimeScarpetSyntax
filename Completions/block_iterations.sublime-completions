@@ -1,0 +1,50 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "diamond",
+            "annotation": "block iteration",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "neighbours",
+            "annotation": "block iteration",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "rect",
+            "annotation": "block iteration",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "scan",
+            "annotation": "block iteration",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        },
+        {
+            "trigger": "volume",
+            "annotation": "block iteration",
+            "kind": [
+                "function",
+                "f",
+                "Minecraft"
+            ]
+        }
+    ]
+}

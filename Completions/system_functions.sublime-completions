@@ -1,0 +1,347 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "bool",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "convert_date",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "copy",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "decode_b64",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "decode_json",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "encode_b64",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "encode_json",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "hash_code",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "length",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "lower",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "number",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "perlin",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "print",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "profile_expr",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "rand",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "replace",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "replace_first",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "simplex",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "sleep",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "str",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "synchronize",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "system_variable_get",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "system_variable_set",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "task",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "task_completed",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "task_count",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "task_dock",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "task_join",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "task_thread",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "task_value",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "time",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "title",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "type",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "undef",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "unix_time",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "upper",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "var",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "vars",
+            "annotation": "system",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        }
+    ]
+}

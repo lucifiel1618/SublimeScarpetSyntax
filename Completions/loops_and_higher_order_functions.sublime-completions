@@ -1,0 +1,104 @@
+{
+    "scope": "source.scarpet",
+    "completions": [
+        {
+            "trigger": "all",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "break",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "c_for",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "continue",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "filter",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "first",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "for",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "loop",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "map",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "reduce",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "while",
+            "annotation": "iteration",
+            "kind": [
+                "function",
+                "f",
+                "Language"
+            ]
+        }
+    ]
+}
