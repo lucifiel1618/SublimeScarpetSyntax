@@ -5,13 +5,13 @@ from pathlib import Path
 
 completion_folder = Path(__file__).parent/'Completions/'
 
-def json_dump(d, fname = None, sort_keys=False, indent=4, **kwds):
+def json_dump(d, fname=None, sort_keys=False, indent=4, **kwds):
     if fname:
         with open(fname, 'w') as fp:
             json.dump(d, fp, sort_keys=sort_keys, indent=indent, **kwds)
     return json.dumps(d, sort_keys=sort_keys, indent=indent, **kwds)
 
-@dataclasses.dataclass
+@dataclasses.dataclass(slots=True)
 class CompletionItem:
     trigger: str
     kind: str|(str, str, str)
@@ -39,7 +39,7 @@ class CompletionList:
             self._items.append(item)
 
         if fname is not None and not isinstance(fname, Path):
-            fname = Path(fname)
+            fname=Path(fname)
         self._fname:Path|None = fname
 
     def __getitem__(self, key:str) -> CompletionItem:
@@ -75,9 +75,9 @@ class CompletionList:
             cl.combine(_x)
         return cl
 
-    def to_json(self, fname = None):
+    def to_json(self, fname=None):
         if fname is None:
-            fname = self._fname
+            fname=self._fname
         d = self.to_dict()
         ret = json_dump(d, fname)
         if fname:
@@ -520,72 +520,72 @@ all_completions.append(variables_and_constants)
 
 operators = CompletionList(sorted(function_table['operators']),
     default_style={'annotation': 'operator', 'kind': ['function', 'f', 'Language']},
-    fname = completion_folder/'operators.sublime-completions')
+    fname=completion_folder/'operators.sublime-completions')
 all_completions.append(operators)
 
 mathematical_functions = CompletionList(sorted(function_table['mathematical_functions']),
     default_style={'annotation': 'mathematical', 'kind': ['function', 'f', 'Language']},
-    fname = completion_folder/'mathematical_functions.sublime-completions')
+    fname=completion_folder/'mathematical_functions.sublime-completions')
 all_completions.append(mathematical_functions)
 
 system_functions = CompletionList(sorted(function_table['system_functions']),
     default_style={'annotation': 'system', 'kind': ['function', 'f', 'Language']},
-    fname = completion_folder/'system_functions.sublime-completions')
+    fname=completion_folder/'system_functions.sublime-completions')
 all_completions.append(system_functions)
 
 loops_and_higher_order_functions = CompletionList(sorted(function_table['loops_and_higher_order_functions']),
     default_style={'annotation': 'iteration', 'kind': ['function', 'f', 'Language']},
-    fname = completion_folder/'loops_and_higher_order_functions.sublime-completions')
+    fname=completion_folder/'loops_and_higher_order_functions.sublime-completions')
 all_completions.append(loops_and_higher_order_functions)
 
 user_defined_functions_and_program_control_flow = CompletionList(sorted(function_table['user_defined_functions_and_program_control_flow']),
     default_style={'annotation': 'controlflow', 'kind': ['function', 'f', 'Language']},
-    fname = completion_folder/'user_defined_functions_and_program_control_flow.sublime-completions')
+    fname=completion_folder/'user_defined_functions_and_program_control_flow.sublime-completions')
 all_completions.append(user_defined_functions_and_program_control_flow)
 
 container_types = CompletionList(sorted(function_table['container_types']),
     default_style={'annotation': 'container', 'kind': ['function', 'f', 'Language']},
-    fname = completion_folder/'container_types.sublime-completions')
+    fname=completion_folder/'container_types.sublime-completions')
 all_completions.append(container_types)
 
 app = CompletionList(sorted(function_table['app']),
     default_style={'annotation': 'application', 'kind': ['function', 'f', 'Minecraft']},
-    fname = completion_folder/'app.sublime-completions')
+    fname=completion_folder/'app.sublime-completions')
 all_completions.append(app)
 
 blocks_and_world_access = CompletionList(sorted(function_table['blocks_and_world_access']),
     default_style={'annotation': 'blocks', 'kind': ['function', 'f', 'Minecraft']},
-    fname = completion_folder/'blocks_and_world_access.sublime-completions')
+    fname=completion_folder/'blocks_and_world_access.sublime-completions')
 all_completions.append(blocks_and_world_access)
 
 block_iterations = CompletionList(sorted(function_table['block_iterations']),
     default_style={'annotation': 'block iteration', 'kind': ['function', 'f', 'Minecraft']},
-    fname = completion_folder/'block_iterations.sublime-completions')
+    fname=completion_folder/'block_iterations.sublime-completions')
 all_completions.append(block_iterations)
 
 entities = CompletionList(sorted(function_table['entities']),
     default_style={'annotation': 'entity', 'kind': ['function', 'f', 'Minecraft']},
-    fname = completion_folder/'entities.sublime-completions')
+    fname=completion_folder/'entities.sublime-completions')
 all_completions.append(entities)
 
 inventories = CompletionList(sorted(function_table['inventories']),
     default_style={'annotation': 'inventory', 'kind': ['function', 'f', 'Minecraft']},
-    fname = completion_folder/'inventories.sublime-completions')
+    fname=completion_folder/'inventories.sublime-completions')
 all_completions.append(inventories)
 
 events = CompletionList(sorted(function_table['events']),
     default_style={'annotation': 'event', 'kind': ['function', 'f', 'Minecraft']},
-    fname = completion_folder/'events.sublime-completions')
+    fname=completion_folder/'events.sublime-completions')
 all_completions.append(events)
 
 scoreboards = CompletionList(sorted(function_table['scoreboards']),
     default_style={'annotation': 'scoreboard', 'kind': ['function', 'f', 'Minecraft']},
-    fname = completion_folder/'scoreboards.sublime-completions')
+    fname=completion_folder/'scoreboards.sublime-completions')
 all_completions.append(scoreboards)
 
 auxiliaries = CompletionList(sorted(function_table['auxiliaries']),
     default_style={'annotation': 'auxiliary', 'kind': ['function', 'f', 'Minecraft']},
-    fname = completion_folder/'auxiliaries.sublime-completions')
+    fname=completion_folder/'auxiliaries.sublime-completions')
 all_completions.append(auxiliaries)
 
 for en in all_completions:
