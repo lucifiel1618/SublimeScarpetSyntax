@@ -1,9 +1,9 @@
-# sublime-scarpet: a sublime-text package for scarpet
+# SublimeScarpetSyntax: A SublimeText Package for Scarpet
 
 ## Overview
 __[Scarpet]__, or __Script for Carpet__, is a script language used to design custom programs for __[Carpet Mod]__ in __[Minecraft]__.
 
-__sublime-scarpet__ is a __[Sublime Text]__ package that enables syntax highlighting and autocomplete features of __[Sublime Text]__ for __[Scarpet]__ code to improve your coding/debugging experience with __[Scarpet]__ in __[Sublime Text]__.
+__SublimeScarpetSyntax__ is a __[SublimeText]__ package that enables syntax highlighting and autocomplete features of __[SublimeText]__ for __[Scarpet]__ code to improve your coding/debugging experience with __[Scarpet]__ in __[SublimeText]__.
 
 ## Example
 ![preview](syntax_test_scarpet.sc.svg)
@@ -11,4 +11,4 @@ __sublime-scarpet__ is a __[Sublime Text]__ package that enables syntax highligh
 [Scarpet]: gnembon/scarpet
 [Carpet Mod]: /gnembon/fabric-carpet
 [Minecraft]: https://www.minecraft.net
-[Sublime Text]: https://www.sublimetext.com/
+[SublimeText]: https://www.sublimetext.com/
