@@ -3,15 +3,50 @@
     "completions": [
         {
             "trigger": "_",
+            "contents": "_",
             "annotation": "built-in variable",
             "kind": [
                 "variable",
                 "v",
                 "Language"
+            ],
+            "details": "Current element in the collection"
+        },
+        {
+            "trigger": "_a",
+            "contents": "_a",
+            "annotation": "built-in variable",
+            "kind": [
+                "variable",
+                "v",
+                "Language"
+            ],
+            "details": "Accumulator variable"
+        },
+        {
+            "trigger": "_i",
+            "contents": "_i",
+            "annotation": "built-in variable",
+            "kind": [
+                "variable",
+                "v",
+                "Language"
+            ],
+            "details": "Index of the current element"
+        },
+        {
+            "trigger": "_trace",
+            "contents": "_trace",
+            "annotation": "built-in variable",
+            "kind": [
+                "variable",
+                "v",
+                "Minecraft"
             ]
         },
         {
             "trigger": "_x",
+            "contents": "_x",
             "annotation": "built-in variable",
             "kind": [
                 "variable",
@@ -22,6 +57,7 @@
         },
         {
             "trigger": "_y",
+            "contents": "_y",
             "annotation": "built-in variable",
             "kind": [
                 "variable",
@@ -32,6 +68,7 @@
         },
         {
             "trigger": "_z",
+            "contents": "_z",
             "annotation": "built-in variable",
             "kind": [
                 "variable",
@@ -42,15 +79,18 @@
         },
         {
             "trigger": "euler",
+            "contents": "euler",
             "annotation": "built-in constant",
             "kind": [
                 "navigation",
                 "c",
                 "Language"
-            ]
+            ],
+            "details": "Euler's number e"
         },
         {
             "trigger": "false",
+            "contents": "false",
             "annotation": "built-in constant",
             "kind": [
                 "navigation",
@@ -60,6 +100,7 @@
         },
         {
             "trigger": "null",
+            "contents": "null",
             "annotation": "built-in constant",
             "kind": [
                 "navigation",
@@ -69,15 +110,18 @@
         },
         {
             "trigger": "pi",
+            "contents": "pi",
             "annotation": "built-in constant",
             "kind": [
                 "navigation",
                 "c",
                 "Language"
-            ]
+            ],
+            "details": "Archimedes' constant \u03c0"
         },
         {
             "trigger": "true",
+            "contents": "true",
             "annotation": "built-in constant",
             "kind": [
                 "navigation",

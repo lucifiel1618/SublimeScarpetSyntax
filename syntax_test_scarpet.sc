@@ -1,8 +1,8 @@
 // SYNTAX TEST "Packages/Scarpet/scarpet.sublime-syntax"
 
-_; _x; _y; _z;
+_; _a; _i; _x; _y; _z; _trace;
 // ^^ variable.language.anonymous
-pi; euler;
+pi; euler; true; false; null;
 //  ^^^^^ constant.language.anonymous
 
 function_call(x, y, ...z);
@@ -91,3 +91,20 @@ map_identifier
 //   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mode.basic.regexp
 //                                                         ^^^^^^^^^^^ meta.set.regexp
 "double-quoted-strings are illegal"
+//<- invalid.illegal.not-a-str.scarpet
+illegal,use , of ,comma,
+//     ^ invalid.illegal.stray.scarpet
+//          ^ invalid.illegal.stray.scarpet
+//               ^ invalid.illegal.stray.scarpet
+//                     ^ invalid.illegal.stray.scarpet
+do_for_loop() -> (
+    sum = 0;
+    for(range(10),
+        sum += _^2;
+        if(sum >= 20,
+            break();
+            )
+        )
+    print(sum);
+
+);

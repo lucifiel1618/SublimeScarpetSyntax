@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "delete",
+            "trigger": "delete()",
+            "contents": "delete($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "get",
+            "trigger": "get()",
+            "contents": "get($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "has",
+            "trigger": "has()",
+            "contents": "has($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "join",
+            "trigger": "join()",
+            "contents": "join($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "keys",
+            "trigger": "keys()",
+            "contents": "keys($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "l",
+            "trigger": "l()",
+            "contents": "l($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "m",
+            "trigger": "m()",
+            "contents": "m($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "pairs",
+            "trigger": "pairs()",
+            "contents": "pairs($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "put",
+            "trigger": "put()",
+            "contents": "put($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -83,7 +92,8 @@
             ]
         },
         {
-            "trigger": "range",
+            "trigger": "range()",
+            "contents": "range($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -92,7 +102,8 @@
             ]
         },
         {
-            "trigger": "slice",
+            "trigger": "slice()",
+            "contents": "slice($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -101,7 +112,8 @@
             ]
         },
         {
-            "trigger": "sort",
+            "trigger": "sort()",
+            "contents": "sort($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -110,7 +122,8 @@
             ]
         },
         {
-            "trigger": "sort_key",
+            "trigger": "sort_key()",
+            "contents": "sort_key($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -119,7 +132,8 @@
             ]
         },
         {
-            "trigger": "split",
+            "trigger": "split()",
+            "contents": "split($1)",
             "annotation": "container",
             "kind": [
                 "function",
@@ -128,7 +142,8 @@
             ]
         },
         {
-            "trigger": "values",
+            "trigger": "values()",
+            "contents": "values($1)",
             "annotation": "container",
             "kind": [
                 "function",

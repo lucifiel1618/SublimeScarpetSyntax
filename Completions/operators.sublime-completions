@@ -2,7 +2,28 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "and",
+            "trigger": "->",
+            "contents": "->",
+            "annotation": "operator",
+            "kind": [
+                "keyword",
+                "k",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "...",
+            "contents": "...",
+            "annotation": "operator",
+            "kind": [
+                "keyword",
+                "k",
+                "Language"
+            ]
+        },
+        {
+            "trigger": "and()",
+            "contents": "and($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -11,7 +32,8 @@
             ]
         },
         {
-            "trigger": "bitwise_and",
+            "trigger": "bitwise_and()",
+            "contents": "bitwise_and($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -20,7 +42,8 @@
             ]
         },
         {
-            "trigger": "bitwise_not",
+            "trigger": "bitwise_not()",
+            "contents": "bitwise_not($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -29,7 +52,8 @@
             ]
         },
         {
-            "trigger": "bitwise_or",
+            "trigger": "bitwise_or()",
+            "contents": "bitwise_or($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -38,7 +62,8 @@
             ]
         },
         {
-            "trigger": "bitwise_popcount",
+            "trigger": "bitwise_popcount()",
+            "contents": "bitwise_popcount($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -47,7 +72,8 @@
             ]
         },
         {
-            "trigger": "bitwise_roll_left",
+            "trigger": "bitwise_roll_left()",
+            "contents": "bitwise_roll_left($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -56,7 +82,8 @@
             ]
         },
         {
-            "trigger": "bitwise_roll_right",
+            "trigger": "bitwise_roll_right()",
+            "contents": "bitwise_roll_right($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -65,7 +92,8 @@
             ]
         },
         {
-            "trigger": "bitwise_shift_left",
+            "trigger": "bitwise_shift_left()",
+            "contents": "bitwise_shift_left($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -74,7 +102,8 @@
             ]
         },
         {
-            "trigger": "bitwise_shift_right",
+            "trigger": "bitwise_shift_right()",
+            "contents": "bitwise_shift_right($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -83,7 +112,8 @@
             ]
         },
         {
-            "trigger": "bitwise_xor",
+            "trigger": "bitwise_xor()",
+            "contents": "bitwise_xor($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -92,7 +122,8 @@
             ]
         },
         {
-            "trigger": "decreasing",
+            "trigger": "decreasing()",
+            "contents": "decreasing($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -101,7 +132,8 @@
             ]
         },
         {
-            "trigger": "delete",
+            "trigger": "delete()",
+            "contents": "delete($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -110,7 +142,8 @@
             ]
         },
         {
-            "trigger": "difference",
+            "trigger": "difference()",
+            "contents": "difference($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -119,7 +152,8 @@
             ]
         },
         {
-            "trigger": "double_to_long_bits",
+            "trigger": "double_to_long_bits()",
+            "contents": "double_to_long_bits($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -128,7 +162,8 @@
             ]
         },
         {
-            "trigger": "equal",
+            "trigger": "equal()",
+            "contents": "equal($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -137,7 +172,8 @@
             ]
         },
         {
-            "trigger": "get",
+            "trigger": "get()",
+            "contents": "get($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -146,7 +182,8 @@
             ]
         },
         {
-            "trigger": "has",
+            "trigger": "has()",
+            "contents": "has($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -155,7 +192,8 @@
             ]
         },
         {
-            "trigger": "increasing",
+            "trigger": "increasing()",
+            "contents": "increasing($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -164,7 +202,8 @@
             ]
         },
         {
-            "trigger": "long_bits_to_double",
+            "trigger": "long_bits_to_double()",
+            "contents": "long_bits_to_double($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -173,7 +212,8 @@
             ]
         },
         {
-            "trigger": "long_to_double_bits",
+            "trigger": "long_to_double_bits()",
+            "contents": "long_to_double_bits($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -182,7 +222,8 @@
             ]
         },
         {
-            "trigger": "nondecreasing",
+            "trigger": "nondecreasing()",
+            "contents": "nondecreasing($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -191,7 +232,8 @@
             ]
         },
         {
-            "trigger": "nonincreasing",
+            "trigger": "nonincreasing()",
+            "contents": "nonincreasing($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -200,7 +242,8 @@
             ]
         },
         {
-            "trigger": "not",
+            "trigger": "not()",
+            "contents": "not($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -209,7 +252,8 @@
             ]
         },
         {
-            "trigger": "or",
+            "trigger": "or()",
+            "contents": "or($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -218,7 +262,8 @@
             ]
         },
         {
-            "trigger": "product",
+            "trigger": "product()",
+            "contents": "product($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -227,7 +272,8 @@
             ]
         },
         {
-            "trigger": "put",
+            "trigger": "put()",
+            "contents": "put($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -236,7 +282,8 @@
             ]
         },
         {
-            "trigger": "quotient",
+            "trigger": "quotient()",
+            "contents": "quotient($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -245,7 +292,8 @@
             ]
         },
         {
-            "trigger": "sum",
+            "trigger": "sum()",
+            "contents": "sum($1)",
             "annotation": "operator",
             "kind": [
                 "function",
@@ -254,7 +302,8 @@
             ]
         },
         {
-            "trigger": "unique",
+            "trigger": "unique()",
+            "contents": "unique($1)",
             "annotation": "operator",
             "kind": [
                 "function",

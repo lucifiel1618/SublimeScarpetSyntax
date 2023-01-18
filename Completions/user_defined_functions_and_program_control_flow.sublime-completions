@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "call",
+            "trigger": "call()",
+            "contents": "call($1)",
             "annotation": "controlflow",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "exit",
+            "trigger": "exit()",
+            "contents": "exit($1)",
             "annotation": "controlflow",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "if",
+            "trigger": "if()",
+            "contents": "if($1)",
             "annotation": "controlflow",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "import",
+            "trigger": "import()",
+            "contents": "import($1)",
             "annotation": "controlflow",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "outer",
+            "trigger": "outer()",
+            "contents": "outer($1)",
             "annotation": "controlflow",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "return",
+            "trigger": "return()",
+            "contents": "return($1)",
             "annotation": "controlflow",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "then",
+            "trigger": "then()",
+            "contents": "then($1)",
             "annotation": "controlflow",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "throw",
+            "trigger": "throw()",
+            "contents": "throw($1)",
             "annotation": "controlflow",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "try",
+            "trigger": "try()",
+            "contents": "try($1)",
             "annotation": "controlflow",
             "kind": [
                 "function",

@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "entity_area",
+            "trigger": "entity_area()",
+            "contents": "entity_area($1)",
             "annotation": "entity",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "entity_event",
+            "trigger": "entity_event()",
+            "contents": "entity_event($1)",
             "annotation": "entity",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "entity_id",
+            "trigger": "entity_id()",
+            "contents": "entity_id($1)",
             "annotation": "entity",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "entity_list",
+            "trigger": "entity_list()",
+            "contents": "entity_list($1)",
             "annotation": "entity",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "entity_load_handler",
+            "trigger": "entity_load_handler()",
+            "contents": "entity_load_handler($1)",
             "annotation": "entity",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "entity_selector",
+            "trigger": "entity_selector()",
+            "contents": "entity_selector($1)",
             "annotation": "entity",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "entity_types",
+            "trigger": "entity_types()",
+            "contents": "entity_types($1)",
             "annotation": "entity",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "modify",
+            "trigger": "modify()",
+            "contents": "modify($1)",
             "annotation": "entity",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "player",
+            "trigger": "player()",
+            "contents": "player($1)",
             "annotation": "entity",
             "kind": [
                 "function",
@@ -83,7 +92,8 @@
             ]
         },
         {
-            "trigger": "query",
+            "trigger": "query()",
+            "contents": "query($1)",
             "annotation": "entity",
             "kind": [
                 "function",
@@ -92,7 +102,8 @@
             ]
         },
         {
-            "trigger": "spawn",
+            "trigger": "spawn()",
+            "contents": "spawn($1)",
             "annotation": "entity",
             "kind": [
                 "function",

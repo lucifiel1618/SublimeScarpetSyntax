@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "__on_carpet_rule_changes",
+            "trigger": "__on_carpet_rule_changes()",
+            "contents": "__on_carpet_rule_changes($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "__on_chunk_generated",
+            "trigger": "__on_chunk_generated()",
+            "contents": "__on_chunk_generated($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "__on_chunk_loaded",
+            "trigger": "__on_chunk_loaded()",
+            "contents": "__on_chunk_loaded($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "__on_chunk_unloaded",
+            "trigger": "__on_chunk_unloaded()",
+            "contents": "__on_chunk_unloaded($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "__on_close",
+            "trigger": "__on_close()",
+            "contents": "__on_close($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "__on_explosion",
+            "trigger": "__on_explosion()",
+            "contents": "__on_explosion($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "__on_explosion_outcome",
+            "trigger": "__on_explosion_outcome()",
+            "contents": "__on_explosion_outcome($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "__on_lightning",
+            "trigger": "__on_lightning()",
+            "contents": "__on_lightning($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "__on_player_attacks_entity",
+            "trigger": "__on_player_attacks_entity()",
+            "contents": "__on_player_attacks_entity($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -83,7 +92,8 @@
             ]
         },
         {
-            "trigger": "__on_player_breaks_block",
+            "trigger": "__on_player_breaks_block()",
+            "contents": "__on_player_breaks_block($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -92,7 +102,8 @@
             ]
         },
         {
-            "trigger": "__on_player_changes_dimension",
+            "trigger": "__on_player_changes_dimension()",
+            "contents": "__on_player_changes_dimension($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -101,7 +112,8 @@
             ]
         },
         {
-            "trigger": "__on_player_chooses_recipe",
+            "trigger": "__on_player_chooses_recipe()",
+            "contents": "__on_player_chooses_recipe($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -110,7 +122,8 @@
             ]
         },
         {
-            "trigger": "__on_player_clicks_block",
+            "trigger": "__on_player_clicks_block()",
+            "contents": "__on_player_clicks_block($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -119,7 +132,8 @@
             ]
         },
         {
-            "trigger": "__on_player_collides_with_entity",
+            "trigger": "__on_player_collides_with_entity()",
+            "contents": "__on_player_collides_with_entity($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -128,7 +142,8 @@
             ]
         },
         {
-            "trigger": "__on_player_command",
+            "trigger": "__on_player_command()",
+            "contents": "__on_player_command($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -137,7 +152,8 @@
             ]
         },
         {
-            "trigger": "__on_player_connects",
+            "trigger": "__on_player_connects()",
+            "contents": "__on_player_connects($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -146,7 +162,8 @@
             ]
         },
         {
-            "trigger": "__on_player_deals_damage",
+            "trigger": "__on_player_deals_damage()",
+            "contents": "__on_player_deals_damage($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -155,7 +172,8 @@
             ]
         },
         {
-            "trigger": "__on_player_deploys_elytra",
+            "trigger": "__on_player_deploys_elytra()",
+            "contents": "__on_player_deploys_elytra($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -164,7 +182,8 @@
             ]
         },
         {
-            "trigger": "__on_player_dies",
+            "trigger": "__on_player_dies()",
+            "contents": "__on_player_dies($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -173,7 +192,8 @@
             ]
         },
         {
-            "trigger": "__on_player_disconnects",
+            "trigger": "__on_player_disconnects()",
+            "contents": "__on_player_disconnects($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -182,7 +202,8 @@
             ]
         },
         {
-            "trigger": "__on_player_drops_item",
+            "trigger": "__on_player_drops_item()",
+            "contents": "__on_player_drops_item($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -191,7 +212,8 @@
             ]
         },
         {
-            "trigger": "__on_player_drops_stack",
+            "trigger": "__on_player_drops_stack()",
+            "contents": "__on_player_drops_stack($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -200,7 +222,8 @@
             ]
         },
         {
-            "trigger": "__on_player_escapes_sleep",
+            "trigger": "__on_player_escapes_sleep()",
+            "contents": "__on_player_escapes_sleep($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -209,7 +232,8 @@
             ]
         },
         {
-            "trigger": "__on_player_finishes_using_item",
+            "trigger": "__on_player_finishes_using_item()",
+            "contents": "__on_player_finishes_using_item($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -218,7 +242,8 @@
             ]
         },
         {
-            "trigger": "__on_player_interacts_with_block",
+            "trigger": "__on_player_interacts_with_block()",
+            "contents": "__on_player_interacts_with_block($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -227,7 +252,8 @@
             ]
         },
         {
-            "trigger": "__on_player_interacts_with_entity",
+            "trigger": "__on_player_interacts_with_entity()",
+            "contents": "__on_player_interacts_with_entity($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -236,7 +262,8 @@
             ]
         },
         {
-            "trigger": "__on_player_jumps",
+            "trigger": "__on_player_jumps()",
+            "contents": "__on_player_jumps($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -245,7 +272,8 @@
             ]
         },
         {
-            "trigger": "__on_player_message",
+            "trigger": "__on_player_message()",
+            "contents": "__on_player_message($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -254,7 +282,8 @@
             ]
         },
         {
-            "trigger": "__on_player_picks_up_item",
+            "trigger": "__on_player_picks_up_item()",
+            "contents": "__on_player_picks_up_item($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -263,7 +292,8 @@
             ]
         },
         {
-            "trigger": "__on_player_places_block",
+            "trigger": "__on_player_places_block()",
+            "contents": "__on_player_places_block($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -272,7 +302,8 @@
             ]
         },
         {
-            "trigger": "__on_player_placing_block",
+            "trigger": "__on_player_placing_block()",
+            "contents": "__on_player_placing_block($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -281,7 +312,8 @@
             ]
         },
         {
-            "trigger": "__on_player_releases_item",
+            "trigger": "__on_player_releases_item()",
+            "contents": "__on_player_releases_item($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -290,7 +322,8 @@
             ]
         },
         {
-            "trigger": "__on_player_respawns",
+            "trigger": "__on_player_respawns()",
+            "contents": "__on_player_respawns($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -299,7 +332,8 @@
             ]
         },
         {
-            "trigger": "__on_player_rides",
+            "trigger": "__on_player_rides()",
+            "contents": "__on_player_rides($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -308,7 +342,8 @@
             ]
         },
         {
-            "trigger": "__on_player_right_clicks_block",
+            "trigger": "__on_player_right_clicks_block()",
+            "contents": "__on_player_right_clicks_block($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -317,7 +352,8 @@
             ]
         },
         {
-            "trigger": "__on_player_starts_sneaking",
+            "trigger": "__on_player_starts_sneaking()",
+            "contents": "__on_player_starts_sneaking($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -326,7 +362,8 @@
             ]
         },
         {
-            "trigger": "__on_player_starts_sprinting",
+            "trigger": "__on_player_starts_sprinting()",
+            "contents": "__on_player_starts_sprinting($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -335,7 +372,8 @@
             ]
         },
         {
-            "trigger": "__on_player_stops_sneaking",
+            "trigger": "__on_player_stops_sneaking()",
+            "contents": "__on_player_stops_sneaking($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -344,7 +382,8 @@
             ]
         },
         {
-            "trigger": "__on_player_stops_sprinting",
+            "trigger": "__on_player_stops_sprinting()",
+            "contents": "__on_player_stops_sprinting($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -353,7 +392,8 @@
             ]
         },
         {
-            "trigger": "__on_player_swaps_hands",
+            "trigger": "__on_player_swaps_hands()",
+            "contents": "__on_player_swaps_hands($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -362,7 +402,8 @@
             ]
         },
         {
-            "trigger": "__on_player_swings_hand",
+            "trigger": "__on_player_swings_hand()",
+            "contents": "__on_player_swings_hand($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -371,7 +412,8 @@
             ]
         },
         {
-            "trigger": "__on_player_switches_slot",
+            "trigger": "__on_player_switches_slot()",
+            "contents": "__on_player_switches_slot($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -380,7 +422,8 @@
             ]
         },
         {
-            "trigger": "__on_player_takes_damage",
+            "trigger": "__on_player_takes_damage()",
+            "contents": "__on_player_takes_damage($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -389,7 +432,8 @@
             ]
         },
         {
-            "trigger": "__on_player_trades",
+            "trigger": "__on_player_trades()",
+            "contents": "__on_player_trades($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -398,7 +442,8 @@
             ]
         },
         {
-            "trigger": "__on_player_uses_item",
+            "trigger": "__on_player_uses_item()",
+            "contents": "__on_player_uses_item($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -407,7 +452,8 @@
             ]
         },
         {
-            "trigger": "__on_player_wakes_up",
+            "trigger": "__on_player_wakes_up()",
+            "contents": "__on_player_wakes_up($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -416,7 +462,8 @@
             ]
         },
         {
-            "trigger": "__on_server_shuts_down",
+            "trigger": "__on_server_shuts_down()",
+            "contents": "__on_server_shuts_down($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -425,7 +472,8 @@
             ]
         },
         {
-            "trigger": "__on_server_starts",
+            "trigger": "__on_server_starts()",
+            "contents": "__on_server_starts($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -434,7 +482,8 @@
             ]
         },
         {
-            "trigger": "__on_start",
+            "trigger": "__on_start()",
+            "contents": "__on_start($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -443,7 +492,8 @@
             ]
         },
         {
-            "trigger": "__on_statistic",
+            "trigger": "__on_statistic()",
+            "contents": "__on_statistic($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -452,7 +502,8 @@
             ]
         },
         {
-            "trigger": "__on_tick",
+            "trigger": "__on_tick()",
+            "contents": "__on_tick($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -461,7 +512,8 @@
             ]
         },
         {
-            "trigger": "__on_tick_ender",
+            "trigger": "__on_tick_ender()",
+            "contents": "__on_tick_ender($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -470,7 +522,8 @@
             ]
         },
         {
-            "trigger": "__on_tick_nether",
+            "trigger": "__on_tick_nether()",
+            "contents": "__on_tick_nether($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -479,7 +532,8 @@
             ]
         },
         {
-            "trigger": "entity_load_handler",
+            "trigger": "entity_load_handler()",
+            "contents": "entity_load_handler($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -488,7 +542,8 @@
             ]
         },
         {
-            "trigger": "handle_event",
+            "trigger": "handle_event()",
+            "contents": "handle_event($1)",
             "annotation": "event",
             "kind": [
                 "function",
@@ -497,7 +552,8 @@
             ]
         },
         {
-            "trigger": "signal_event",
+            "trigger": "signal_event()",
+            "contents": "signal_event($1)",
             "annotation": "event",
             "kind": [
                 "function",

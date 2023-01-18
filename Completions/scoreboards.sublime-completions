@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "bossbar",
+            "trigger": "bossbar()",
+            "contents": "bossbar($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "scoreboard",
+            "trigger": "scoreboard()",
+            "contents": "scoreboard($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "scoreboard_add",
+            "trigger": "scoreboard_add()",
+            "contents": "scoreboard_add($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "scoreboard_display",
+            "trigger": "scoreboard_display()",
+            "contents": "scoreboard_display($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "scoreboard_property",
+            "trigger": "scoreboard_property()",
+            "contents": "scoreboard_property($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "scoreboard_remove",
+            "trigger": "scoreboard_remove()",
+            "contents": "scoreboard_remove($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "team_add",
+            "trigger": "team_add()",
+            "contents": "team_add($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "team_leave",
+            "trigger": "team_leave()",
+            "contents": "team_leave($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "team_list",
+            "trigger": "team_list()",
+            "contents": "team_list($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",
@@ -83,7 +92,8 @@
             ]
         },
         {
-            "trigger": "team_property",
+            "trigger": "team_property()",
+            "contents": "team_property($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",
@@ -92,7 +102,8 @@
             ]
         },
         {
-            "trigger": "team_remove",
+            "trigger": "team_remove()",
+            "contents": "team_remove($1)",
             "annotation": "scoreboard",
             "kind": [
                 "function",

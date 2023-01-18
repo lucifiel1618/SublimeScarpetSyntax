@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "diamond",
+            "trigger": "diamond()",
+            "contents": "diamond($1)",
             "annotation": "block iteration",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "neighbours",
+            "trigger": "neighbours()",
+            "contents": "neighbours($1)",
             "annotation": "block iteration",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "rect",
+            "trigger": "rect()",
+            "contents": "rect($1)",
             "annotation": "block iteration",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "scan",
+            "trigger": "scan()",
+            "contents": "scan($1)",
             "annotation": "block iteration",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "volume",
+            "trigger": "volume()",
+            "contents": "volume($1)",
             "annotation": "block iteration",
             "kind": [
                 "function",

@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "close_screen",
+            "trigger": "close_screen()",
+            "contents": "close_screen($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "crafting_remaining_item",
+            "trigger": "crafting_remaining_item()",
+            "contents": "crafting_remaining_item($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "create_screen",
+            "trigger": "create_screen()",
+            "contents": "create_screen($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "drop_item",
+            "trigger": "drop_item()",
+            "contents": "drop_item($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "inventory_find",
+            "trigger": "inventory_find()",
+            "contents": "inventory_find($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "inventory_get",
+            "trigger": "inventory_get()",
+            "contents": "inventory_get($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "inventory_has_items",
+            "trigger": "inventory_has_items()",
+            "contents": "inventory_has_items($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "inventory_remove",
+            "trigger": "inventory_remove()",
+            "contents": "inventory_remove($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "inventory_set",
+            "trigger": "inventory_set()",
+            "contents": "inventory_set($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -83,7 +92,8 @@
             ]
         },
         {
-            "trigger": "inventory_size",
+            "trigger": "inventory_size()",
+            "contents": "inventory_size($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -92,7 +102,8 @@
             ]
         },
         {
-            "trigger": "item_category",
+            "trigger": "item_category()",
+            "contents": "item_category($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -101,7 +112,8 @@
             ]
         },
         {
-            "trigger": "item_list",
+            "trigger": "item_list()",
+            "contents": "item_list($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -110,7 +122,8 @@
             ]
         },
         {
-            "trigger": "item_tags",
+            "trigger": "item_tags()",
+            "contents": "item_tags($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -119,7 +132,8 @@
             ]
         },
         {
-            "trigger": "recipe_data",
+            "trigger": "recipe_data()",
+            "contents": "recipe_data($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -128,7 +142,8 @@
             ]
         },
         {
-            "trigger": "screen_property",
+            "trigger": "screen_property()",
+            "contents": "screen_property($1)",
             "annotation": "inventory",
             "kind": [
                 "function",
@@ -137,7 +152,8 @@
             ]
         },
         {
-            "trigger": "stack_limit",
+            "trigger": "stack_limit()",
+            "contents": "stack_limit($1)",
             "annotation": "inventory",
             "kind": [
                 "function",

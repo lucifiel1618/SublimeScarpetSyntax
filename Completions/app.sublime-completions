@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "__config",
+            "trigger": "__config()",
+            "contents": "__config($1)",
             "annotation": "application",
             "kind": [
                 "function",

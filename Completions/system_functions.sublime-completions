@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "bool",
+            "trigger": "bool()",
+            "contents": "bool($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "convert_date",
+            "trigger": "convert_date()",
+            "contents": "convert_date($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "copy",
+            "trigger": "copy()",
+            "contents": "copy($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "decode_b64",
+            "trigger": "decode_b64()",
+            "contents": "decode_b64($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "decode_json",
+            "trigger": "decode_json()",
+            "contents": "decode_json($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "encode_b64",
+            "trigger": "encode_b64()",
+            "contents": "encode_b64($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "encode_json",
+            "trigger": "encode_json()",
+            "contents": "encode_json($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "hash_code",
+            "trigger": "hash_code()",
+            "contents": "hash_code($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "length",
+            "trigger": "length()",
+            "contents": "length($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -83,7 +92,8 @@
             ]
         },
         {
-            "trigger": "lower",
+            "trigger": "lower()",
+            "contents": "lower($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -92,7 +102,8 @@
             ]
         },
         {
-            "trigger": "number",
+            "trigger": "number()",
+            "contents": "number($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -101,7 +112,8 @@
             ]
         },
         {
-            "trigger": "perlin",
+            "trigger": "perlin()",
+            "contents": "perlin($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -110,7 +122,8 @@
             ]
         },
         {
-            "trigger": "print",
+            "trigger": "print()",
+            "contents": "print($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -119,7 +132,8 @@
             ]
         },
         {
-            "trigger": "profile_expr",
+            "trigger": "profile_expr()",
+            "contents": "profile_expr($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -128,7 +142,8 @@
             ]
         },
         {
-            "trigger": "rand",
+            "trigger": "rand()",
+            "contents": "rand($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -137,7 +152,8 @@
             ]
         },
         {
-            "trigger": "replace",
+            "trigger": "replace()",
+            "contents": "replace($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -146,7 +162,8 @@
             ]
         },
         {
-            "trigger": "replace_first",
+            "trigger": "replace_first()",
+            "contents": "replace_first($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -155,7 +172,8 @@
             ]
         },
         {
-            "trigger": "simplex",
+            "trigger": "simplex()",
+            "contents": "simplex($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -164,7 +182,8 @@
             ]
         },
         {
-            "trigger": "sleep",
+            "trigger": "sleep()",
+            "contents": "sleep($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -173,7 +192,8 @@
             ]
         },
         {
-            "trigger": "str",
+            "trigger": "str()",
+            "contents": "str($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -182,7 +202,8 @@
             ]
         },
         {
-            "trigger": "synchronize",
+            "trigger": "synchronize()",
+            "contents": "synchronize($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -191,7 +212,8 @@
             ]
         },
         {
-            "trigger": "system_variable_get",
+            "trigger": "system_variable_get()",
+            "contents": "system_variable_get($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -200,7 +222,8 @@
             ]
         },
         {
-            "trigger": "system_variable_set",
+            "trigger": "system_variable_set()",
+            "contents": "system_variable_set($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -209,7 +232,8 @@
             ]
         },
         {
-            "trigger": "task",
+            "trigger": "task()",
+            "contents": "task($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -218,7 +242,8 @@
             ]
         },
         {
-            "trigger": "task_completed",
+            "trigger": "task_completed()",
+            "contents": "task_completed($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -227,7 +252,8 @@
             ]
         },
         {
-            "trigger": "task_count",
+            "trigger": "task_count()",
+            "contents": "task_count($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -236,7 +262,8 @@
             ]
         },
         {
-            "trigger": "task_dock",
+            "trigger": "task_dock()",
+            "contents": "task_dock($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -245,7 +272,8 @@
             ]
         },
         {
-            "trigger": "task_join",
+            "trigger": "task_join()",
+            "contents": "task_join($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -254,7 +282,8 @@
             ]
         },
         {
-            "trigger": "task_thread",
+            "trigger": "task_thread()",
+            "contents": "task_thread($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -263,7 +292,8 @@
             ]
         },
         {
-            "trigger": "task_value",
+            "trigger": "task_value()",
+            "contents": "task_value($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -272,7 +302,8 @@
             ]
         },
         {
-            "trigger": "time",
+            "trigger": "time()",
+            "contents": "time($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -281,7 +312,8 @@
             ]
         },
         {
-            "trigger": "title",
+            "trigger": "title()",
+            "contents": "title($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -290,7 +322,8 @@
             ]
         },
         {
-            "trigger": "type",
+            "trigger": "type()",
+            "contents": "type($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -299,7 +332,8 @@
             ]
         },
         {
-            "trigger": "undef",
+            "trigger": "undef()",
+            "contents": "undef($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -308,7 +342,8 @@
             ]
         },
         {
-            "trigger": "unix_time",
+            "trigger": "unix_time()",
+            "contents": "unix_time($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -317,7 +352,8 @@
             ]
         },
         {
-            "trigger": "upper",
+            "trigger": "upper()",
+            "contents": "upper($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -326,7 +362,8 @@
             ]
         },
         {
-            "trigger": "var",
+            "trigger": "var()",
+            "contents": "var($1)",
             "annotation": "system",
             "kind": [
                 "function",
@@ -335,7 +372,8 @@
             ]
         },
         {
-            "trigger": "vars",
+            "trigger": "vars()",
+            "contents": "vars($1)",
             "annotation": "system",
             "kind": [
                 "function",

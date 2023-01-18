@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "all",
+            "trigger": "all()",
+            "contents": "all($1)",
             "annotation": "iteration",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "break",
+            "trigger": "break()",
+            "contents": "break($1)",
             "annotation": "iteration",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "c_for",
+            "trigger": "c_for()",
+            "contents": "c_for($1)",
             "annotation": "iteration",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "continue",
+            "trigger": "continue()",
+            "contents": "continue($1)",
             "annotation": "iteration",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "filter",
+            "trigger": "filter()",
+            "contents": "filter($1)",
             "annotation": "iteration",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "first",
+            "trigger": "first()",
+            "contents": "first($1)",
             "annotation": "iteration",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "for",
+            "trigger": "for()",
+            "contents": "for($1)",
             "annotation": "iteration",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "loop",
+            "trigger": "loop()",
+            "contents": "loop($1)",
             "annotation": "iteration",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "map",
+            "trigger": "map()",
+            "contents": "map($1)",
             "annotation": "iteration",
             "kind": [
                 "function",
@@ -83,7 +92,8 @@
             ]
         },
         {
-            "trigger": "reduce",
+            "trigger": "reduce()",
+            "contents": "reduce($1)",
             "annotation": "iteration",
             "kind": [
                 "function",
@@ -92,7 +102,8 @@
             ]
         },
         {
-            "trigger": "while",
+            "trigger": "while()",
+            "contents": "while($1)",
             "annotation": "iteration",
             "kind": [
                 "function",

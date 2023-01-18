@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "brightness",
+            "trigger": "brightness()",
+            "contents": "brightness($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "chunk_tickets",
+            "trigger": "chunk_tickets()",
+            "contents": "chunk_tickets($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "create_datapack",
+            "trigger": "create_datapack()",
+            "contents": "create_datapack($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "create_marker",
+            "trigger": "create_marker()",
+            "contents": "create_marker($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "current_dimension",
+            "trigger": "current_dimension()",
+            "contents": "current_dimension($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "day_time",
+            "trigger": "day_time()",
+            "contents": "day_time($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "delete_file",
+            "trigger": "delete_file()",
+            "contents": "delete_file($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "display_title",
+            "trigger": "display_title()",
+            "contents": "display_title($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "draw_shape",
+            "trigger": "draw_shape()",
+            "contents": "draw_shape($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -83,7 +92,8 @@
             ]
         },
         {
-            "trigger": "enable_hidden_dimensions",
+            "trigger": "enable_hidden_dimensions()",
+            "contents": "enable_hidden_dimensions($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -92,7 +102,8 @@
             ]
         },
         {
-            "trigger": "encode_nbt",
+            "trigger": "encode_nbt()",
+            "contents": "encode_nbt($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -101,7 +112,8 @@
             ]
         },
         {
-            "trigger": "escape_nbt",
+            "trigger": "escape_nbt()",
+            "contents": "escape_nbt($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -110,7 +122,8 @@
             ]
         },
         {
-            "trigger": "format",
+            "trigger": "format()",
+            "contents": "format($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -119,7 +132,8 @@
             ]
         },
         {
-            "trigger": "game_tick",
+            "trigger": "game_tick()",
+            "contents": "game_tick($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -128,7 +142,8 @@
             ]
         },
         {
-            "trigger": "get_mob_counts",
+            "trigger": "get_mob_counts()",
+            "contents": "get_mob_counts($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -137,7 +152,8 @@
             ]
         },
         {
-            "trigger": "in_dimension",
+            "trigger": "in_dimension()",
+            "contents": "in_dimension($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -146,7 +162,8 @@
             ]
         },
         {
-            "trigger": "item_display_name",
+            "trigger": "item_display_name()",
+            "contents": "item_display_name($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -155,7 +172,8 @@
             ]
         },
         {
-            "trigger": "last_tick_times",
+            "trigger": "last_tick_times()",
+            "contents": "last_tick_times($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -164,7 +182,8 @@
             ]
         },
         {
-            "trigger": "list_files",
+            "trigger": "list_files()",
+            "contents": "list_files($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -173,7 +192,8 @@
             ]
         },
         {
-            "trigger": "load_app_data",
+            "trigger": "load_app_data()",
+            "contents": "load_app_data($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -182,7 +202,8 @@
             ]
         },
         {
-            "trigger": "logger",
+            "trigger": "logger()",
+            "contents": "logger($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -191,7 +212,8 @@
             ]
         },
         {
-            "trigger": "nbt",
+            "trigger": "nbt()",
+            "contents": "nbt($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -200,7 +222,8 @@
             ]
         },
         {
-            "trigger": "nbt_storage",
+            "trigger": "nbt_storage()",
+            "contents": "nbt_storage($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -209,7 +232,8 @@
             ]
         },
         {
-            "trigger": "parse_nbt",
+            "trigger": "parse_nbt()",
+            "contents": "parse_nbt($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -218,7 +242,8 @@
             ]
         },
         {
-            "trigger": "particle",
+            "trigger": "particle()",
+            "contents": "particle($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -227,7 +252,8 @@
             ]
         },
         {
-            "trigger": "particle_box",
+            "trigger": "particle_box()",
+            "contents": "particle_box($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -236,7 +262,8 @@
             ]
         },
         {
-            "trigger": "particle_line",
+            "trigger": "particle_line()",
+            "contents": "particle_line($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -245,7 +272,8 @@
             ]
         },
         {
-            "trigger": "print",
+            "trigger": "print()",
+            "contents": "print($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -254,7 +282,8 @@
             ]
         },
         {
-            "trigger": "read_file",
+            "trigger": "read_file()",
+            "contents": "read_file($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -263,7 +292,8 @@
             ]
         },
         {
-            "trigger": "remove_all_markers",
+            "trigger": "remove_all_markers()",
+            "contents": "remove_all_markers($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -272,7 +302,8 @@
             ]
         },
         {
-            "trigger": "reset_seed",
+            "trigger": "reset_seed()",
+            "contents": "reset_seed($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -281,7 +312,8 @@
             ]
         },
         {
-            "trigger": "run",
+            "trigger": "run()",
+            "contents": "run($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -290,7 +322,8 @@
             ]
         },
         {
-            "trigger": "save",
+            "trigger": "save()",
+            "contents": "save($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -299,7 +332,8 @@
             ]
         },
         {
-            "trigger": "schedule",
+            "trigger": "schedule()",
+            "contents": "schedule($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -308,7 +342,8 @@
             ]
         },
         {
-            "trigger": "seed",
+            "trigger": "seed()",
+            "contents": "seed($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -317,7 +352,8 @@
             ]
         },
         {
-            "trigger": "sound",
+            "trigger": "sound()",
+            "contents": "sound($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -326,7 +362,8 @@
             ]
         },
         {
-            "trigger": "statistic",
+            "trigger": "statistic()",
+            "contents": "statistic($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -335,7 +372,8 @@
             ]
         },
         {
-            "trigger": "store_app_data",
+            "trigger": "store_app_data()",
+            "contents": "store_app_data($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -344,7 +382,8 @@
             ]
         },
         {
-            "trigger": "system_info",
+            "trigger": "system_info()",
+            "contents": "system_info($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -353,7 +392,8 @@
             ]
         },
         {
-            "trigger": "tag_matches",
+            "trigger": "tag_matches()",
+            "contents": "tag_matches($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -362,7 +402,8 @@
             ]
         },
         {
-            "trigger": "tick_time",
+            "trigger": "tick_time()",
+            "contents": "tick_time($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -371,7 +412,8 @@
             ]
         },
         {
-            "trigger": "view_distance",
+            "trigger": "view_distance()",
+            "contents": "view_distance($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -380,7 +422,8 @@
             ]
         },
         {
-            "trigger": "world_time",
+            "trigger": "world_time()",
+            "contents": "world_time($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",
@@ -389,7 +432,8 @@
             ]
         },
         {
-            "trigger": "write_file",
+            "trigger": "write_file()",
+            "contents": "write_file($1)",
             "annotation": "auxiliary",
             "kind": [
                 "function",

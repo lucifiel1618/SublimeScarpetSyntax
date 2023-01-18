@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "abs",
+            "trigger": "abs()",
+            "contents": "abs($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "acos",
+            "trigger": "acos()",
+            "contents": "acos($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "acosh",
+            "trigger": "acosh()",
+            "contents": "acosh($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "acot",
+            "trigger": "acot()",
+            "contents": "acot($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "asin",
+            "trigger": "asin()",
+            "contents": "asin($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "asinh",
+            "trigger": "asinh()",
+            "contents": "asinh($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "atan",
+            "trigger": "atan()",
+            "contents": "atan($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "atan2",
+            "trigger": "atan2()",
+            "contents": "atan2($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "atanh",
+            "trigger": "atanh()",
+            "contents": "atanh($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -83,7 +92,8 @@
             ]
         },
         {
-            "trigger": "ceil",
+            "trigger": "ceil()",
+            "contents": "ceil($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -92,7 +102,8 @@
             ]
         },
         {
-            "trigger": "cos",
+            "trigger": "cos()",
+            "contents": "cos($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -101,7 +112,8 @@
             ]
         },
         {
-            "trigger": "cosh",
+            "trigger": "cosh()",
+            "contents": "cosh($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -110,7 +122,8 @@
             ]
         },
         {
-            "trigger": "cot",
+            "trigger": "cot()",
+            "contents": "cot($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -119,7 +132,8 @@
             ]
         },
         {
-            "trigger": "coth",
+            "trigger": "coth()",
+            "contents": "coth($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -128,7 +142,8 @@
             ]
         },
         {
-            "trigger": "csc",
+            "trigger": "csc()",
+            "contents": "csc($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -137,7 +152,8 @@
             ]
         },
         {
-            "trigger": "csch",
+            "trigger": "csch()",
+            "contents": "csch($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -146,7 +162,8 @@
             ]
         },
         {
-            "trigger": "deg",
+            "trigger": "deg()",
+            "contents": "deg($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -155,7 +172,8 @@
             ]
         },
         {
-            "trigger": "fact",
+            "trigger": "fact()",
+            "contents": "fact($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -164,7 +182,8 @@
             ]
         },
         {
-            "trigger": "floor",
+            "trigger": "floor()",
+            "contents": "floor($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -173,7 +192,8 @@
             ]
         },
         {
-            "trigger": "ln",
+            "trigger": "ln()",
+            "contents": "ln($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -182,7 +202,8 @@
             ]
         },
         {
-            "trigger": "ln1p",
+            "trigger": "ln1p()",
+            "contents": "ln1p($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -191,7 +212,8 @@
             ]
         },
         {
-            "trigger": "log",
+            "trigger": "log()",
+            "contents": "log($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -200,7 +222,8 @@
             ]
         },
         {
-            "trigger": "log10",
+            "trigger": "log10()",
+            "contents": "log10($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -209,7 +232,8 @@
             ]
         },
         {
-            "trigger": "log1p",
+            "trigger": "log1p()",
+            "contents": "log1p($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -218,7 +242,8 @@
             ]
         },
         {
-            "trigger": "mandelbrot",
+            "trigger": "mandelbrot()",
+            "contents": "mandelbrot($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -227,7 +252,8 @@
             ]
         },
         {
-            "trigger": "max",
+            "trigger": "max()",
+            "contents": "max($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -236,7 +262,8 @@
             ]
         },
         {
-            "trigger": "min",
+            "trigger": "min()",
+            "contents": "min($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -245,7 +272,8 @@
             ]
         },
         {
-            "trigger": "rad",
+            "trigger": "rad()",
+            "contents": "rad($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -254,7 +282,8 @@
             ]
         },
         {
-            "trigger": "relu",
+            "trigger": "relu()",
+            "contents": "relu($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -263,7 +292,8 @@
             ]
         },
         {
-            "trigger": "round",
+            "trigger": "round()",
+            "contents": "round($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -272,7 +302,8 @@
             ]
         },
         {
-            "trigger": "sec",
+            "trigger": "sec()",
+            "contents": "sec($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -281,7 +312,8 @@
             ]
         },
         {
-            "trigger": "sech",
+            "trigger": "sech()",
+            "contents": "sech($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -290,7 +322,8 @@
             ]
         },
         {
-            "trigger": "sin",
+            "trigger": "sin()",
+            "contents": "sin($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -299,7 +332,8 @@
             ]
         },
         {
-            "trigger": "sinh",
+            "trigger": "sinh()",
+            "contents": "sinh($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -308,7 +342,8 @@
             ]
         },
         {
-            "trigger": "sqrt",
+            "trigger": "sqrt()",
+            "contents": "sqrt($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -317,7 +352,8 @@
             ]
         },
         {
-            "trigger": "tan",
+            "trigger": "tan()",
+            "contents": "tan($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",
@@ -326,7 +362,8 @@
             ]
         },
         {
-            "trigger": "tanh",
+            "trigger": "tanh()",
+            "contents": "tanh($1)",
             "annotation": "mathematical",
             "kind": [
                 "function",

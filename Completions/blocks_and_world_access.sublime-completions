@@ -2,7 +2,8 @@
     "scope": "source.scarpet",
     "completions": [
         {
-            "trigger": "add_chunk_ticket",
+            "trigger": "add_chunk_ticket()",
+            "contents": "add_chunk_ticket($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -11,7 +12,8 @@
             ]
         },
         {
-            "trigger": "air",
+            "trigger": "air()",
+            "contents": "air($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -20,7 +22,8 @@
             ]
         },
         {
-            "trigger": "biome",
+            "trigger": "biome()",
+            "contents": "biome($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -29,7 +32,8 @@
             ]
         },
         {
-            "trigger": "blast_resistance",
+            "trigger": "blast_resistance()",
+            "contents": "blast_resistance($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -38,7 +42,8 @@
             ]
         },
         {
-            "trigger": "block",
+            "trigger": "block()",
+            "contents": "block($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -47,7 +52,8 @@
             ]
         },
         {
-            "trigger": "block_data",
+            "trigger": "block_data()",
+            "contents": "block_data($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -56,7 +62,8 @@
             ]
         },
         {
-            "trigger": "block_light",
+            "trigger": "block_light()",
+            "contents": "block_light($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -65,7 +72,8 @@
             ]
         },
         {
-            "trigger": "block_list",
+            "trigger": "block_list()",
+            "contents": "block_list($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -74,7 +82,8 @@
             ]
         },
         {
-            "trigger": "block_properties",
+            "trigger": "block_properties()",
+            "contents": "block_properties($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -83,7 +92,8 @@
             ]
         },
         {
-            "trigger": "block_sound",
+            "trigger": "block_sound()",
+            "contents": "block_sound($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -92,7 +102,8 @@
             ]
         },
         {
-            "trigger": "block_state",
+            "trigger": "block_state()",
+            "contents": "block_state($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -101,7 +112,8 @@
             ]
         },
         {
-            "trigger": "block_tags",
+            "trigger": "block_tags()",
+            "contents": "block_tags($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -110,7 +122,8 @@
             ]
         },
         {
-            "trigger": "block_tick",
+            "trigger": "block_tick()",
+            "contents": "block_tick($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -119,7 +132,8 @@
             ]
         },
         {
-            "trigger": "blocks_daylight",
+            "trigger": "blocks_daylight()",
+            "contents": "blocks_daylight($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -128,7 +142,8 @@
             ]
         },
         {
-            "trigger": "blocks_movement",
+            "trigger": "blocks_movement()",
+            "contents": "blocks_movement($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -137,7 +152,8 @@
             ]
         },
         {
-            "trigger": "create_explosion",
+            "trigger": "create_explosion()",
+            "contents": "create_explosion($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -146,7 +162,8 @@
             ]
         },
         {
-            "trigger": "destroy",
+            "trigger": "destroy()",
+            "contents": "destroy($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -155,7 +172,8 @@
             ]
         },
         {
-            "trigger": "effective_light",
+            "trigger": "effective_light()",
+            "contents": "effective_light($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -164,7 +182,8 @@
             ]
         },
         {
-            "trigger": "emitted_light",
+            "trigger": "emitted_light()",
+            "contents": "emitted_light($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -173,7 +192,8 @@
             ]
         },
         {
-            "trigger": "flammable",
+            "trigger": "flammable()",
+            "contents": "flammable($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -182,7 +202,8 @@
             ]
         },
         {
-            "trigger": "generation_status",
+            "trigger": "generation_status()",
+            "contents": "generation_status($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -191,7 +212,8 @@
             ]
         },
         {
-            "trigger": "hardness",
+            "trigger": "hardness()",
+            "contents": "hardness($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -200,7 +222,8 @@
             ]
         },
         {
-            "trigger": "harvest",
+            "trigger": "harvest()",
+            "contents": "harvest($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -209,7 +232,8 @@
             ]
         },
         {
-            "trigger": "in_slime_chunk",
+            "trigger": "in_slime_chunk()",
+            "contents": "in_slime_chunk($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -218,7 +242,8 @@
             ]
         },
         {
-            "trigger": "inhabited_time",
+            "trigger": "inhabited_time()",
+            "contents": "inhabited_time($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -227,7 +252,8 @@
             ]
         },
         {
-            "trigger": "is_chunk_generated",
+            "trigger": "is_chunk_generated()",
+            "contents": "is_chunk_generated($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -236,7 +262,8 @@
             ]
         },
         {
-            "trigger": "light",
+            "trigger": "light()",
+            "contents": "light($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -245,7 +272,8 @@
             ]
         },
         {
-            "trigger": "liquid",
+            "trigger": "liquid()",
+            "contents": "liquid($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -254,7 +282,8 @@
             ]
         },
         {
-            "trigger": "loaded",
+            "trigger": "loaded()",
+            "contents": "loaded($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -263,7 +292,8 @@
             ]
         },
         {
-            "trigger": "loaded_ep",
+            "trigger": "loaded_ep()",
+            "contents": "loaded_ep($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -272,7 +302,8 @@
             ]
         },
         {
-            "trigger": "loaded_status",
+            "trigger": "loaded_status()",
+            "contents": "loaded_status($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -281,7 +312,8 @@
             ]
         },
         {
-            "trigger": "map_colour",
+            "trigger": "map_colour()",
+            "contents": "map_colour($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -290,7 +322,8 @@
             ]
         },
         {
-            "trigger": "material",
+            "trigger": "material()",
+            "contents": "material($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -299,7 +332,8 @@
             ]
         },
         {
-            "trigger": "opacity",
+            "trigger": "opacity()",
+            "contents": "opacity($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -308,7 +342,8 @@
             ]
         },
         {
-            "trigger": "place_item",
+            "trigger": "place_item()",
+            "contents": "place_item($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -317,7 +352,8 @@
             ]
         },
         {
-            "trigger": "plop",
+            "trigger": "plop()",
+            "contents": "plop($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -326,7 +362,8 @@
             ]
         },
         {
-            "trigger": "poi",
+            "trigger": "poi()",
+            "contents": "poi($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -335,7 +372,8 @@
             ]
         },
         {
-            "trigger": "pos",
+            "trigger": "pos()",
+            "contents": "pos($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -344,7 +382,8 @@
             ]
         },
         {
-            "trigger": "pos_offset",
+            "trigger": "pos_offset()",
+            "contents": "pos_offset($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -353,7 +392,8 @@
             ]
         },
         {
-            "trigger": "power",
+            "trigger": "power()",
+            "contents": "power($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -362,7 +402,8 @@
             ]
         },
         {
-            "trigger": "property",
+            "trigger": "property()",
+            "contents": "property($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -371,7 +412,8 @@
             ]
         },
         {
-            "trigger": "random_tick",
+            "trigger": "random_tick()",
+            "contents": "random_tick($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -380,7 +422,8 @@
             ]
         },
         {
-            "trigger": "reload_chunk",
+            "trigger": "reload_chunk()",
+            "contents": "reload_chunk($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -389,7 +432,8 @@
             ]
         },
         {
-            "trigger": "reset_chunk",
+            "trigger": "reset_chunk()",
+            "contents": "reset_chunk($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -398,7 +442,8 @@
             ]
         },
         {
-            "trigger": "sample_noise",
+            "trigger": "sample_noise()",
+            "contents": "sample_noise($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -407,7 +452,8 @@
             ]
         },
         {
-            "trigger": "see_sky",
+            "trigger": "see_sky()",
+            "contents": "see_sky($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -416,7 +462,8 @@
             ]
         },
         {
-            "trigger": "set",
+            "trigger": "set()",
+            "contents": "set($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -425,7 +472,8 @@
             ]
         },
         {
-            "trigger": "set_biome",
+            "trigger": "set_biome()",
+            "contents": "set_biome($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -434,7 +482,8 @@
             ]
         },
         {
-            "trigger": "set_poi",
+            "trigger": "set_poi()",
+            "contents": "set_poi($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -443,7 +492,8 @@
             ]
         },
         {
-            "trigger": "set_structure",
+            "trigger": "set_structure()",
+            "contents": "set_structure($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -452,7 +502,8 @@
             ]
         },
         {
-            "trigger": "sky_light",
+            "trigger": "sky_light()",
+            "contents": "sky_light($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -461,7 +512,8 @@
             ]
         },
         {
-            "trigger": "solid",
+            "trigger": "solid()",
+            "contents": "solid($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -470,7 +522,8 @@
             ]
         },
         {
-            "trigger": "spawn_potential",
+            "trigger": "spawn_potential()",
+            "contents": "spawn_potential($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -479,7 +532,8 @@
             ]
         },
         {
-            "trigger": "structure_eligibility",
+            "trigger": "structure_eligibility()",
+            "contents": "structure_eligibility($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -488,7 +542,8 @@
             ]
         },
         {
-            "trigger": "structure_references",
+            "trigger": "structure_references()",
+            "contents": "structure_references($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -497,7 +552,8 @@
             ]
         },
         {
-            "trigger": "structures",
+            "trigger": "structures()",
+            "contents": "structures($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -506,7 +562,8 @@
             ]
         },
         {
-            "trigger": "suffocates",
+            "trigger": "suffocates()",
+            "contents": "suffocates($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -515,7 +572,8 @@
             ]
         },
         {
-            "trigger": "ticks_randomly",
+            "trigger": "ticks_randomly()",
+            "contents": "ticks_randomly($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -524,7 +582,8 @@
             ]
         },
         {
-            "trigger": "top",
+            "trigger": "top()",
+            "contents": "top($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -533,7 +592,8 @@
             ]
         },
         {
-            "trigger": "transparent",
+            "trigger": "transparent()",
+            "contents": "transparent($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -542,7 +602,8 @@
             ]
         },
         {
-            "trigger": "update",
+            "trigger": "update()",
+            "contents": "update($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -551,7 +612,8 @@
             ]
         },
         {
-            "trigger": "weather",
+            "trigger": "weather()",
+            "contents": "weather($1)",
             "annotation": "blocks",
             "kind": [
                 "function",
@@ -560,7 +622,8 @@
             ]
         },
         {
-            "trigger": "without_updates",
+            "trigger": "without_updates()",
+            "contents": "without_updates($1)",
             "annotation": "blocks",
             "kind": [
                 "function",

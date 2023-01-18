@@ -26,10 +26,18 @@ variables:
     \b(?x:
       _|_a|_i|_x|_y|_z|_trace
     )\b
+  builtin_types: |-
+    \b(?x:
+      bool|number|str|task|m|l
+      #|string|list|map|iterator|function <- types not directly accessible
+
+      |block|nbt
+      #|text|entityn <- types not directly accessible
+    )\b
   builtin_functions: |-
     \b(?x:
       # operator
-      |get|put|delete|has
+      get|put|delete|has
       |sum|difference|product|quotient
       |equal|unique|increasing|decreasing|nondecreasing|nonincreasing
       |and|or
@@ -120,9 +128,6 @@ contexts:
   member-statements:
     - include: blocks
     - include: illegal-punctuation-separator-comma
-    # - include: import
-    # - include: flow-control-functions
-    # - include: loop-functions
 
   expressions:
     - include: expressions-wo-variables-and-strings
@@ -130,10 +135,8 @@ contexts:
     - include: strings
 
   expressions-wo-variables-and-strings:
-    # - include: groups
     - include: literals
     - include: punctuations
-    # - include: builtin-functions
     - include: comments
     - include: numbers
     - include: operators
@@ -148,13 +151,13 @@ contexts:
 ###[ OPERATORS ]################################################################
 
   operators:
-    - match: '[-+*/%|&\^]='
+    - match: '[+]='
       scope: keyword.operator.assignment.augmented.scarpet
     - match: '==|!=|<=|>=|<>|<|>'
       scope: keyword.operator.comparison.scarpet
     - match: '='
       scope: keyword.operator.assignment.scarpet
-    - match: '[\+\-*/%]'
+    - match: '[\+\-*/%^]'
       scope: keyword.operator.arithmetic.scarpet
     - match: '!|&&|\|\|'
       scope: keyword.operator.logical.scarpet
@@ -165,7 +168,7 @@ contexts:
       scope: keyword.operator.get.scarpet
       push: variable-item-access
 
-###[ PUNCTUATIONS ]############################################################
+###[ PUNCTUATIONS ]#############################################################
 
   illegal-punctuation-separator-comma:
     - match: ','
@@ -179,7 +182,7 @@ contexts:
     - match: ;
       scope: punctuation.terminator.scarpet
 
-###[ STRINGS ]################################################################
+###[ STRINGS ]##################################################################
 
   strings:
     - include: single-quoted-strings
@@ -277,9 +280,7 @@ contexts:
     - match: \\.
       scope: constant.character.escape.scarpet
 
-###[ TYPE CONVERSION FUNCTIONS ]##############################################
-
-###[ LITERALS ]################################################################
+###[ LITERALS ]#################################################################
 
   literals:
     - include: literal-strings
@@ -288,15 +289,15 @@ contexts:
     - include: literal-variables
 
   literal-variables:
-    - match: '{{literal_variables}}{{break}}'
+    - match: '{{literal_variables}}\b'
       scope: variable.language.anonymous.scarpet
 
   literal-constants:
-    - match: (false|true){{break}}
+    - match: (false|true)\b
       scope: constant.language.boolean.scarpet
-    - match: (euler|pi){{break}}
+    - match: (euler|pi)\b
       scope: constant.language.anonymous.scarpet
-    - match: (null){{break}}
+    - match: (null)\b
       scope: constant.language.null.scarpet
 
   literal-numbers:
@@ -380,38 +381,59 @@ contexts:
     - match: \b([1-9][\d_]*|0)\b
       scope: meta.number.integer.decimal.scarpet constant.numeric.value.scarpet
 
+###[ PRINT FUNCTIONS ]##########################################################
 
-###[ LOOP FUNCTIONS ]#########################################################
+  print-function:
+    - match: print
+      scope: keyword.other.print.scarpet
+      set: reference-function-call-arguments
+
+###[ LOOP FUNCTIONS ]###########################################################
 
   loop-functions:
-    - match: (while|loop|map|filter|first|all|c_for|for){{break}}
+    - match: (while|loop|map|filter|first|all|c_for|for)\b
       scope: keyword.control.loop.scarpet
+      set: reference-function-call-arguments
 
-###[ IMPORT FUNCTIONS ]#######################################################
+###[ IMPORT FUNCTIONS ]#########################################################
 
-  import:
-    - match: import{{break}}
-      scope: keyword.control.import.python
+  import-function:
+    - match: import\b
+      scope: keyword.control.import.scarpet
+      set: reference-function-call-arguments
 
-###[ FLOW CONTROL FUNCTIONS ]#################################################
+###[ FLOW CONTROL FUNCTIONS ]###################################################
 
   flow-control-functions:
-    - match: return{{break}}
+    - match: return\b
       scope: keyword.control.flow.return.scarpet
-    - match: exit{{break}}
+      set: reference-function-call-arguments
+    - match: exit\b
       scope: keyword.control.flow.exit.scarpet
-    - match: try{{break}}
+      set: reference-function-call-arguments
+    - match: try\b
       scope: keyword.control.exception.try.scarpet
-    - match: throw{{break}}
+      set: reference-function-call-arguments
+    - match: throw\b
       scope: keyword.control.flow.throw.scarpet
-    - match: if{{break}}
+      set: reference-function-call-arguments
+    - match: if\b
       scope: keyword.control.conditional.if.scarpet
-    - match: break{{break}}
+      set: reference-function-call-arguments
+    - match: break\b
       scope: keyword.control.flow.break.scarpet
-    - match: continue{{break}}
+      set: reference-function-call-arguments
+    - match: continue\b
       scope: keyword.control.flow.continue.scarpet
+      set: reference-function-call-arguments
 
-###[ COMMENTS ]################################################################
+###[ TYPE CONVERSION FUNCTIONS ] ###############################################
+  type-conversion-functions:
+    - match: '{{builtin_types}}'
+      scope: support.type.scarpet
+      set: reference-function-call-arguments
+
+###[ COMMENTS ]#################################################################
 
   comments:
     - include: line-comment
@@ -428,7 +450,7 @@ contexts:
       captures:
         1: punctuation.definition.comment.scarpet
       pop: 1
-###[ BLOCKS ]##################################################################
+###[ BLOCKS ]###################################################################
 
   block-or-expression:
     - include: block
@@ -460,13 +482,14 @@ contexts:
     - meta_scope: meta.block.scarpet
     - include: paren-block-end
     - include: statements
+    - include: punctuation-terminator-semicolon
     - include: expression
 
   stray-paren-block:
     - match: \)
       scope: invalid.illegal.stray.scarpet
 
-###[ GROUPS ]##################################################################
+###[ GROUPS ]###################################################################
 
   groups:
     - match: \(
@@ -485,7 +508,7 @@ contexts:
       fail: variables
     - include: else-pop
 
-###[ EXPRESSIONS ]#############################################################
+###[ EXPRESSIONS ]##############################################################
 
   else-expressions:
     - match: (?=\S)
@@ -506,7 +529,7 @@ contexts:
         )
       pop: 1
 
-###[ EXPRESSION GROUPS ]#######################################################
+###[ EXPRESSION GROUPS ]########################################################
 
   expression-group:
     - meta_scope: meta.group.scarpet
@@ -515,7 +538,7 @@ contexts:
       pop: 1
     - include: expression
 
-###[ VARIABLES ]###############################################################
+###[ VARIABLES ]################################################################
 
   variables:
     # Note:
@@ -551,7 +574,7 @@ contexts:
     - match: ''
       pop: 1
 
-###[ CONTAINERS ]##############################################################
+###[ CONTAINERS ]###############################################################
 
   list:
     - match: \[
@@ -609,14 +632,14 @@ contexts:
     - match: (?=->)
       set: map-key-value-separator
     - include: expression-terminator
-    - include: map-key-expressions
+    - include: reference-expressions
 
   variable-item-access:
     - meta_scope: meta.variable.item-access.scarpet
     - include: expression-terminator
     - include: expressions-regex
 
-###[ FUNCTIONS ]#######################################################
+###[ FUNCTIONS ]################################################################
 
   function-declaration-identifier:
     - match: '{{id}}'
@@ -666,11 +689,16 @@ contexts:
     - include: group-body
 
   builtin-functions:
-      - match: '{{builtin_functions}}{{break}}'
-        scope: support.function.builtin.scarpet
-        set: function-call-arguments
+    - include: loop-functions
+    - include: import-function
+    - include: flow-control-functions
+    - include: print-function
+    - include: type-conversion-functions
+    - match: '{{builtin_functions}}'
+      scope: support.function.builtin.scarpet
+      set: function-call-arguments
 
-###[ PARAMETERS ]##############################################################
+###[ PARAMETERS ]###############################################################
 
   parameter:
     - match: '(?=\S)'
@@ -696,14 +724,14 @@ contexts:
   prototype:
     - include: comments
 
-###[ MAP-KEY EXPRESSIONS ]######################################################
+###[ REFERENCE EXPRESSIONS ]####################################################
 
-  map-key-expressions:
+  reference-expressions:
     - include: expressions-wo-variables-and-strings
     - include: single-quoted-strings
-    - include: map-key-variables
+    - include: reference-variables
 
-  map-key-variables:
+  reference-variables:
     # Note:
     # 1) `variable-other` must be the first branch to scope the very last
     #    identifier before eof or end of embedded section as ordinary variable.
@@ -711,46 +739,47 @@ contexts:
     #    as ordinary variables. Found no easy enough solution by only using
     #    `variable-other` and `variable-namespace`.
     - match: (?={{id_first_char}})
-      branch_point: map-key-variables
+      branch_point: reference-variables
       branch:
-        - map-key-variable-other
-        - map-key-function-call-identifier
+        - reference-variable-other
+        - reference-function-call-identifier
 
-  map-key-variable-other:
+  reference-variable-other:
     - match: '{{id}}'
       scope: meta.variable.identifier.scarpet variable.other.scarpet
-      set: map-key-variable-other-end
+      set: reference-variable-other-end
     - include: immediately-pop
 
-  map-key-variable-other-end:
+  reference-variable-other-end:
     - meta_content_scope: meta.variable.identifier.scarpet
     - match: \s*(\()
-      fail: map-key-variables
+      fail: reference-variables
     - include: list-end
 
-  map-key-function-call-identifier:
+  reference-function-call-identifier:
     - include: builtin-functions
     - match: '{{id}}'
       scope: meta.function-call.identifier.scarpet variable.function.scarpet
-      set: map-key-function-call-arguments
+      set: reference-function-call-arguments
 
-  map-key-function-call-arguments:
+  reference-function-call-arguments:
     - meta_content_scope: meta.function-call.identifier.scarpet
     - match: \(
       scope: punctuation.section.group.begin.scarpet
-      set: map-key-function-call-arguments-body
+      set: reference-function-call-arguments-body
 
-  map-key-function-call-arguments-body:
+  reference-function-call-arguments-body:
     - meta_scope: meta.function-call.arguments.scarpet meta.group.scarpet
-    - include: map-key-group-body
+    - include: reference-group-body
 
-  map-key-group-body:
+  reference-group-body:
     - meta_scope: meta.group.scarpet
-    - include: map-key-group-end
-    - include: map-key-expressions
-    - include: expression-terminator
+    - include: reference-group-end
+    - include: punctuation-separator-comma
+    - include: punctuation-terminator-semicolon
+    - include: reference-expressions
 
-  map-key-group-end:
+  reference-group-end:
     - match: \)
       scope: punctuation.section.group.end.scarpet
-    - include: immediately-pop
+      pop: 1
