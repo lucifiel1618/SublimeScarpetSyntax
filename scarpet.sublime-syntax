@@ -532,7 +532,6 @@ contexts:
         - function-declaration-identifier
 
   variable-other:
-    - meta_include_prototype: false
     - match: '{{id}}'
       scope: meta.variable.identifier.scarpet variable.other.scarpet
       set: variable-other-end
@@ -620,7 +619,6 @@ contexts:
 ###[ FUNCTIONS ]#######################################################
 
   function-declaration-identifier:
-    - meta_include_prototype: false
     - match: '{{id}}'
       scope: entity.name.function.scarpet meta.function.identifier.scarpet
     - match: \(
@@ -651,7 +649,6 @@ contexts:
 
   function-call-identifier:
     - meta_scope: meta.function-call.identifier.scarpet variable.function.scarpet
-    - meta_include_prototype: false
     - include: builtin-functions
     - match: '{{id}}'
       set: function-call-arguments
@@ -676,7 +673,6 @@ contexts:
 ###[ PARAMETERS ]##############################################################
 
   parameter:
-    - meta_include_prototype: false
     - match: '(?=\S)'
       branch_point: parameter-maybe-variadic
       branch:
@@ -721,7 +717,6 @@ contexts:
         - map-key-function-call-identifier
 
   map-key-variable-other:
-    - meta_include_prototype: false
     - match: '{{id}}'
       scope: meta.variable.identifier.scarpet variable.other.scarpet
       set: map-key-variable-other-end
@@ -734,7 +729,6 @@ contexts:
     - include: list-end
 
   map-key-function-call-identifier:
-    - meta_include_prototype: false
     - include: builtin-functions
     - match: '{{id}}'
       scope: meta.function-call.identifier.scarpet variable.function.scarpet
