@@ -5,6 +5,8 @@ name: Scarpet
 scope: source.scarpet
 version: 2
 
+extends: Packages/Regular Expressions/RegExp (Basic).sublime-syntax
+
 file_extensions:
   - sc
   - scl
@@ -116,20 +118,20 @@ contexts:
     - include: member-statements
 
   member-statements:
+    - include: blocks
     - include: illegal-punctuation-separator-comma
     # - include: import
     # - include: flow-control-functions
     # - include: loop-functions
-    - include: blocks
 
   expressions:
-    - include: expressions-wo-variables
+    - include: expressions-wo-variables-and-strings
     - include: variables
+    - include: strings
 
-  expressions-wo-variables:
+  expressions-wo-variables-and-strings:
     # - include: groups
     - include: literals
-    - include: strings
     - include: punctuations
     # - include: builtin-functions
     - include: comments
@@ -137,6 +139,11 @@ contexts:
     - include: operators
     - include: list
     - include: map
+
+  expressions-regex:
+    - include: expressions-wo-variables-and-strings
+    - include: variables
+    - include: single-quoted-regex-strings
 
 ###[ OPERATORS ]################################################################
 
@@ -210,6 +217,21 @@ contexts:
     - include: string-placeholders
     - include: illegal-string-end
     - include: string-continuations
+
+  single-quoted-regex-strings:
+    - match: \'
+      scope: punctuation.definition.string.begin.scarpet
+      push: single-quoted-regex-string-body
+
+  single-quoted-regex-string-body:
+    - meta_include_prototype: false
+    - meta_scope: meta.string.scarpet string.quoted.single.scarpet
+    - match: \'
+      scope: punctuation.definition.string.end.scarpet
+      pop: 1
+    - match: ''
+      embed: scope:source.regexp.basic
+      escape: (?='|\n)
 
   illegal-string-end:
     - match: \n
@@ -587,14 +609,13 @@ contexts:
     - meta_content_scope: meta.mapping.scarpet meta.mapping.key.scarpet
     - match: (?=->)
       set: map-key-value-separator
-    - include: map-key-expressions
     - include: expression-terminator
+    - include: map-key-expressions
 
   variable-item-access:
     - meta_scope: meta.variable.item-access.scarpet
-    - match: '{{break}}'
-      pop: 1
-    - include: expression
+    - include: expression-terminator
+    - include: expressions-regex
 
 ###[ FUNCTIONS ]#######################################################
 
@@ -607,14 +628,12 @@ contexts:
       set: function-parameter-group
 
   function-parameter-group:
-    # https://docs.oracle.com/javase/specs/jls/se13/html/jls-15.html#jls-15.27
     - meta_scope: meta.function.parameters.scarpet meta.group.scarpet
     - match: \)
       scope: punctuation.section.group.end.scarpet
       set: define-as
     - include: punctuation-separator-comma
     - include: parameter
-    - include: expect-expression-terminator
 
   define-as:
     - match: ->
@@ -636,6 +655,7 @@ contexts:
     - include: builtin-functions
     - match: '{{id}}'
       set: function-call-arguments
+    - include: immediately-pop
 
   function-call-arguments:
     - meta_content_scope: meta.function-call.identifier.scarpet
@@ -675,10 +695,16 @@ contexts:
       scope: variable.parameter.scarpet
       pop: 1
 
+###[ PROTOTYPES ]###############################################################
+
+  prototype:
+    - include: comments
+
 ###[ MAP-KEY EXPRESSIONS ]######################################################
 
   map-key-expressions:
-    - include: expressions-wo-variables
+    - include: expressions-wo-variables-and-strings
+    - include: single-quoted-strings
     - include: map-key-variables
 
   map-key-variables:

@@ -73,17 +73,21 @@ map_identifier = {
     key_function_call(x, y) -> datum_function_declaration(x, y) -> x+y,
 //  ^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.key variable.meta.function-call
 //                             ^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.value meta.function-call
-    {'key'->'map'} -> {'datum'->'map'}
+    {'key'->'map'} -> {'datum' -> 'map'}
 //                 ^^ punctuation.separator.key-value
 };
 
-map_identifier:item_access_key;
+map_identifier:item_get_key;
 // <- meta.variable.identifier
 //            ^ meta.variable.item-access keyword.operator.get
 //             ^^^^^^^^^^^^^^^ meta.variable.item-access
 map_identifier
-~   item_access_key;
+~   item_match_key;
 // <- meta.variable.item-access keyword.operator.match
 //  ^^^^^^^^^^^^^^^ meta.variable.identifier
 
+map_identifier
+~   'item match key supports regex expression'+'[a-Z][0-9]*[^\(\]\{\\]+\s{1}\w{1-2}\b.*?';
+//   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mode.basic.regexp
+//                                                         ^^^^^^^^^^^ meta.set.regexp
 "double-quoted-strings are illegal"
