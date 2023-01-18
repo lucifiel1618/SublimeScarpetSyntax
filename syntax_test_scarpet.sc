@@ -44,8 +44,8 @@ function_declaration_linebreak
 (x, y, ...z)
 ->
 (
-return(0);
-)
+return(0)
+);
 
 function_declaration_linebreak_w_comments
 // <- entity.name.function meta.function.identifier
@@ -55,8 +55,8 @@ function_declaration_linebreak_w_comments
 // <- keyword.declaration.function.arrow
 (
 // <- punctuation.section.block.begin meta.function meta.block
-return(0);
-)
+return(0)
+);
 // <- punctuation.section.block.end meta.block
 
 map_identifier = {
@@ -70,15 +70,20 @@ map_identifier = {
     key_function_call(x, y) -> datum_function_call(x, y),
 //  ^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.key variable.meta.function-call
 //                             ^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.value meta.function-call
+    key_function_call(x, y) -> datum_function_declaration(x, y) -> x+y,
+//  ^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.key variable.meta.function-call
+//                             ^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.value meta.function-call
     {'key'->'map'} -> {'datum'->'map'}
+//                 ^^ punctuation.separator.key-value
 };
 
-
-map_identifier:item_access_key
+map_identifier:item_access_key;
 // <- meta.variable.identifier
 //            ^ meta.variable.item-access keyword.operator.get
 //             ^^^^^^^^^^^^^^^ meta.variable.item-access
 map_identifier
-~   item_access_key
+~   item_access_key;
 // <- meta.variable.item-access keyword.operator.match
 //  ^^^^^^^^^^^^^^^ meta.variable.identifier
+
+"double-quoted-strings are illegal"

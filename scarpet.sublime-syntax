@@ -20,7 +20,6 @@ variables:
 
   digits: (?:\d+(?:_\d+)*)
   exponent: (?:[eE][-+]?{{digits}})
-  path: '({{identifier}}[ ]*\.[ ]*)*{{identifier}}'
   literal_variables: |-
     \b(?x:
       _|_a|_i|_x|_y|_z|_trace
@@ -107,7 +106,7 @@ contexts:
   main:
     - meta_include_prototype: false
     - match: ''
-      push: [scarpet]
+      push: scarpet
 
   scarpet:
     - include: statements
@@ -117,10 +116,10 @@ contexts:
     - include: member-statements
 
   member-statements:
-    - include: punctuation-terminator-semicolon
-    - include: import
-    - include: flow-control-functions
-    - include: loop-functions
+    - include: illegal-punctuation-separator-comma
+    # - include: import
+    # - include: flow-control-functions
+    # - include: loop-functions
     - include: blocks
 
   expressions:
@@ -128,11 +127,11 @@ contexts:
     - include: variables
 
   expressions-wo-variables:
-    - include: groups
+    # - include: groups
     - include: literals
     - include: strings
     - include: punctuations
-    - include: builtin-functions
+    # - include: builtin-functions
     - include: comments
     - include: numbers
     - include: operators
@@ -142,14 +141,13 @@ contexts:
 ###[ OPERATORS ]################################################################
 
   operators:
-    # https://docs.oracle.com/javase/specs/jls/se13/html/jls-3.html#jls-3.12
-    - match: (<<|>>>?|[-+*/%|&\^])=
+    - match: '[-+*/%|&\^]='
       scope: keyword.operator.assignment.augmented.scarpet
     - match: '==|!=|<=|>=|<>|<|>'
       scope: keyword.operator.comparison.scarpet
     - match: '='
       scope: keyword.operator.assignment.scarpet
-    - match: '\+\+?|\-\-?|[*/%]'
+    - match: '[\+\-*/%]'
       scope: keyword.operator.arithmetic.scarpet
     - match: '!|&&|\|\|'
       scope: keyword.operator.logical.scarpet
@@ -162,8 +160,9 @@ contexts:
 
 ###[ PUNCTUATIONS ]############################################################
 
-  punctuations:
-    - include: punctuation-separator-comma
+  illegal-punctuation-separator-comma:
+    - match: ','
+      scope: invalid.illegal.stray.scarpet
 
   punctuation-separator-comma:
     - match: ','
@@ -181,8 +180,20 @@ contexts:
 
   double-quoted-strings:
     # scarpet doesn't support double quoted strings
-    - match: (")[^"]+(")
+    - match: \"
       scope: invalid.illegal.not-a-str.scarpet
+      push: double-quoted-strings-body
+
+  double-quoted-strings-body:
+    - meta_content_scope: invalid.illegal.not-a-str.scarpet
+    - meta_include_prototype: false
+    - match: \"
+      scope: invalid.illegal.not-a-str.scarpet
+      pop: 1
+    - include: escaped-chars
+    - include: string-placeholders
+    - include: illegal-string-end
+    - include: string-continuations
 
   single-quoted-strings:
     - match: \'
@@ -240,9 +251,9 @@ contexts:
   escaped-chars:
     - match: \\r
       # carrige return character is not supported
-      scope: constant.character.escape.python invalid.illegal.character.escape.scarpet
+      scope: constant.character.escape.scarpet invalid.illegal.character.escape.scarpet
     - match: \\.
-      scope: constant.character.escape.python
+      scope: constant.character.escape.scarpet
 
 ###[ TYPE CONVERSION FUNCTIONS ]##############################################
 
@@ -381,15 +392,20 @@ contexts:
 ###[ COMMENTS ]################################################################
 
   comments:
-    - match: '//'
+    - include: line-comment
+
+  line-comment:
+    - match: //+
       scope: punctuation.definition.comment.scarpet
-      push: line_comment
+      push: line-comment-body
 
-  line_comment:
-    - meta_scope: comment.line.scarpet
-    - match: $
-      pop: true
-
+  line-comment-body:
+    - meta_include_prototype: false
+    - meta_scope: comment.line.double-slash.scarpet
+    - match: (//+)?\n
+      captures:
+        1: punctuation.definition.comment.scarpet
+      pop: 1
 ###[ BLOCKS ]##################################################################
 
   block-or-expression:
@@ -399,17 +415,19 @@ contexts:
   block:
     - include: paren-block
 
+  blocks:
+    - include: paren-blocks
+
   paren-blocks:
     - match: \(
       scope: punctuation.section.block.begin.scarpet
       push: paren-block-body
-    - include: stray-block
+    - include: stray-paren-block
 
   paren-block:
     - match: \(
       scope: punctuation.section.block.begin.scarpet
       set: paren-block-body
-    - include: stray-paren-block
 
   paren-block-end:
     - match: \)
@@ -420,7 +438,7 @@ contexts:
     - meta_scope: meta.block.scarpet
     - include: paren-block-end
     - include: statements
-    - include: else-expressions
+    - include: expression
 
   stray-paren-block:
     - match: \)
@@ -435,15 +453,15 @@ contexts:
 
   group-body:
     - meta_scope: meta.group.scarpet
-    - include: group-end
-    - include: expressions
-    - include: expression-terminator
-
-  group-end:
     - match: \)
       scope: punctuation.section.group.end.scarpet
-    - match: (?=->)
+      set: group-end
+    - include: expression
+
+  group-end:
+    - match: \s*(->)
       fail: variables
+    - include: else-pop
 
 ###[ EXPRESSIONS ]#############################################################
 
@@ -462,7 +480,7 @@ contexts:
   expression-terminator:
     - match: |-
         (?x)(?=
-          [;)\]{}]{{break}}
+          [;\],{}]{{break}}
         )
       pop: 1
 
@@ -473,8 +491,7 @@ contexts:
     - match: \)
       scope: punctuation.section.group.end.scarpet
       pop: 1
-    - include: expressions
-    - include: expression-terminator
+    - include: expression
 
 ###[ VARIABLES ]###############################################################
 
@@ -525,8 +542,7 @@ contexts:
     - match: \]
       scope: punctuation.section.sequence.end.scarpet
       set: list-end
-    - include: expressions
-    - include: expression-terminator
+    - include: expression
 
   list-end:
     - meta_content_scope: meta.sequence.list.scarpet
@@ -559,8 +575,7 @@ contexts:
     - meta_content_scope: meta.mapping.scarpet meta.mapping.value.scarpet
     - match: (?=,)
       pop: 1
-    - include: expressions
-    - include: expression-terminator
+    - include: expression
 
   map-key-value-separator:
       - match: ->
@@ -579,8 +594,7 @@ contexts:
     - meta_scope: meta.variable.item-access.scarpet
     - match: '{{break}}'
       pop: 1
-    - include: expressions
-    - include: expression-terminator
+    - include: expression
 
 ###[ FUNCTIONS ]#######################################################
 
@@ -617,9 +631,10 @@ contexts:
     - include: else-pop
 
   function-call-identifier:
+    - meta_scope: meta.function-call.identifier.scarpet variable.function.scarpet
     - meta_include_prototype: false
+    - include: builtin-functions
     - match: '{{id}}'
-      scope: meta.function-call.identifier.scarpet variable.function.scarpet
       set: function-call-arguments
 
   function-call-arguments:
@@ -630,11 +645,13 @@ contexts:
 
   function-call-arguments-body:
     - meta_scope: meta.function-call.arguments.scarpet meta.group.scarpet
+    - include: punctuation-separator-comma
     - include: group-body
 
   builtin-functions:
-      - match: '{{builtin_functions}}'
-        scope: support.function.builtin.scarpet variable.function.scarpet
+      - match: '{{builtin_functions}}{{break}}'
+        scope: support.function.builtin.scarpet
+        set: function-call-arguments
 
 ###[ PARAMETERS ]##############################################################
 
@@ -692,6 +709,7 @@ contexts:
 
   map-key-function-call-identifier:
     - meta_include_prototype: false
+    - include: builtin-functions
     - match: '{{id}}'
       scope: meta.function-call.identifier.scarpet variable.function.scarpet
       set: map-key-function-call-arguments
@@ -709,7 +727,7 @@ contexts:
   map-key-group-body:
     - meta_scope: meta.group.scarpet
     - include: map-key-group-end
-    - include: expressions
+    - include: map-key-expressions
     - include: expression-terminator
 
   map-key-group-end:
