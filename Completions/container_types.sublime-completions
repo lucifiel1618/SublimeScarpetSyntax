@@ -56,8 +56,8 @@
             "contents": "l($1)",
             "annotation": "container",
             "kind": [
-                "function",
-                "f",
+                "type",
+                "t",
                 "Language"
             ]
         },
@@ -66,8 +66,8 @@
             "contents": "m($1)",
             "annotation": "container",
             "kind": [
-                "function",
-                "f",
+                "type",
+                "t",
                 "Language"
             ]
         },

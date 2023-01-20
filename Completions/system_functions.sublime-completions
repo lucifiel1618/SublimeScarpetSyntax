@@ -6,8 +6,8 @@
             "contents": "bool($1)",
             "annotation": "system",
             "kind": [
-                "function",
-                "f",
+                "type",
+                "t",
                 "Language"
             ]
         },
@@ -106,8 +106,8 @@
             "contents": "number($1)",
             "annotation": "system",
             "kind": [
-                "function",
-                "f",
+                "type",
+                "t",
                 "Language"
             ]
         },
@@ -126,8 +126,8 @@
             "contents": "print($1)",
             "annotation": "system",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -196,8 +196,8 @@
             "contents": "str($1)",
             "annotation": "system",
             "kind": [
-                "function",
-                "f",
+                "type",
+                "t",
                 "Language"
             ]
         },
@@ -236,8 +236,8 @@
             "contents": "task($1)",
             "annotation": "system",
             "kind": [
-                "function",
-                "f",
+                "type",
+                "t",
                 "Language"
             ]
         },

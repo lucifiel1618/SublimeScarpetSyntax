@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0078)file:///private/var/folders/02/snlxmfr16y3f4qkpsp2j1vbh0000gn/T/tmp2x5qc_.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>block_counter.sc</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<style type="text/css">
+/* General */
+* html a:hover { background: transparent; }
+body { color: #f8f8f2; }
+pre { border: 0; margin: 0; padding: 0; }
+td { padding: 0; }
+table { border: 0; margin: 0; padding: 0; border-collapse: collapse; empty-cells: show; }
+span { display: inline-block; border: 0; margin: 0; }
+td.code_line div { width: 100%; }
+span.code_gutter { vertical-align: top; }
+.code_page {
+    background-color: #282923;
+    font-family: "Menlo", "Courier", Monospace;
+    font-size: 14pt;
+    tab-size: 4;
+}
+.simple_code_page { background-color: white; color: black }
+.code_gutter { display: table-cell; background-color: #282923; padding-right: 10px; }
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+.normal { font-style: normal; }
+.glow { text-shadow: 0 0 3px currentColor; }
+.underline { text-decoration: underline; }
+
+/* Wrapping */
+.wrap {
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap;  /* HP printers */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    white-space: -pre-wrap;     /* Opera 4-6 */
+    white-space: pre-wrap;      /* CSS 2.1 */
+    word-wrap: break-word;      /* IE */
+}
+.wrap span { display: inline; }
+
+/* Toolbar */
+div#toolbarhide {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+div#toolbar {
+    visibility: hidden;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    opacity: 0;
+    -webkit-transform: translateZ(0);    /* webkit flicker fix */
+    -webkit-font-smoothing: antialiased; /* webkit text rendering fix */
+    -webkit-transition: all .25s ease-in;
+    -moz-transition: all .25s ease-in;
+    -ms-transition: all .25s ease-in;
+    -o-transition: all .25s ease-in;
+    transition: all .25s ease-in;
+    background-color:black;
+    color: white;
+}
+div#toolbarhide:hover div#toolbar {
+    visibility: visible;
+    opacity: .8;
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -ms-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+}
+
+div#toolbar img {
+    display: inline-block;
+    vertical-align: middle;
+    border: 0;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    padding: 5px;
+}
+
+/* tooltips */
+#tooltip {
+    border-radius: 5px 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap;  /* HP printers */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    white-space: -pre-wrap;     /* Opera 4-6 */
+    white-space: pre-wrap;      /* CSS 2.1 */
+    white-space: pre-line;      /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word;      /* IE */
+    position:absolute; display:block;
+    color: black;
+    padding: 0.8em 1em;
+    background: #FFFFE0; border: solid black;
+    font-family: Calibri, Tahoma, Geneva, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+a.annotation {
+    color: #f8f8f2;
+    outline: none;
+    text-decoration: underline;
+}
+
+span.annotation{ display: inline; }
+
+.tooltip_hotspot { cursor:pointer; }
+
+/* Annotation Table */
+div#comment_list {
+    visibility: hidden;
+    display: none;
+    margin: auto auto;
+    text-align: center;
+    position: fixed;
+    z-index: 99;
+    left:0px;
+    top: 0px;
+}
+div#comment_wrapper {
+    max-height: 200px;
+    overflow: auto;
+    border: solid black;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+}
+table#comment_table {
+    border: thin solid; border-collapse: collapse;
+    color: #000000; background-color: #FFFFE0; margin: auto auto;
+}
+div.table_footer { text-align:right; font-size: 8pt; font-weight: bold;}
+a.table_close { color: black; float: right; }
+a.table_close:link { text-decoration: none; }
+a.table_close:active { text-decoration: none; }
+a.table_close:visited { text-decoration: none; }
+a.table_close:hover { text-decoration: none; }
+table#comment_table th, table#comment_table td { border: thin solid; padding: 5px; }
+td.annotation_link { width: 60px; text-align: right; padding-right: 20px; }
+.annotation_comment { width: 500px; }
+div.annotation_comment {
+    float: left;
+    text-align: left;
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap;  /* HP printers */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    white-space: -pre-wrap;     /* Opera 4-6 */
+    white-space: pre-wrap;      /* CSS 2.1 */
+    word-wrap: break-word;      /* IE */
+}
+</style>
+
+<script type="text/javascript">
+function isUndef(obj) {
+  return obj === void 0;
+}
+
+function isNull(obj) {
+  return obj === null;
+}
+
+</script>
+
+</head>
+<body class="code_page code_text"><pre class="code_page"><table cellspacing="0" cellpadding="0" class="code_page"><tbody><tr><td><table cellspacing="0" cellpadding="0" class="code_page"><tbody><tr><td valign="top" id="L_0_1" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;&nbsp;1&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_1"><span class="normal real_text" style="background-color: #282923; color: #74705d;">//</span><span class="normal real_text" style="background-color: #282923; color: #74705d;"> @Author: gnembon</span>
+</div></td></tr><tr><td valign="top" id="L_0_2" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;&nbsp;2&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_2"><span class="normal real_text" style="background-color: #282923; color: #74705d;"></span><span class="normal real_text" style="background-color: #282923; color: #74705d;">//</span><span class="normal real_text" style="background-color: #282923; color: #74705d;"> @License: CC0-1.0 license</span>
+</div></td></tr><tr><td valign="top" id="L_0_3" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;&nbsp;3&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_3"><span class="normal real_text" style="background-color: #282923; color: #74705d;"></span><span class="normal real_text" style="background-color: #282923; color: #74705d;">//</span><span class="normal real_text" style="background-color: #282923; color: #74705d;"> @Reference: https://github.com/gnembon/scarpet/blob/master/programs/utilities/block_counter.sc</span>
+</div></td></tr><tr><td valign="top" id="L_0_4" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;&nbsp;4&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_4"><span class="normal empty_text" style="background-color: #282923; color: #74705d;">&nbsp;</span>
+</div></td></tr><tr><td valign="top" id="L_0_5" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;&nbsp;5&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_5"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #a6e22c;">__config</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #67d8ef;">-&gt;</span>
+</div></td></tr><tr><td valign="top" id="L_0_6" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;&nbsp;6&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_6"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">{</span>
+</div></td></tr><tr><td valign="top" id="L_0_7" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;&nbsp;7&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_7"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">commands</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">-&gt;</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">{</span>
+</div></td></tr><tr><td valign="top" id="L_0_8" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;&nbsp;8&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_8"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">&lt;from_pos&gt; &lt;to_pos&gt;</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">-&gt;</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">count_blocks</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span>
+</div></td></tr><tr><td valign="top" id="L_0_9" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;&nbsp;9&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_9"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">&lt;from_pos&gt; &lt;to_pos&gt; &lt;filter&gt;</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">-&gt;</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">count_blocks_filter</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span>
+</div></td></tr><tr><td valign="top" id="L_0_10" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;10&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_10"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">}</span>
+</div></td></tr><tr><td valign="top" id="L_0_11" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;11&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_11"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">}</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_12" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;12&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_12"><span class="normal empty_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;</span>
+</div></td></tr><tr><td valign="top" id="L_0_13" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;13&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_13"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #a6e22c;">count_blocks</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">from_pos</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">to_pos</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #67d8ef;">-&gt;</span>
+</div></td></tr><tr><td valign="top" id="L_0_14" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;14&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_14"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span>
+</div></td></tr><tr><td valign="top" id="L_0_15" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;15&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_15"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">=</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">{</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">}</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_16" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;16&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_16"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">volume</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">from_pos</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">to_pos</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">:</span><span class="italic real_text" style="background-color: #282923; color: #67d8ef;">str</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">+=</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">1</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_17" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;17&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_17"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">tally</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">sum</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">... </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">values</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_18" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;18&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_18"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_19" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;19&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_19"><span class="normal empty_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;</span>
+</div></td></tr><tr><td valign="top" id="L_0_20" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;20&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_20"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #a6e22c;">count_blocks_filter</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">from_pos</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">to_pos</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">filtr</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #67d8ef;">-&gt;</span>
+</div></td></tr><tr><td valign="top" id="L_0_21" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;21&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_21"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span>
+</div></td></tr><tr><td valign="top" id="L_0_22" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;22&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_22"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">=</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">{</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">}</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">=</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">0</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_23" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;23&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_23"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">volume</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">from_pos</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">to_pos</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">+=</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">1</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">if</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">~</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">filtr</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">:</span><span class="italic real_text" style="background-color: #282923; color: #67d8ef;">str</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">+=</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">1</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_24" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;24&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_24"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">tally</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_25" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;25&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_25"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_26" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;26&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_26"><span class="normal empty_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;</span>
+</div></td></tr><tr><td valign="top" id="L_0_27" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;27&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_27"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #a6e22c;">tally</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">grand_total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #67d8ef;">-&gt;</span>
+</div></td></tr><tr><td valign="top" id="L_0_28" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;28&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_28"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span>
+</div></td></tr><tr><td valign="top" id="L_0_29" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;29&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_29"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">=</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">sum</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">... </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">values</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_30" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;30&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_30"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">if</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">==</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">grand_total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span>
+</div></td></tr><tr><td valign="top" id="L_0_31" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;31&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_31"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">print</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">format</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">wb&nbsp;&nbsp;&nbsp; Count&nbsp; |</span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">%A</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">rea | Block</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_32" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;32&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_32"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">print</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">.---------+------+---------------</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_33" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;33&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_33"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">for</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">sort_key</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">keys</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">:</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span>
+</div></td></tr><tr><td valign="top" id="L_0_34" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;34&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_34"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">print</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="italic real_text" style="background-color: #282923; color: #67d8ef;">str</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">%s</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;"> | </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">%05.2f%%</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;"> | </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">%s</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">dpad</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">:</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">9</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">100</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">*</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">:</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">/</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span>
+</div></td></tr><tr><td valign="top" id="L_0_35" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;35&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_35"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_36" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;36&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_36"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">print</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">Total: </span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">+</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_37" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;37&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_37"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span>
+</div></td></tr><tr><td valign="top" id="L_0_38" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;38&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_38"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">print</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">format</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">wb&nbsp;&nbsp;&nbsp; Count&nbsp; |%Pool |</span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">%A</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">rea | Block</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_39" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;39&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_39"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">print</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">.---------+------+------+---------------</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_40" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;40&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_40"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">for</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">sort_key</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">keys</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">:</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span>
+</div></td></tr><tr><td valign="top" id="L_0_41" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;41&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_41"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">print</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="italic real_text" style="background-color: #282923; color: #67d8ef;">str</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">%s</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;"> | </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">%05.2f%%</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;"> | </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">%05.2f%%</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;"> | </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">%s</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">dpad</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">:</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">9</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">100</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">*</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">:</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">/</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #ac80ff;">100</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">*</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">stats</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">:</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">/</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">grand_total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">_</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span>
+</div></td></tr><tr><td valign="top" id="L_0_42" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;42&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_42"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_43" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;43&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_43"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">print</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">format</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">gi Total tally: </span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">+</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_44" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;44&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_44"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">print</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">format</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">gi Scanned area: </span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">+</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">grand_total</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_45" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;45&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_45"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_46" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;46&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_46"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_47" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;47&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_47"><span class="normal empty_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;</span>
+</div></td></tr><tr><td valign="top" id="L_0_48" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;48&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_48"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #a6e22c;">dpad</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">num</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #fd9621;">wid</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #67d8ef;">-&gt;</span>
+</div></td></tr><tr><td valign="top" id="L_0_49" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;49&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_49"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span>
+</div></td></tr><tr><td valign="top" id="L_0_50" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;50&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_50"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">strn</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">=</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="italic real_text" style="background-color: #282923; color: #67d8ef;">str</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">num</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_51" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;51&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_51"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">if</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">length</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">strn</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">&lt;</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">wid</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">,</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">strn</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #f92472;">=</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"> </span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">...</span><span class="normal real_text" style="background-color: #282923; color: #e7db74;">'</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">*</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">wid</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">-</span><span class="normal real_text" style="background-color: #282923; color: #67d8ef;">length</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">(</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">strn</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f92472;">+</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">strn</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_52" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;52&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_52"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">&nbsp;&nbsp;&nbsp; </span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">strn</span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">;</span>
+</div></td></tr><tr><td valign="top" id="L_0_53" class="code_text code_gutter" style="background: #282923"><span style="color: #90908a;">&nbsp;53&nbsp;</span></td><td valign="top" class="code_text code_line" style="background-color: #282923;"><div id="C_0_53"><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;"></span><span class="normal real_text" style="background-color: #282923; color: #f8f8f2;">)</span>
+</div></td></tr></tbody></table></td></tr></tbody></table></pre><div id="toolbarhide"><div id="toolbar"><img onclick="toggle_plain_text();" alt="" title="Toggle Plain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3AofFg8dF9eGSAAAAAxpVFh0Q29tbWVudAAAAAAAvK6ymQAAANRJREFUOMvdkTFOgkEQhResaeQScAsplIRGDgKttnsIOYIUm1hQa/HfQiMFcIBt9k/UTWa/sRkbspKfzviS7eZ7M/uec39WbdsOgU/gI6V0ebZBKeVeTaWUu7PgpmkugD3wZW8XQuh3NhCRuaoq8AisVVVF5LazAfBi0JWITMzsuROccx4b8O6cc977HrAFyDmPumxfHQf3EyjwcBKOMQ6ApL8ISDHGwanqljb4VLlsY5ctqrD99c3Cm1aamZn5q/e+V6vuxgb2tc5DCH3gYAuu3f/RNzmJ99G3cZ53AAAAAElFTkSuQmCC"><img onclick="toggle_gutter();" alt="" title="Toggle Gutter" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3AofFg8FBLseHgAAAAxpVFh0Q29tbWVudAAAAAAAvK6ymQAAAM5JREFUOMvdjzFqAlEQhuephZWNYEq9wJ4kt7C08AiyhWCXQI6xh5CtUqVJEbAU1kA6i92VzWPnmxR5gUUsfAQbf5himPm+YURumSzLetFQWZZj4Bn45DcHYFMUxfAqAbA1MwO+gHeA0L9cJfDeJ6q6yvO8LyKiqosgOKVp6qJf8t4nQfD9J42Kqi6D4DUabppmBhzNzNq2fYyC67p+AHbh+iYKrqpqAnwE+Ok/8Dr6b+AtwArsu6Wq8/P9wQXHTETEOdcTkWl3YGYjub/8ANrnvguZ++ozAAAAAElFTkSuQmCC"><img onclick="page_print();" alt="" title="Print" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3AofFhAl8o8wSAAAAAxpVFh0Q29tbWVudAAAAAAAvK6ymQAAAQZJREFUOMulkzFSgjEUhL8X/xJ/iBegkAtQ6A08gIUehFthYykOw9BzBmwcaxGoZW1eZjIx/sC4TTJv8ja7mxfDIcmAAWDUIeDLzJQXm2w/AFZOkB8yoAU+gHtJ7yVJUnAlaS1pJOm6WN8kjSUtJQ1dLQChIvMATIEXXw9e3wMT4NnV/rKQsAcegAvgG9g5wcwv7OU51QgugSegD2yBO+DWmyLw+leINQXyW5VeoQj4qIIcW+CxPFwjSLKtEnAZOkGSSYruL3QMUxq0AERJUZKl5pV7bjsmMR+qHfAJ3DReDB4cwKLiv0R0S5Yy6ANz37ecgSZ7nui1zYm9G0B2wi+k63fyX/wA0b9vjF8iB3oAAAAASUVORK5CYII="></div></div>
+
+<script type="text/javascript">
+function page_print() {
+    var element = document.getElementById("toolbarhide");
+    if (!isNull(element)) {
+        element.style.display = "none";
+    }
+    if (window.print) {
+        window.print();
+    }
+    if (!isNull(element)) {
+        element.style.display = "block";
+    }
+}
+
+</script>
+
+<script type="text/javascript">
+var plain_text_clone = null;
+
+function toggle_plain_text() {
+  var lines = document.querySelectorAll(".code_line"),
+      line_len = lines.length,
+      text = "",
+      plain_pre = document.querySelectorAll("pre.simple_code_page"),
+      orig_pre, pre, i, j, spans, span_len, span;
+
+  if (plain_pre.length > 0) {
+    document.body.removeChild(plain_pre[0]);
+    document.body.appendChild(plain_text_clone);
+    document.body.className = "code_page code_text";
+  } else {
+    var re = new RegExp(String.fromCharCode(160), "g");
+    var is_empty = new RegExp("(^|\\s)empty_text(\\s|$)");
+    for (i = 0; i < line_len; i++) {
+      spans = lines[i].querySelectorAll("span.real_text, span.empty_text");
+      span_len = spans.length;
+      for (j = 0; j < span_len; j++) {
+        span = spans[j];
+        if (span.className.search(is_empty) != -1) {
+          if ("textContent" in span) {
+            text += span.textContent.replace(re, '');
+          } else {
+            text += span.innerText.replace(re, '');
+          }
+        } else {
+          if ("textContent" in span) {
+            text += span.textContent.replace(re, ' ');
+          } else {
+            text += span.innerText.replace(re, ' ');
+          }
+        }
+      }
+      text += "\n";
+    }
+    orig_pre = document.querySelectorAll("pre.code_page")[0];
+    plain_text_clone = orig_pre.cloneNode(true);
+    pre = document.createElement('pre');
+    pre.className = "simple_code_page";
+    pre.appendChild(document.createTextNode(text));
+    document.body.removeChild(orig_pre);
+    document.body.appendChild(pre);
+    document.body.className = "simple_code_page";
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+var page_line_info = {
+  wrap: false,
+  ranges: null,
+  wrap_size: null,
+  tables: null,
+  header: null,
+  gutter: false,
+  table_mode: true
+};
+
+function wrap_code() {
+  var width = 0,
+      mode = null,
+      start, end, i, j, idx, el;
+
+  if (page_line_info.header) {
+    el = document.getElementById("file_info");
+    el.style.width = page_line_info.wrap_size + "px";
+    el.className = "wrap";
+  }
+  for (i = 1; i <= page_line_info.tables; i++) {
+    idx = i - 1;
+    start = page_line_info.ranges[idx][0];
+    end = page_line_info.ranges[idx][1];
+    for(j = start; j < end; j++) {
+      if (isNull(mode)) {
+        mode = true;
+        if (page_line_info.gutter) {
+          width = document.getElementById("L_" + idx + "_" + j).offsetWidth;
+        }
+      }
+      el = document.getElementById("C_" + idx + "_" + j);
+      el.style.width = (page_line_info.wrap_size - width) + "px";
+      el.className = page_line_info.table_mode ? "wrap" : "wrap code_line";
+    }
+  }
+}
+
+function toggle_gutter() {
+  var default_mode = page_line_info.table_mode ? 'table-cell' : 'inline-block',
+      mode = null,
+      i, j, rows, r, tbls, cells;
+
+  items = document.querySelectorAll('.code_gutter');
+  for (i = 0; i < items.length; ++i) {
+    if (isNull(mode)) {
+      if (page_line_info.gutter) {
+        mode = 'none';
+        page_line_info.gutter = false;
+      } else {
+        mode = 'inline-block';
+        page_line_info.gutter = true;
+      }
+    }
+    items[i].style.display = mode;
+  }
+  if (page_line_info.wrap && !isNull(mode)) {
+      setTimeout(function() {wrap_code();}, 500);
+  }
+}
+
+function unwrap_code() {
+  var i, j, idx, start, end, el;
+
+  if (page_line_info.header) {
+    document.getElementById("file_info").style.width = "100%";
+  }
+  for (i = 1; i <= page_line_info.tables; i++) {
+    idx = i - 1;
+    start = page_line_info.ranges[idx][0];
+    end = page_line_info.ranges[idx][1];
+    for(j = start; j < end; j++) {
+      el = document.getElementById("C_" + idx + "_" + j);
+      el.style.width = "100%";
+      el.className = "";
+    }
+  }
+}
+
+function toggle_wrapping() {
+  if (page_line_info.wrap) {
+    page_line_info.wrap = false;
+    unwrap_code();
+  } else {
+    page_line_info.wrap = true;
+    wrap_code();
+  }
+}
+
+
+page_line_info.wrap       = false;
+page_line_info.ranges     = [[1,54]];
+page_line_info.wrap_size  = 900;
+page_line_info.tables     = 1;
+page_line_info.header     = false;
+page_line_info.gutter     = true;
+page_line_info.table_mode = true;
+</script>
+
+
+
+</body></html>

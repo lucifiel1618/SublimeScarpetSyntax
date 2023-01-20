@@ -46,8 +46,8 @@
             "contents": "block($1)",
             "annotation": "blocks",
             "kind": [
-                "function",
-                "f",
+                "type",
+                "t",
                 "Minecraft"
             ]
         },

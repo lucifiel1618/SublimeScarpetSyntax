@@ -486,7 +486,6 @@ function_table = {
  'particle()',
  'particle_box()',
  'particle_line()',
- 'print()',
  'read_file()',
  'remove_all_markers()',
  'run()',
@@ -522,7 +521,8 @@ all_functions = set.union(*function_table.values())
 tags = {
  ('keyword', 'k', 'Language'): {'print', 'while', 'loop', 'map', 'filter', 'first', 'all', 'c_for', 'for', 'import', 'return', 'exit', 'try', 'throw', 'if', 'break', 'continue', '->', '...'},
  ('type', 't', 'Language'): {'bool', 'number', 'str', 'task', 'm', 'l'},
- ('type', 't', 'Minecraft'): {'block', 'nbt'}
+ ('type', 't', 'Minecraft'): {'block', 'nbt'},
+  ('function', 'f', 'Language'): {'reset_seed', 'format', 'logger', 'read_file', 'delete_file', 'write_file', 'list_files', 'load_app_data', 'store_app_data'}
 }
 
 all_completions = []
@@ -615,6 +615,7 @@ all_completions.append(scoreboards)
 auxiliaries = CompletionList(sorted(function_table['auxiliaries']),
     default_style={'annotation': 'auxiliary', 'kind': ['function', 'f', 'Minecraft']},
     fname=completion_folder/'auxiliaries.sublime-completions')
+
 all_completions.append(auxiliaries)
 
 for en in all_completions:
@@ -624,7 +625,7 @@ for en in all_completions:
         tag = list(tag)
         for trigger in triggers:
             try:
-                en[trigger].kind = tag
+                en[trigger+'()'].kind = tag
             except KeyError:
                 pass
     en.to_json()

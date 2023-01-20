@@ -6,8 +6,8 @@
             "contents": "all($1)",
             "annotation": "iteration",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -16,8 +16,8 @@
             "contents": "break($1)",
             "annotation": "iteration",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -26,8 +26,8 @@
             "contents": "c_for($1)",
             "annotation": "iteration",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -36,8 +36,8 @@
             "contents": "continue($1)",
             "annotation": "iteration",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -46,8 +46,8 @@
             "contents": "filter($1)",
             "annotation": "iteration",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -56,8 +56,8 @@
             "contents": "first($1)",
             "annotation": "iteration",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -66,8 +66,8 @@
             "contents": "for($1)",
             "annotation": "iteration",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -76,8 +76,8 @@
             "contents": "loop($1)",
             "annotation": "iteration",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -86,8 +86,8 @@
             "contents": "map($1)",
             "annotation": "iteration",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -106,8 +106,8 @@
             "contents": "while($1)",
             "annotation": "iteration",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         }

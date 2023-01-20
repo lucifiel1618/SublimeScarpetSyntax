@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+    <key>scope</key>
+    <string>source.scarpet</string>
+    <key>settings</key>
+    <dict>
+        <key>decreaseIndentPattern</key>
+        <string><![CDATA[(?x)
+            # line beginning with whitespace
+            ^ \s*
+            (?:
+            # dedent closing braces
+              \)
+            )
+        ]]></string>
+
+        <key>increaseIndentPattern</key>
+        <string><![CDATA[(?x)
+            # line beginning with whitespace
+            ^ \s*
+            (?:
+            # indent after opening braces (may be followed by whitespace or comments)
+            # but exclude lines such as `extern "C" {`
+              .* \( \s* (?: //.* )? $
+            )
+        ]]></string>
+    </dict>
+</dict>
+</plist>

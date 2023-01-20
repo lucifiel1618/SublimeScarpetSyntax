@@ -2,22 +2,25 @@
 
 _; _a; _i; _x; _y; _z; _trace;
 // ^^ variable.language.anonymous
-pi; euler; true; false; null;
+pi; euler; true; false; null; 0xFFFFFFFF; 0b00011011; 1.1663787e-5;
 //  ^^^^^ constant.language.anonymous
+//                            ^^^^^^^^^^ meta.number.integer.hexadecimal
+//                                        ^^^^^^^^^^ meta.number.integer.binary
+//                                                    ^^^^^^^^^^^^ meta.number.float.decimal
 
 function_call(x, y, ...z);
 // <- meta.function-call.identifier variable.function
 //           ^^^^^^^^^^^^ meta.function-call.arguments
-//            ^ meta.function-call.arguments variable.other
 
 function_call_linebreak
-   (x, y, ...z);
-// ^^^^^^^^^^^^ meta.function-call.arguments
-
-function_call_linebreak_w_comments
 // <- meta.function-call.identifier variable.function
    (x, y, ...z);
 // ^^^^^^^^^^^^ meta.function-call.arguments
+
+function_call_with_expressions_in_arguments
+   (x1 = 1; x2 = 2; x = (x1+x2); y = 3; z = 4; x, y, ...z);
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.function-call.arguments.scarpet meta.group.scarpet
+
 
 function_declaration(x, y, ...z) -> (
 // <- entity.name.function meta.function.identifier
@@ -41,13 +44,6 @@ function_declaration(x, y, ...z) -> (
 // <- punctuation.section.block.end meta.function meta.block
 
 function_declaration_linebreak
-(x, y, ...z)
-->
-(
-return(0)
-);
-
-function_declaration_linebreak_w_comments
 // <- entity.name.function meta.function.identifier
 (x, y, ...z)
 // <- meta.function.parameters
@@ -87,19 +83,13 @@ map_identifier
 //  ^^^^^^^^^^^^^^ meta.variable.identifier
 
 map_identifier
-~   'item match key supports regex expression'+'[a-Z][0-9]*[^\(\]\{\\]+\s{1}\w{1-2}\b.*?';
-//   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mode.basic.regexp
-//                                                         ^^^^^^^^^^^ meta.set.regexp
-"double-quoted-strings are illegal"
-//<- invalid.illegal.not-a-str.scarpet
-illegal,use , of ,comma,
-//     ^ invalid.illegal.stray.scarpet
-//          ^ invalid.illegal.stray.scarpet
-//               ^ invalid.illegal.stray.scarpet
-//                     ^ invalid.illegal.stray.scarpet
-do_for_loop() -> (
+~   'item matching accepts regex expression [a-Z][0-9]*[^\(\]\{\\]+\s{1}\w{1-2}\b.*?';
+//   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mode.basic.regexp
+//                                                     ^^^^^^^^^^^ meta.set.regexp
+
+do_for_loop(n) -> (
     sum = 0;
-    for(range(10),
+    for(range(n),
         sum += _^2;
         if(sum >= 20,
             break();
@@ -108,3 +98,15 @@ do_for_loop() -> (
     print(sum);
 
 );
+
+"double-quoted-string is illegal";
+//<- invalid.illegal.not-a-str
+octal_number_is_illegal = 0o1234567;
+//                        ^^^^^^^^^ meta.number.integer.octal invalid.illegal.number
+illegal,use , of ,comma,;
+//     ^ invalid.illegal.stray
+//          ^ invalid.illegal.stray
+//               ^ invalid.illegal.stray
+//                     ^ invalid.illegal.stray
+illegal -> arrow_operator;
+//      ^^ invalid.illegal.arrow.scarpet

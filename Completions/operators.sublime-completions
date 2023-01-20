@@ -6,8 +6,8 @@
             "contents": "->",
             "annotation": "operator",
             "kind": [
-                "keyword",
-                "k",
+                "function",
+                "f",
                 "Language"
             ]
         },
@@ -16,8 +16,8 @@
             "contents": "...",
             "annotation": "operator",
             "kind": [
-                "keyword",
-                "k",
+                "function",
+                "f",
                 "Language"
             ]
         },

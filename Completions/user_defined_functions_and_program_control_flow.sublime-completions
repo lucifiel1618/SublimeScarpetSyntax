@@ -16,8 +16,8 @@
             "contents": "exit($1)",
             "annotation": "controlflow",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -26,8 +26,8 @@
             "contents": "if($1)",
             "annotation": "controlflow",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -36,8 +36,8 @@
             "contents": "import($1)",
             "annotation": "controlflow",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -56,8 +56,8 @@
             "contents": "return($1)",
             "annotation": "controlflow",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -76,8 +76,8 @@
             "contents": "throw($1)",
             "annotation": "controlflow",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         },
@@ -86,8 +86,8 @@
             "contents": "try($1)",
             "annotation": "controlflow",
             "kind": [
-                "function",
-                "f",
+                "keyword",
+                "k",
                 "Language"
             ]
         }

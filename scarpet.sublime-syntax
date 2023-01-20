@@ -130,11 +130,10 @@ contexts:
     - include: illegal-punctuation-separator-comma
 
   expressions:
-    - include: expressions-wo-variables-and-strings
+    - include: expressions-wo-variables
     - include: variables
-    - include: strings
 
-  expressions-wo-variables-and-strings:
+  expressions-wo-variables:
     - include: literals
     - include: punctuations
     - include: comments
@@ -142,11 +141,7 @@ contexts:
     - include: operators
     - include: list
     - include: map
-
-  expressions-regex:
-    - include: expressions-wo-variables-and-strings
-    - include: variables
-    - include: single-quoted-regex-strings
+    - include: strings
 
 ###[ OPERATORS ]################################################################
 
@@ -157,16 +152,17 @@ contexts:
       scope: keyword.operator.comparison.scarpet
     - match: '='
       scope: keyword.operator.assignment.scarpet
+    - match: ->
+      scope: invalid.illegal.arrow.scarpet
     - match: '[\+\-*/%^]'
       scope: keyword.operator.arithmetic.scarpet
     - match: '!|&&|\|\|'
       scope: keyword.operator.logical.scarpet
     - match: '~'
       scope: keyword.operator.match.scarpet
-      push: variable-item-access
+      push: variable-match-item-access
     - match: ':'
       scope: keyword.operator.get.scarpet
-      push: variable-item-access
 
 ###[ PUNCTUATIONS ]#############################################################
 
@@ -384,7 +380,7 @@ contexts:
 ###[ PRINT FUNCTIONS ]##########################################################
 
   print-function:
-    - match: print
+    - match: print\b
       scope: keyword.other.print.scarpet
       set: reference-function-call-arguments
 
@@ -481,8 +477,7 @@ contexts:
   paren-block-body:
     - meta_scope: meta.block.scarpet
     - include: paren-block-end
-    - include: statements
-    - include: punctuation-terminator-semicolon
+    - include: blocks
     - include: expression
 
   stray-paren-block:
@@ -491,16 +486,13 @@ contexts:
 
 ###[ GROUPS ]###################################################################
 
-  groups:
-    - match: \(
-      scope: punctuation.section.group.begin.scarpet
-      set: expression-group
-
   group-body:
     - meta_scope: meta.group.scarpet
     - match: \)
       scope: punctuation.section.group.end.scarpet
       set: group-end
+    - include: punctuation-separator-comma
+    - include: blocks
     - include: expression
 
   group-end:
@@ -523,30 +515,13 @@ contexts:
     - include: expressions
 
   expression-terminator:
-    - match: |-
-        (?x)(?=
-          [;\],{}]{{break}}
-        )
+    - meta_content_scope: punctuation.terminator.scarpet
+    - match: (?=[,\]\}])
       pop: 1
-
-###[ EXPRESSION GROUPS ]########################################################
-
-  expression-group:
-    - meta_scope: meta.group.scarpet
-    - match: \)
-      scope: punctuation.section.group.end.scarpet
-      pop: 1
-    - include: expression
 
 ###[ VARIABLES ]################################################################
 
   variables:
-    # Note:
-    # 1) `variable-other` must be the first branch to scope the very last
-    #    identifier before eof or end of embedded section as ordinary variable.
-    # 2) `variable-qualifier` scopes identifiers not followed by ClassCaseIds
-    #    as ordinary variables. Found no easy enough solution by only using
-    #    `variable-other` and `variable-namespace`.
     - match: (?={{id_first_char}})
       branch_point: variables
       branch:
@@ -564,7 +539,7 @@ contexts:
     - meta_content_scope: meta.variable.identifier.scarpet
     - match: \s*(\()
       fail: variables
-    - include: list-end
+    - include: else-pop
 
   else-pop:
     - match: (?=\S)
@@ -585,14 +560,10 @@ contexts:
     - meta_scope: meta.sequence.list.scarpet
     - match: \]
       scope: punctuation.section.sequence.end.scarpet
-      set: list-end
-    - include: expression
-
-  list-end:
-    - meta_content_scope: meta.sequence.list.scarpet
-    - match: \s*(?=:~)
-    - match: (?=\s*\S)
       pop: 1
+    - include: punctuation-separator-comma
+    - include: blocks
+    - include: expression
 
   map:
     - match: \{
@@ -603,41 +574,38 @@ contexts:
     - meta_scope: meta.mapping.scarpet
     - match: \}
       scope: punctuation.section.mapping.end.scarpet
-      set: map-end
+      pop: 1
     - include: punctuation-separator-comma
     - match: (?=\S)
       push: map-key
 
-  map-end:
-    - meta_content_scope: meta.mapping.scarpet
-    - match: \s*(?=:~)
-    - match: (?=\s*\S)
-      pop: 1
-
   map-value:
     - clear_scopes: 1
     - meta_content_scope: meta.mapping.scarpet meta.mapping.value.scarpet
-    - match: (?=,)
+    - match: (?=[,\}])
       pop: 1
+    - include: blocks
     - include: expression
 
   map-key-value-separator:
-      - match: ->
-        scope: meta.mapping.scarpet punctuation.separator.key-value.scarpet
-        set: map-value
+    - match: ->
+      scope: meta.mapping.scarpet punctuation.separator.key-value.scarpet
+      set: map-value
 
   map-key:
     - clear_scopes: 1
     - meta_content_scope: meta.mapping.scarpet meta.mapping.key.scarpet
     - match: (?=->)
       set: map-key-value-separator
+    - include: blocks
     - include: expression-terminator
     - include: reference-expressions
 
-  variable-item-access:
-    - meta_scope: meta.variable.item-access.scarpet
-    - include: expression-terminator
-    - include: expressions-regex
+  variable-match-item-access:
+    - meta_scope: meta.variable.item-access.match.scarpet
+    - match: \'
+      set: single-quoted-regex-string-body
+    - include: block-or-expression
 
 ###[ FUNCTIONS ]################################################################
 
@@ -660,14 +628,12 @@ contexts:
     - match: ->
       scope:
         keyword.declaration.function.arrow.scarpet meta.function.scarpet
-      pop: 1
-      push:
-        - function-meta
-        - block-or-expression
-    - include: else-pop
+      set: function-meta
 
   function-meta:
     - meta_content_scope: meta.function.scarpet
+    - include: blocks
+    - include: expression
     - include: else-pop
 
   function-call-identifier:
@@ -685,7 +651,6 @@ contexts:
 
   function-call-arguments-body:
     - meta_scope: meta.function-call.arguments.scarpet meta.group.scarpet
-    - include: punctuation-separator-comma
     - include: group-body
 
   builtin-functions:
@@ -727,17 +692,10 @@ contexts:
 ###[ REFERENCE EXPRESSIONS ]####################################################
 
   reference-expressions:
-    - include: expressions-wo-variables-and-strings
-    - include: single-quoted-strings
+    - include: expressions-wo-variables
     - include: reference-variables
 
   reference-variables:
-    # Note:
-    # 1) `variable-other` must be the first branch to scope the very last
-    #    identifier before eof or end of embedded section as ordinary variable.
-    # 2) `variable-qualifier` scopes identifiers not followed by ClassCaseIds
-    #    as ordinary variables. Found no easy enough solution by only using
-    #    `variable-other` and `variable-namespace`.
     - match: (?={{id_first_char}})
       branch_point: reference-variables
       branch:
@@ -754,7 +712,7 @@ contexts:
     - meta_content_scope: meta.variable.identifier.scarpet
     - match: \s*(\()
       fail: reference-variables
-    - include: list-end
+    - include: else-pop
 
   reference-function-call-identifier:
     - include: builtin-functions
@@ -776,7 +734,7 @@ contexts:
     - meta_scope: meta.group.scarpet
     - include: reference-group-end
     - include: punctuation-separator-comma
-    - include: punctuation-terminator-semicolon
+    - include: blocks
     - include: reference-expressions
 
   reference-group-end:

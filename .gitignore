@@ -274,3 +274,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Misc
+*.pdf
