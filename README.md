@@ -13,7 +13,7 @@ __SublimeScarpetSyntax__ is a __[SublimeText]__ package that enables syntax high
 2. Open the command palette
    - Win/Linux: <kbd>control ⌃</kbd><kbd>shift ⇧</kbd>+<kbd>p</kbd> -> `install package`
    - Mac: <kbd>command ⌘</kbd><kbd>shift ⇧</kbd>+<kbd>p</kbd> -> `install package`
-3. Search for `ScarpetSyntax` and press <kbd>enter↩</kbd> to install
+3. Search for `ScarpetSyntax` and press <kbd>enter ⏎</kbd> to install
 ### Manual
 * Mac
 ```sh
