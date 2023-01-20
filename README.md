@@ -1,5 +1,5 @@
 # SublimeScarpetSyntax: A SublimeText Package for Scarpet
-
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/lucifiel1618/SublimeScarpetSyntax)
 ## Overview
 __[Scarpet]__, or __Script for Carpet__, is a script language used to design custom programs for __[Carpet Mod]__ in __[Minecraft]__.
 
@@ -11,11 +11,11 @@ __SublimeScarpetSyntax__ is a __[SublimeText]__ package that enables syntax high
 ### From __[Package Control]__ (recommended)
 1. Install __[Package Control]__
 2. Open the command palette
-   - Win/Linux: `ctrl+shift+p` -> `install package`
-   - Mac: `ctrl+shift+p` -> `install package`
-3. Search for `ScarpetSyntax` and press `enter` to install
+   - Win/Linux: <kbd>control⌃</kbd><kbd>shift⇧</kbd>+<kbd>p</kbd> -> `install package`
+   - Mac: <kbd>command⌘</kbd><kbd>shift⇧</kbd>+<kbd>p</kbd> -> `install package`
+3. Search for `ScarpetSyntax` and press <kbd>enter↩</kbd> to install
 ### Manual
-* macOS
+* Mac
 ```sh
 cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
 git clone --depth=1 https://github.com/lucifiel1618/SublimeScarpetSyntax.git
@@ -27,7 +27,7 @@ cd ~/.config/sublime-text-3/Packages
 git clone --depth=1 https://github.com/lucifiel1618/SublimeScarpetSyntax.git
 
 ```
-* Windows
+* Win
 ```cmd
 cd "%APPDATA%\Sublime Text 3\Packages"
 git clone --depth=1 https://github.com/lucifiel1618/SublimeScarpetSyntax.git

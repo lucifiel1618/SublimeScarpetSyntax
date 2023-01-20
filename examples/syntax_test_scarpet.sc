@@ -1,4 +1,4 @@
-// SYNTAX TEST "Packages/Scarpet/scarpet.sublime-syntax"
+// SYNTAX TEST "Packages/SublimeScarpetSyntax/scarpet.sublime-syntax"
 
 _; _a; _i; _x; _y; _z; _trace;
 // ^^ variable.language.anonymous
@@ -30,18 +30,18 @@ function_declaration(x, y, ...z) -> (
 //                         ^^^ keyword.operator.unpacking.mapping
 //                            ^ meta.function.parameters
 //                               ^^ keyword.declaration.function.arrow
-//                                  ^ punctuation.section.block.begin meta.function meta.block
+//                                  ^ meta.function meta.block punctuation.section.block.begin
     ret = x+y+...z;
 //  ^^^ variable.other
 //      ^ keyword.operator.assignment
     print(str('Sum total: "%.2f"', ret));
-//  ^^^^^ support.function.builtin
-//             ^^^^^^^^^^^^^^^^ string.quoted.single
+//  ^^^^^ keyword.other.print
+//             ^^^^^^^^^^^^^^^^^ string.quoted.single
 //                         ^^^^ constant.other.placeholder
     return  (ret);
-//  ^^^^^^ support.function.builtin
+//  ^^^^^^ keyword.control.flow.return
 );
-// <- punctuation.section.block.end meta.function meta.block
+// <- meta.function meta.block punctuation.section.block.end
 
 function_declaration_linebreak
 // <- entity.name.function meta.function.identifier
@@ -50,10 +50,10 @@ function_declaration_linebreak
 ->
 // <- keyword.declaration.function.arrow
 (
-// <- punctuation.section.block.begin meta.function meta.block
+// <- meta.function meta.block punctuation.section.block.begin
 return(0)
 );
-// <- punctuation.section.block.end meta.block
+// <- meta.block punctuation.section.block.end
 
 map_identifier = {
 //               ^ meta.mapping punctuation.section.mapping.begin
@@ -64,22 +64,21 @@ map_identifier = {
     ['key', 'list'] -> 'datum_str',
 //  ^^^^^^^^^^^^^^^ meta.mapping.key meta.sequence.list
     key_function_call(x, y) -> datum_function_call(x, y),
-//  ^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.key variable.meta.function-call
+//  ^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.key meta.function-call
 //                             ^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.value meta.function-call
     key_function_call(x, y) -> datum_function_declaration(x, y) -> x+y,
-//  ^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.key variable.meta.function-call
-//                             ^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.value meta.function-call
+//  ^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.key meta.function-call
+//                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mapping.value meta.function
     {'key'->'map'} -> {'datum' -> 'map'}
 //                 ^^ punctuation.separator.key-value
 };
 
 map_identifier:item_get_key;
 // <- meta.variable.identifier
-//            ^ meta.variable.item-access keyword.operator.get
-//             ^^^^^^^^^^^^ meta.variable.item-access
+//            ^ keyword.operator.get
 map_identifier
 ~   item_match_key;
-// <- meta.variable.item-access keyword.operator.match
+// <- keyword.operator.match
 //  ^^^^^^^^^^^^^^ meta.variable.identifier
 
 map_identifier

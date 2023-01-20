@@ -625,7 +625,7 @@ contexts:
     - include: parameter
 
   define-as:
-    - match: ->
+    - match: \s*->
       scope:
         keyword.declaration.function.arrow.scarpet meta.function.scarpet
       set: function-meta
