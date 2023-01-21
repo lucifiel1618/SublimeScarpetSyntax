@@ -1,0 +1,736 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/syntax.html
+name: Scarpet String Format
+scope: source.string-format.scarpet
+version: 2
+hidden: true
+
+file_extensions:
+  - sc
+  - scl
+
+variables:
+  strftime_spec: '(?:%(?:[aAwdbBGmyYHIpMSfzZjuUVWcxX%]|-[dmHIMSj]))'
+  fontstyle: '(?:[ibsuo])'
+  fontcolor: '(?:[wymrcltfgdpnqevk]|#\h{6})'
+  fontfmt: (?:{{fontstyle}}|{{fontcolor}})
+  decorator: (?:[?!@&])
+
+contexts:
+  main:
+    - meta_scope: meta.mode.basic.string-format.scarpet
+    - match: '{{decorator}}'
+      scope: storage.modifier.decorator.string-format.scarpet
+      pop: 1
+    - match: '(\^|)'
+      scope: storage.modifier.decorator.string-format.scarpet
+      set: font-fmt
+
+  font-fmt:
+    - match: \s
+      pop: 1
+    - match: (?={{fontfmt}}*#\h{6}{{fontstyle}}*(?!\S))
+      # No sublime support for hex color. White it is.
+      set: w
+    - match: (?={{fontfmt}}*w{{fontstyle}}*(?!\S))
+      set: w
+    - match: (?={{fontfmt}}*y{{fontstyle}}*(?!\S))
+      set: y
+    - match: (?={{fontfmt}}*m{{fontstyle}}*(?!\S))
+      set: m
+    - match: (?={{fontfmt}}*r{{fontstyle}}*(?!\S))
+      set: r
+    - match: (?={{fontfmt}}*c{{fontstyle}}*(?!\S))
+      set: c
+    - match: (?={{fontfmt}}*l{{fontstyle}}*(?!\S))
+      set: l
+    - match: (?={{fontfmt}}*t{{fontstyle}}*(?!\S))
+      set: t
+    - match: (?={{fontfmt}}*f{{fontstyle}}*(?!\S))
+      set: f
+    - match: (?={{fontfmt}}*g{{fontstyle}}*(?!\S))
+      set: g
+    - match: (?={{fontfmt}}*d{{fontstyle}}*(?!\S))
+      set: d
+    - match: (?={{fontfmt}}*p{{fontstyle}}*(?!\S))
+      set: p
+    - match: (?={{fontfmt}}*n{{fontstyle}}*(?!\S))
+      set: n
+    - match: (?={{fontfmt}}*q{{fontstyle}}*(?!\S))
+      set: q
+    - match: (?={{fontfmt}}*e{{fontstyle}}*(?!\S))
+      set: e
+    - match: (?={{fontfmt}}*v{{fontstyle}}*(?!\S))
+      set: v
+    - match: (?={{fontfmt}}*k{{fontstyle}}*(?!\S))
+      set: k
+    - match: '\S+'
+      scope: invalid.illegal.string-format.scarpet
+  # 16 colors (No sublime support for hex color. White it is.)
+  apply-w: # white
+    - meta_content_scope: region.whitish.string-format.scarpet
+  apply-y: # yellow
+    - meta_content_scope: region.yellowish.string-format.scarpet
+  apply-m: # magenta (not supported)
+    - meta_content_scope: region.magentaish.string-format.scarpet
+  apply-r: # red
+    - meta_content_scope: region.redish.string-format.scarpet
+  apply-c: # cyan
+    - meta_content_scope: region.cyanish.string-format.scarpet
+  apply-l: # lime (not supported)
+    - meta_content_scope: region.limish.string-format.scarpet
+  apply-t: # light blue (not supported)
+    - meta_content_scope: region.light-bluish.string-format.scarpet
+  apply-f: # dark gray (not supported)
+    - meta_content_scope: region.dark-grayish.string-format.scarpet
+  apply-g: # gray (not supported)
+    - meta_content_scope: region.grayish.string-format.scarpet
+  apply-d: # gold (not supported)
+    - meta_content_scope: region.goldish.string-format.scarpet
+  apply-p: # purple
+    - meta_content_scope: region.purplish.string-format.scarpet
+  apply-n: # brown (not supported)
+    - meta_content_scope: region.brownish.string-format.scarpet
+  apply-q: # turquoise (not supported)
+    - meta_content_scope: region.turquoish.string-format.scarpet
+  apply-e: # green
+    - meta_content_scope: region.greenish.string-format.scarpet
+  apply-v: # navy blue (not supported)
+    - meta_content_scope: region.navy-bluish.string-format.scarpet
+  apply-k: # black (not supported)
+    - meta_content_scope: region.blackish.string-format.scarpet
+
+  # 4 styles:
+  apply-b: # bold
+    - meta_content_scope: markup.bold.string-format.scarpet
+  apply-i: # italic
+    - meta_content_scope: markup.italic.string-format.scarpet
+  apply-s: # strikethrough (not supported)
+    - meta_content_scope: markup.strikethrough.string-format.scarpet
+  apply-u: # obfuscated (not supported)
+    - meta_content_scope: markup.underline.string-format.scarpet
+
+  w:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-w, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-w, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-w, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-w, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-w, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-w, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-w, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-w, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-w, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-w, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-w, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-w, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-w, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-w, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-w, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-w]
+
+  y:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-y, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-y, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-y, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-y, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-y, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-y, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-y, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-y, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-y, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-y, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-y, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-y, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-y, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-y, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-y, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-y]
+
+  m:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-m, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-m, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-m, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-m, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-m, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-m, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-m, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-m, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-m, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-m, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-m, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-m, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-m, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-m, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-m, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-m]
+
+  r:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-r, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-r, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-r, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-r, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-r, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-r, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-r, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-r, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-r, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-r, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-r, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-r, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-r, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-r, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-r, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-r]
+
+  c:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-c, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-c, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-c, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-c, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-c, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-c, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-c, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-c, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-c, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-c, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-c, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-c, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-c, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-c, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-c, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-c]
+
+  l:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-l, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-l, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-l, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-l, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-l, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-l, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-l, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-l, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-l, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-l, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-l, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-l, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-l, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-l, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-l, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-l]
+
+  t:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-t, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-t, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-t, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-t, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-t, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-t, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-t, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-t, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-t, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-t, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-t, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-t, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-t, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-t, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-t, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-t]
+
+  f:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-f, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-f, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-f, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-f, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-f, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-f, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-f, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-f, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-f, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-f, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-f, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-f, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-f, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-f, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-f, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-f]
+
+  g:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-g, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-g, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-g, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-g, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-g, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-g, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-g, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-g, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-g, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-g, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-g, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-g, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-g, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-g, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-g, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-g]
+
+  d:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-d, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-d, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-d, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-d, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-d, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-d, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-d, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-d, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-d, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-d, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-d, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-d, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-d, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-d, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-d, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-d]
+
+  p:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-p, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-p, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-p, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-p, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-p, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-p, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-p, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-p, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-p, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-p, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-p, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-p, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-p, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-p, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-p, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-p]
+
+  n:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-n, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-n, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-n, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-n, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-n, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-n, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-n, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-n, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-n, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-n, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-n, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-n, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-n, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-n, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-n, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-n]
+
+  q:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-q, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-q, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-q, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-q, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-q, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-q, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-q, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-q, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-q, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-q, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-q, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-q, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-q, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-q, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-q, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-q]
+
+  e:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-e, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-e, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-e, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-e, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-e, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-e, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-e, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-e, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-e, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-e, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-e, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-e, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-e, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-e, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-e, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-e]
+
+  v:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-v, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-v, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-v, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-v, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-v, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-v, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-v, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-v, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-v, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-v, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-v, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-v, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-v, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-v, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-v, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-v]
+
+  k:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-k, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-k, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-k, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-k, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-k, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-k, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-k, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-k, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-k, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-k, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-k, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-k, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-k, apply-i]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-k, apply-u]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-k, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-k]

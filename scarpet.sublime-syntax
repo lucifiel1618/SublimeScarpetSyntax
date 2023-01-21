@@ -5,7 +5,9 @@ name: Scarpet
 scope: source.scarpet
 version: 2
 
-extends: Packages/Regular Expressions/RegExp (Basic).sublime-syntax
+extends:
+  - Packages/Regular Expressions/RegExp (Basic).sublime-syntax
+  - scarpet_strformat.sublime-syntax
 
 file_extensions:
   - sc
@@ -160,7 +162,7 @@ contexts:
       scope: keyword.operator.logical.scarpet
     - match: '~'
       scope: keyword.operator.match.scarpet
-      push: variable-match-item-access
+      set: variable-match-item-access
     - match: ':'
       scope: keyword.operator.get.scarpet
 
@@ -230,6 +232,16 @@ contexts:
       pop: 1
     - match: ''
       embed: scope:source.regexp.basic
+      escape: (?='|\n)
+
+  single-quoted-format-string-body:
+    - meta_include_prototype: false
+    - meta_scope: meta.string.scarpet string.quoted.single.scarpet
+    - match: \'
+      scope: punctuation.definition.string.end.scarpet
+      pop: 1
+    - match: ''
+      embed: scope:source.string-format.scarpet
       escape: (?='|\n)
 
   illegal-string-end:
@@ -424,10 +436,18 @@ contexts:
       set: reference-function-call-arguments
 
 ###[ TYPE CONVERSION FUNCTIONS ] ###############################################
+
   type-conversion-functions:
     - match: '{{builtin_types}}'
       scope: support.type.scarpet
       set: reference-function-call-arguments
+
+###[ STRING FORMAT FUNCTIONS ] #################################################
+
+  string-format-function:
+    - match: format\b
+      scope: support.function.builtin.scarpet
+      set: string-format-function-call-arguments
 
 ###[ COMMENTS ]#################################################################
 
@@ -483,22 +503,6 @@ contexts:
   stray-paren-block:
     - match: \)
       scope: invalid.illegal.stray.scarpet
-
-###[ GROUPS ]###################################################################
-
-  group-body:
-    - meta_scope: meta.group.scarpet
-    - match: \)
-      scope: punctuation.section.group.end.scarpet
-      set: group-end
-    - include: punctuation-separator-comma
-    - include: blocks
-    - include: expression
-
-  group-end:
-    - match: \s*(->)
-      fail: variables
-    - include: else-pop
 
 ###[ EXPRESSIONS ]##############################################################
 
@@ -604,6 +608,7 @@ contexts:
   variable-match-item-access:
     - meta_scope: meta.variable.item-access.match.scarpet
     - match: \'
+      scope: punctuation.definition.string.begin.scarpet
       set: single-quoted-regex-string-body
     - include: block-or-expression
 
@@ -613,13 +618,13 @@ contexts:
     - match: '{{id}}'
       scope: entity.name.function.scarpet meta.function.identifier.scarpet
     - match: \(
-      scope: punctuation.section.group.begin.scarpet
-      set: function-parameter-group
+      scope: punctuation.section.parameters.begin.scarpet
+      set: function-declaration-parameters
 
-  function-parameter-group:
-    - meta_scope: meta.function.parameters.scarpet meta.group.scarpet
+  function-declaration-parameters:
+    - meta_scope: meta.function.parameters.scarpet
     - match: \)
-      scope: punctuation.section.group.end.scarpet
+      scope: punctuation.section.parameters.end.scarpet
       set: define-as
     - include: punctuation-separator-comma
     - include: parameter
@@ -644,14 +649,24 @@ contexts:
     - include: immediately-pop
 
   function-call-arguments:
-    - meta_content_scope: meta.function-call.identifier.scarpet
+    - meta_content_scope: meta.function-call.arguments.scarpet
     - match: \(
-      scope: punctuation.section.group.begin.scarpet
+      scope: punctuation.section.arguments.begin.scarpet
       set: function-call-arguments-body
 
   function-call-arguments-body:
-    - meta_scope: meta.function-call.arguments.scarpet meta.group.scarpet
-    - include: group-body
+    - meta_scope: meta.function-call.arguments.scarpet
+    - match: \)
+      scope: punctuation.section.arguments.end.scarpet
+      set: function-call-arguments-end
+    - include: punctuation-separator-comma
+    - include: blocks
+    - include: expression
+
+  function-call-arguments-end:
+    - match: \s*(->)
+      fail: variables
+    - include: else-pop
 
   builtin-functions:
     - include: loop-functions
@@ -659,6 +674,7 @@ contexts:
     - include: flow-control-functions
     - include: print-function
     - include: type-conversion-functions
+    - include: string-format-function
     - match: '{{builtin_functions}}'
       scope: support.function.builtin.scarpet
       set: function-call-arguments
@@ -721,23 +737,34 @@ contexts:
       set: reference-function-call-arguments
 
   reference-function-call-arguments:
-    - meta_content_scope: meta.function-call.identifier.scarpet
+    - meta_content_scope: meta.function-call.arguments.scarpet
     - match: \(
-      scope: punctuation.section.group.begin.scarpet
+      scope: punctuation.section.arguments.begin.scarpet
       set: reference-function-call-arguments-body
 
   reference-function-call-arguments-body:
-    - meta_scope: meta.function-call.arguments.scarpet meta.group.scarpet
-    - include: reference-group-body
-
-  reference-group-body:
-    - meta_scope: meta.group.scarpet
-    - include: reference-group-end
+    - meta_scope: meta.function-call.arguments.scarpet
+    - match: \)
+      scope: punctuation.section.arguments.end.scarpet
+      pop: 1
     - include: punctuation-separator-comma
     - include: blocks
     - include: reference-expressions
 
-  reference-group-end:
+  string-format-function-call-arguments:
+    - meta_content_scope: meta.function-call.arguments.scarpet
+    - match: \(
+      scope: punctuation.section.arguments.begin.scarpet
+      set: string-format-function-call-arguments-body
+
+  string-format-function-call-arguments-body:
+    - meta_scope: meta.function-call.arguments.scarpet
     - match: \)
-      scope: punctuation.section.group.end.scarpet
+      scope: punctuation.section.arguments.end.scarpet
       pop: 1
+    - include: punctuation-separator-comma
+    - match: \'
+      scope: punctuation.definition.string.begin.scarpet
+      push: single-quoted-format-string-body
+    - include: blocks
+    - include: reference-expressions

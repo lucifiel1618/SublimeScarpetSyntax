@@ -76,6 +76,7 @@ map_identifier = {
 map_identifier:item_get_key;
 // <- meta.variable.identifier
 //            ^ keyword.operator.get
+
 map_identifier
 ~   item_match_key;
 // <- keyword.operator.match
