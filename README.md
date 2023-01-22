@@ -9,11 +9,11 @@ __SublimeScarpetSyntax__ is a __[SublimeText]__ package that enables syntax high
 
 ## Installation
 ### From __[Package Control]__ (recommended)
-1. Install __[Package Control]__
+1. [Install Package Control]
 2. Open the command palette
    - Win/Linux: <kbd>control ⌃</kbd><kbd>shift ⇧</kbd>+<kbd>p</kbd> -> `install package`
    - Mac: <kbd>command ⌘</kbd><kbd>shift ⇧</kbd>+<kbd>p</kbd> -> `install package`
-3. Search for `ScarpetSyntax` and press <kbd>enter ⏎</kbd> to install
+3. Search for `Scarpet` and press <kbd>enter ⏎</kbd> to install
 
 ### Manual
 * Mac
@@ -46,4 +46,5 @@ git clone --depth=1 https://github.com/lucifiel1618/SublimeScarpetSyntax.git
 [Carpet Mod]: /gnembon/fabric-carpet
 [Minecraft]: https://www.minecraft.net
 [SublimeText]: https://www.sublimetext.com/
-[Package Control]: https://packagecontrol.io/installation
+[Package Control]: https://packagecontrol.io/packages/Scarpet
+[Install Package Control]: https://packagecontrol.io/installation
