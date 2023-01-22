@@ -8,14 +8,14 @@ __SublimeScarpetSyntax__ is a __[SublimeText]__ package that enables syntax high
 <p align="center"><img src="https://media.githubusercontent.com/media/lucifiel1618/SublimeScarpetSyntax/main/preview.png" alt="preview image" width="500"></p>
 
 ## Installation
-### From __[Package Control]__ (recommended)
+### A. From __[Package Control]__ (recommended)
 1. [Install Package Control]
 2. Open the command palette
    - Win/Linux: <kbd>control ⌃</kbd><kbd>shift ⇧</kbd>+<kbd>p</kbd> -> `install package`
    - Mac: <kbd>command ⌘</kbd><kbd>shift ⇧</kbd>+<kbd>p</kbd> -> `install package`
 3. Search for `Scarpet` and press <kbd>enter ⏎</kbd> to install
 
-### Manual
+### B. Manual
 * Mac
 ```sh
 cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
