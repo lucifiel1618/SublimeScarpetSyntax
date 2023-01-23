@@ -19,7 +19,7 @@ function_call_linebreak
 
 function_call_with_expressions_in_arguments
    (x1 = 1; x2 = 2; x = (x1+x2); y = 3; z = 4; x, y, ...z);
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.function-call.arguments.scarpet meta.group.scarpet
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.function-call.arguments
 
 
 function_declaration(x, y, ...z) -> (
@@ -76,6 +76,7 @@ map_identifier = {
 map_identifier:item_get_key;
 // <- meta.variable.identifier
 //            ^ keyword.operator.get
+
 map_identifier
 ~   item_match_key;
 // <- keyword.operator.match
@@ -85,6 +86,22 @@ map_identifier
 ~   'item matching accepts regex expression [a-Z][0-9]*[^\(\]\{\\]+\s{1}\w{1-2}\b.*?';
 //   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mode.basic.regexp
 //                                                     ^^^^^^^^^^^ meta.set.regexp
+
+format('ib certain', 'u formatted', 'ibc string' 'uri preview', 'eb are supported!');
+
+decorators = format('^ubic tooltips', '?suggestion', '!message', '@url', '&copy to clipboard text');
+
+avalible_fontstyles = format('b bold', 'i italic', 'u underline');
+unavalible_fontstyles = format('s strikethrough', 'o obfuscated');
+
+avalible_fontcolors = format('w white', 'y yellow', 'r red', 'c cyan', 'p purple', 'e green')
+unavalible_fontcolors_by_default = format( // require_customized_color_scheme
+    'm magenta', 'l lime', 't light blue', 'f dark gray', 'g gray', 'd gold',
+    'n brown', 'q turquoise', 'n navy blue', 'k black', '#AAAAAA hexcolor');
+
+more_valid_formats = format('bbbi#ABABA1ssosrso message')
+invalid_fontfmts = format('tyai including non-existing formatting symbols "a"',
+    '#AABAFI invalid_hexcode');
 
 do_for_loop(n) -> (
     sum = 0;
