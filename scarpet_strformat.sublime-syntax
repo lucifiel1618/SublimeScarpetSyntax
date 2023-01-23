@@ -6,10 +6,6 @@ scope: source.string-format.scarpet
 version: 2
 hidden: true
 
-file_extensions:
-  - sc
-  - scl
-
 variables:
   strftime_spec: '(?:%(?:[aAwdbBGmyYHIpMSfzZjuUVWcxX%]|-[dmHIMSj]))'
   fontstyle: '(?:[ibsuo])'
@@ -65,6 +61,8 @@ contexts:
       set: v
     - match: (?={{fontfmt}}*k{{fontstyle}}*(?!\S))
       set: k
+    - match: (?={{fontfmt}}*(?!\S))
+      set: w
     - match: '\S+'
       scope: invalid.illegal.string-format.scarpet
   # 16 colors (No sublime support for hex color. White it is.)
@@ -117,9 +115,9 @@ contexts:
       set: [apply-w, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-w, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-w, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-w, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-w, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -142,9 +140,9 @@ contexts:
       set: [apply-w, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-w, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-w, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-w, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -156,9 +154,9 @@ contexts:
       set: [apply-y, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-y, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-y, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-y, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-y, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -181,9 +179,9 @@ contexts:
       set: [apply-y, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-y, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-y, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-y, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -195,9 +193,9 @@ contexts:
       set: [apply-m, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-m, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-m, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-m, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-m, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -220,9 +218,9 @@ contexts:
       set: [apply-m, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-m, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-m, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-m, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -234,9 +232,9 @@ contexts:
       set: [apply-r, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-r, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-r, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-r, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-r, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -259,9 +257,9 @@ contexts:
       set: [apply-r, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-r, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-r, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-r, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -273,9 +271,9 @@ contexts:
       set: [apply-c, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-c, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-c, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-c, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-c, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -298,9 +296,9 @@ contexts:
       set: [apply-c, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-c, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-c, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-c, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -312,9 +310,9 @@ contexts:
       set: [apply-l, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-l, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-l, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-l, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-l, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -337,9 +335,9 @@ contexts:
       set: [apply-l, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-l, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-l, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-l, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -351,9 +349,9 @@ contexts:
       set: [apply-t, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-t, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-t, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-t, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-t, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -376,9 +374,9 @@ contexts:
       set: [apply-t, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-t, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-t, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-t, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -390,9 +388,9 @@ contexts:
       set: [apply-f, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-f, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-f, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-f, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-f, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -415,9 +413,9 @@ contexts:
       set: [apply-f, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-f, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-f, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-f, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -429,9 +427,9 @@ contexts:
       set: [apply-g, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-g, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-g, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-g, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-g, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -454,9 +452,9 @@ contexts:
       set: [apply-g, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-g, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-g, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-g, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -468,9 +466,9 @@ contexts:
       set: [apply-d, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-d, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-d, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-d, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-d, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -493,9 +491,9 @@ contexts:
       set: [apply-d, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-d, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-d, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-d, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -507,9 +505,9 @@ contexts:
       set: [apply-p, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-p, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-p, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-p, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-p, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -532,9 +530,9 @@ contexts:
       set: [apply-p, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-p, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-p, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-p, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -546,9 +544,9 @@ contexts:
       set: [apply-n, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-n, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-n, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-n, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-n, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -571,9 +569,9 @@ contexts:
       set: [apply-n, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-n, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-n, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-n, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -585,9 +583,9 @@ contexts:
       set: [apply-q, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-q, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-q, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-q, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-q, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -610,9 +608,9 @@ contexts:
       set: [apply-q, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-q, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-q, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-q, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -624,9 +622,9 @@ contexts:
       set: [apply-e, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-e, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-e, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-e, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-e, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -649,9 +647,9 @@ contexts:
       set: [apply-e, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-e, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-e, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-e, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -663,9 +661,9 @@ contexts:
       set: [apply-v, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-v, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-v, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-v, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-v, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -688,9 +686,9 @@ contexts:
       set: [apply-v, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-v, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-v, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-v, apply-s]
 
     - match: '{{fontfmt}}*\s'
@@ -702,9 +700,9 @@ contexts:
       set: [apply-k, apply-b, apply-i, apply-s, apply-u]
 
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
-      set: [apply-k, apply-b, apply-i, apply-s]
-    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-k, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-k, apply-b, apply-i, apply-s]
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
       set: [apply-k, apply-b, apply-u, apply-s]
     - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
@@ -727,9 +725,9 @@ contexts:
       set: [apply-k, apply-b]
     - match: '{{fontfmt}}*i{{fontfmt}}*\s'
       set: [apply-k, apply-i]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
       set: [apply-k, apply-u]
-    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
       set: [apply-k, apply-s]
 
     - match: '{{fontfmt}}*\s'
