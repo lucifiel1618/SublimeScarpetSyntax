@@ -19,7 +19,7 @@ function_call_linebreak
 
 function_call_with_expressions_in_arguments
    (x1 = 1; x2 = 2; x = (x1+x2); y = 3; z = 4; x, y, ...z);
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.function-call.arguments.scarpet meta.group.scarpet
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.function-call.arguments
 
 
 function_declaration(x, y, ...z) -> (
