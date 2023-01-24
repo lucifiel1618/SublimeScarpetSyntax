@@ -1,0 +1,96 @@
+{
+    // http://www.sublimetext.com/docs/3/color_schemes.html
+    "variables": {
+        "transparent": "rgba(1,22,38, 0.1)", //transparent hack
+    },
+    "globals": {
+        // "foreground": "var(green)",
+    },
+    "rules": [
+        {
+            "scope": "region.whitish.string-format.scarpet",
+            "foreground": "#FFFFFF",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.yellowish.string-format.scarpet",
+            "foreground": "#FFFF55",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.magentaish.string-format.scarpet",
+            "foreground": "#FF55FF",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.redish.string-format.scarpet",
+            "foreground": "#FF5555",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.cyanish.string-format.scarpet",
+            "foreground": "#55FFFF",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.limish.string-format.scarpet",
+            "foreground": "#55FF55",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.light-bluish.string-format.scarpet",
+            "foreground": "#5555FF",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.dark-grayish.string-format.scarpet",
+            "foreground": "#555555",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.grayish.string-format.scarpet",
+            "foreground": "#AAAAAA",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.goldish.string-format.scarpet",
+            "foreground": "#FFAA00",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.purplish.string-format.scarpet",
+            "foreground": "#AA00AA",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.brownish.string-format.scarpet",
+            "foreground": "#AA0000",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.turquoish.string-format.scarpet",
+            "foreground": "#00AAAA",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.greenish.string-format.scarpet",
+            "foreground": "#00AA00",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.navy-bluish.string-format.scarpet",
+            "foreground": "#0000AA",
+            "background": "var(transparent)",
+        },
+        {
+            "scope": "region.blackish.string-format.scarpet",
+            "foreground": "#000000",
+            "background": "var(transparent)",
+        },
+        // {
+        //     "scope": "region.hex-color.string-format.scarpet",
+        //     "foreground": "var(yellow)",
+        //     "background": "var(transparent)",
+        // },
+    ],
+}

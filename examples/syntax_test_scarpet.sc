@@ -94,14 +94,15 @@ decorators = format('^ubic tooltips', '?suggestion', '!message', '@url', '&copy 
 avalible_fontstyles = format('b bold', 'i italic', 'u underline');
 unavalible_fontstyles = format('s strikethrough', 'o obfuscated');
 
-avalible_fontcolors = format('w white', 'y yellow', 'r red', 'c cyan', 'p purple', 'e green')
-unavalible_fontcolors_by_default = format( // require_customized_color_scheme
+fontcolors = format(
+    'w white', 'y yellow', 'r red', 'c cyan', 'p purple', 'e green',
     'm magenta', 'l lime', 't light blue', 'f dark gray', 'g gray', 'd gold',
-    'n brown', 'q turquoise', 'n navy blue', 'k black', '#AAAAAA hexcolor');
+    'n brown', 'q turquoise', 'v navy blue', 'k black',
+    '#AAAAAA hexcolor');
 
 more_valid_formats = format('bbbi#ABABA1ssosrso message')
 invalid_fontfmts = format('tyai including non-existing formatting symbols "a"',
-    '#AABAFI invalid_hexcode');
+    '#AABAFI invalid_hexcode', 'b#A0A0Ai invalid_hexcode');
 
 do_for_loop(n) -> (
     sum = 0;

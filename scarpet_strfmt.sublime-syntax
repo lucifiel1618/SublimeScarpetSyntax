@@ -28,7 +28,7 @@ contexts:
       pop: 1
     - match: (?={{fontfmt}}*#\h{6}{{fontstyle}}*(?!\S))
       # No sublime support for hex color. White it is.
-      set: w
+      set: hex
     - match: (?={{fontfmt}}*w{{fontstyle}}*(?!\S))
       set: w
     - match: (?={{fontfmt}}*y{{fontstyle}}*(?!\S))
@@ -98,6 +98,8 @@ contexts:
     - meta_content_scope: region.navy-bluish.string-format.scarpet
   apply-k: # black (not supported)
     - meta_content_scope: region.blackish.string-format.scarpet
+  apply-hex: # hexcode color (not supported)
+    - meta_content_scope: region.whitish.string-format.scarpet
 
   # 4 styles:
   apply-b: # bold
@@ -732,3 +734,42 @@ contexts:
 
     - match: '{{fontfmt}}*\s'
       set: [apply-k]
+
+  hex:
+    - meta_scope: constant.other.string-format.scarpet
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
+      set: [apply-hex, apply-b, apply-i, apply-s, apply-u]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-hex, apply-b, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-hex, apply-b, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-hex, apply-b, apply-u, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){3}\1\2\3\s'
+      set: [apply-hex, apply-i, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-hex, apply-b, apply-i]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-hex, apply-b, apply-u]
+    - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-hex, apply-b, apply-s]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|u{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-hex, apply-i, apply-u]
+    - match: '{{fontfmt}}*(?:i{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-hex, apply-i, apply-s]
+    - match: '{{fontfmt}}*(?:u{{fontfmt}}*()|s{{fontfmt}}*()){2}\1\2\s'
+      set: [apply-hex, apply-u, apply-s]
+
+    - match: '{{fontfmt}}*b{{fontfmt}}*\s'
+      set: [apply-hex, apply-b]
+    - match: '{{fontfmt}}*i{{fontfmt}}*\s'
+      set: [apply-hex, apply-i]
+    - match: '{{fontfmt}}*u{{fontfmt}}*\s'
+      set: [apply-hex, apply-u]
+    - match: '{{fontfmt}}*s{{fontfmt}}*\s'
+      set: [apply-hex, apply-s]
+
+    - match: '{{fontfmt}}*\s'
+      set: [apply-hex]

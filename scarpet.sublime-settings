@@ -1,0 +1,8 @@
+{
+    // ignored list of syntax definitions
+    "disabled_syntax": [
+        "Packages/Text/Plain text.tmLanguage",
+        "Packages/Markdown/MultiMarkdown.sublime-syntax",
+        "Packages/Markdown/Markdown.sublime-syntax"
+    ]
+}

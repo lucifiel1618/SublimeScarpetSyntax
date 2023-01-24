@@ -7,7 +7,7 @@ version: 2
 
 extends:
   - Packages/Regular Expressions/RegExp (Basic).sublime-syntax
-  - scarpet_strformat.sublime-syntax
+  - scarpet_strfmt.sublime-syntax
 
 file_extensions:
   - sc
