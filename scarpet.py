@@ -25,8 +25,8 @@ class ScarpetEventListener(sublime_plugin.EventListener):
             if not PACKAGE_SCHEME_FOLDER.exists():
                 PACKAGE_SCHEME_FOLDER.mkdir()
  
-            scheme_content = sublime.load_binary_resource('Packages/'+NAME+'/scarpet_strfmt.sublime-color-scheme')
-            with TEMPLATE_SCHEME.open('wb') as scheme_f:
+            scheme_content = sublime.load_resource('Packages/'+NAME+'/scarpet_strfmt.sublime-color-scheme')
+            with TEMPLATE_SCHEME.open('w') as scheme_f:
                 scheme_f.write(scheme_content)
 
         for view in views:
