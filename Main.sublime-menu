@@ -1,0 +1,27 @@
+[{
+    "caption": "Preferences",
+    "id": "preferences",
+    "children": [{
+        "caption": "Package Settings",
+        "id": "package-settings",
+        "children": [{
+            "caption": "Scarpet",
+            "children": [{
+                "caption": "Settings",
+                "command": "edit_settings",
+                "args": {
+                    "base_file": "${packages}/Scarpet/scarpet.sublime-settings",
+                    "default": "{\n\t$0\n}\n",
+                },
+            }, {
+                "caption": "-",
+            }, {
+                "caption": "README",
+                "command": "open_file",
+                "args": {
+                    "file": "${packages}/Scarpet/README.md",
+                },
+            }]
+        }]
+    }]
+}]

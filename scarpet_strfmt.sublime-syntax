@@ -27,7 +27,6 @@ contexts:
     - match: \s
       pop: 1
     - match: (?={{fontfmt}}*#\h{6}{{fontstyle}}*(?!\S))
-      # No sublime support for hex color. White it is.
       set: hex
     - match: (?={{fontfmt}}*w{{fontstyle}}*(?!\S))
       set: w
@@ -99,7 +98,7 @@ contexts:
   apply-k: # black (not supported)
     - meta_content_scope: region.blackish.string-format.scarpet
   apply-hex: # hexcode color (not supported)
-    - meta_content_scope: region.whitish.string-format.scarpet
+    - meta_content_scope: region.arbitrary.string-format.scarpet
 
   # 4 styles:
   apply-b: # bold
@@ -736,7 +735,7 @@ contexts:
       set: [apply-k]
 
   hex:
-    - meta_scope: constant.other.string-format.scarpet
+    - meta_scope: constant.other.hex-code.string-format.scarpet
     - match: '{{fontfmt}}*(?:b{{fontfmt}}*()|i{{fontfmt}}*()|u{{fontfmt}}*()|s{{fontfmt}}*()){4}\1\2\3\4\s'
       set: [apply-hex, apply-b, apply-i, apply-s, apply-u]
 

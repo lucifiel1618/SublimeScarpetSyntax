@@ -1,4 +1,7 @@
-{
+{   // The settings here affect ONLY format string.
+    // Other functionalities such as syntax highlighting/auto-complete would work regardless
+    "disable_plugin": true,
+    "disable_hexcode_realization": true,
     // ignored list of syntax definitions
     "disabled_syntax": [
         "Packages/Text/Plain text.tmLanguage",

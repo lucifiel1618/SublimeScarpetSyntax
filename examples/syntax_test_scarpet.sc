@@ -87,22 +87,24 @@ map_identifier
 //   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.mode.basic.regexp
 //                                                     ^^^^^^^^^^^ meta.set.regexp
 
-format('ib certain', 'u formatted', 'ibc string' 'uri preview', 'eb are supported!');
+format('u formatted', 'ibc string' 'uri preview', 'eb are supported!');
 
 decorators = format('^ubic tooltips', '?suggestion', '!message', '@url', '&copy to clipboard text');
-
-avalible_fontstyles = format('b bold', 'i italic', 'u underline');
-unavalible_fontstyles = format('s strikethrough', 'o obfuscated');
 
 fontcolors = format(
     'w white', 'y yellow', 'r red', 'c cyan', 'p purple', 'e green',
     'm magenta', 'l lime', 't light blue', 'f dark gray', 'g gray', 'd gold',
     'n brown', 'q turquoise', 'v navy blue', 'k black',
-    '#AAAAAA hexcolor');
+    '#00AAAF hexcolor');
+
+fontstyles_avalible = format('b bold', 'i italic', 'u underline');
+fontstyles_unavalible = format('s strikethrough', 'o obfuscated');
 
 more_valid_formats = format('bbbi#ABABA1ssosrso message')
-invalid_fontfmts = format('tyai including non-existing formatting symbols "a"',
-    '#AABAFI invalid_hexcode', 'b#A0A0Ai invalid_hexcode');
+invalid_fontfmts = format(
+    'tyai including non-existing formatting symbols "a"',
+    '#AABAFI invalid_hexcode',
+    'b#A0A0Ai invalid_hexcode');
 
 do_for_loop(n) -> (
     sum = 0;
