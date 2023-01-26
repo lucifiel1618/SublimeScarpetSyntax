@@ -10,4 +10,6 @@ jobs:
         with:
           path: Scarpet
       - uses: SublimeText/UnitTesting/actions/setup@v1
+        with:
+          package-name: Scarpet
       - uses: SublimeText/UnitTesting/actions/run-syntax-tests@v1
