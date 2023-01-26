@@ -1,4 +1,4 @@
-// SYNTAX TEST "Packages/SublimeScarpetSyntax/scarpet.sublime-syntax"
+// SYNTAX TEST "Packages/Scarpet/scarpet.sublime-syntax"
 
 _; _a; _i; _x; _y; _z; _trace;
 // ^^ variable.language.anonymous
