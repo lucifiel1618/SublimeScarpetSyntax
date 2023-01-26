@@ -10,7 +10,7 @@ jobs:
         with:
           path: Scarpet
       - run: |
-          rm Scarpet/examples/*test*.{svg,html,png}
+          rm -f Scarpet/examples/*test*.{svg,html,png}
       - uses: SublimeText/UnitTesting/actions/setup@v1
         with:
           package-name: Scarpet
