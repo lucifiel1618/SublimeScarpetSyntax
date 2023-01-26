@@ -1,20 +1,11 @@
-name: Run syntax tests
-description: Run syntax tests
-inputs:
-  package-name:
-    description: Package name. Derived from setup step if empty.
-    default: 'Scarpet'
-  compatibility:
-    description: Test regex compatibility of the new syntax engine.
-    default: true
-runs:
-  using: 'composite'
-  steps:
-    - run: |
-        PACKAGE_FROM_INPUTS="${{ inputs.package-name }}"
-        PACKAGE="${PACKAGE_FROM_INPUTS:-$PACKAGE}"
-        python3 "$GITHUB_ACTION_PATH/../../scripts/run_tests.py" "$PACKAGE" --syntax-test
-        if [ "${{ inputs.compatibility }}" == "true" ]; then
-          python3 "$GITHUB_ACTION_PATH/../../scripts/run_tests.py" "$PACKAGE" --syntax-compatibility
-        fi
-      shell: bash
+name: test-syntax
+
+on: [push, pull_request]
+
+jobs:
+  run-syntax-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: SublimeText/UnitTesting/actions/setup@v1
+      - uses: SublimeText/UnitTesting/actions/run-syntax-tests@v1
