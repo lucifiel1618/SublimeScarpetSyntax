@@ -20,19 +20,19 @@ __SublimeScarpetSyntax__ is a __[SublimeText]__ package that enables syntax high
 * Mac
 ```sh
 cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
-git clone --depth=1 https://github.com/lucifiel1618/SublimeScarpetSyntax.git
+git clone --depth=1 https://github.com/lucifiel1618/SublimeScarpetSyntax.git Scarpet
 
 ```
 * Linux
 ```sh
 cd ~/.config/sublime-text-3/Packages
-git clone --depth=1 https://github.com/lucifiel1618/SublimeScarpetSyntax.git
+git clone --depth=1 https://github.com/lucifiel1618/SublimeScarpetSyntax.git Scarpet
 
 ```
 * Win
 ```sh
 cd "%APPDATA%\Sublime Text 3\Packages"
-git clone --depth=1 https://github.com/lucifiel1618/SublimeScarpetSyntax.git
+git clone --depth=1 https://github.com/lucifiel1618/SublimeScarpetSyntax.git Scarpet
 
 ```
 
