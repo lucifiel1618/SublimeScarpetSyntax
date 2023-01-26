@@ -1,4 +1,9 @@
 name: test-syntax
+description: Run syntax tests
+inputs:
+  package-name:
+    description: Package name. Derived from setup step if empty.
+    default: 'Scarpet'
 
 on: [push, pull_request]
 
