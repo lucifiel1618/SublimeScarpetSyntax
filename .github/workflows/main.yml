@@ -1,9 +1,5 @@
 name: test-syntax
 description: Run syntax tests
-inputs:
-  package-name:
-    description: Package name. Derived from setup step if empty.
-    default: 'Scarpet'
 
 on: [push, pull_request]
 
@@ -11,6 +7,8 @@ jobs:
   run-syntax-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      with:
+        path: Scarpet
       - uses: SublimeText/UnitTesting/actions/setup@v1
       - uses: SublimeText/UnitTesting/actions/run-syntax-tests@v1
