@@ -1,5 +1,6 @@
 # SublimeScarpetSyntax: A SublimeText Package for Scarpet
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/lucifiel1618/SublimeScarpetSyntax)
+[![Test](https://img.shields.io/github/actions/workflow/status/lucifiel1618/SublimeScarpetSyntax/main.yml?branch=main)](https://github.com/lucifiel1618/SublimeScarpetSyntax/blob/main/.github/workflows/main.yml)
 ## Overview
 __[Scarpet]__, or __Script for Carpet__, is a script language used to design custom programs for __[Carpet Mod]__ in __[Minecraft]__.
 
