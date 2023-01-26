@@ -1,4 +1,4 @@
-// SYNTAX TEST "Packages/SublimeScarpetSyntax/scarpet.sublime-syntax"
+// SYNTAX TEST "Packages/Scarpet/scarpet.sublime-syntax"
 
 _; _a; _i; _x; _y; _z; _trace;
 // ^^ variable.language.anonymous
@@ -101,10 +101,19 @@ fontstyles_avalible = format('b bold', 'i italic', 'u underline');
 fontstyles_unavalible = format('s strikethrough', 'o obfuscated');
 
 more_valid_formats = format('bbbi#ABABA1ssosrso message')
+//                           ^^^^^^^^^^^^^^^^^^ constant.other.string-format
+//                                              ^^^^^^^ region.redish.string-format
+//                                              ^^^^^^^ markup.bold.string-format
+//                                              ^^^^^^^ markup.italic.string-format
+//                                              ^^^^^^^ markup.strikethrough.string-format
 invalid_fontfmts = format(
     'tyai including non-existing formatting symbols "a"',
+//   ^^^^ invalid.illegal.string-format
     '#AABAFI invalid_hexcode',
-    'b#A0A0Ai invalid_hexcode');
+//   ^^^^^^^ invalid.illegal.string-format
+    'b#A0A0Ai invalid_hexcode'
+//   ^^^^^^^^ invalid.illegal.string-format
+);
 
 do_for_loop(n) -> (
     sum = 0;
