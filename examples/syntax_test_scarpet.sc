@@ -95,7 +95,7 @@ fontcolors = format(
     'w white', 'y yellow', 'r red', 'c cyan', 'p purple', 'e green',
     'm magenta', 'l lime', 't light blue', 'f dark gray', 'g gray', 'd gold',
     'n brown', 'q turquoise', 'v navy blue', 'k black',
-    '#00AAAF hexcolor');
+    '#00AAAA hexcolor');
 
 fontstyles_avalible = format('b bold', 'i italic', 'u underline');
 fontstyles_unavalible = format('s strikethrough', 'o obfuscated');
