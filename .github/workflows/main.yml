@@ -1,5 +1,4 @@
 name: test-syntax
-description: Run syntax tests
 
 on: [push, pull_request]
 
