@@ -129,7 +129,10 @@ class ScarpetEventListener(sublime_plugin.EventListener):
     def _get_hexcode_regions(self, view: sublime.View) -> 'list[sublime.Region]':
         d = {}
         for fmt_r in view.find_by_selector('constant.other.hex-code.string-format.scarpet'):
-            hexcode = PROG.findall(view.substr(fmt_r))[-1]
+            hexcodes = PROG.findall(view.substr(fmt_r))
+            if not hexcodes:
+                continue
+            hexcode = hexcodes[-1]
             str_r = view.expand_to_scope(fmt_r.b+1, 'region.arbitrary.string-format.scarpet')
             if str_r is not None:
                 d.setdefault(hexcode, []).append(str_r)
