@@ -8,4 +8,5 @@
 *.png export-ignore
 LICENSE export-ignore
 examples export-ignore
-generate-completion-files.py export-ignore
+tests export-ignore
+Completions/generate-completion-files.py export-ignore
